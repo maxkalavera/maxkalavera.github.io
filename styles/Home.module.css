@@ -1,0 +1,55 @@
+.container {
+  width: 100%;
+  min-height: var(--content-height);
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-md);
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: var(--gap-md);
+}
+
+.info {
+  max-width: var(--content-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: var(--gap-sm) var(--gap-md);
+  gap: var(--gap-sm);
+  user-select: none;
+}
+
+.infoTitle {
+  color: var(--gray-200);
+}
+
+.infoSubtitle {
+  color: var(--gray-400);
+}
+
+.profilePictureWrapper {
+  width: 240px;
+  height: 240px;
+  border: 6px solid rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+}
+
+.profilePicture {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+  border-radius: 6px;
+  position: absolute;
+  top: 24px;
+}
