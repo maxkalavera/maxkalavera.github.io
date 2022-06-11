@@ -1,3 +1,5 @@
+import Head from "next/head"
+
 import styles from "styles/Layout.module.css"
 
 export default function Layout({
@@ -6,6 +8,10 @@ export default function Layout({
   children?: JSX.Element
 }): JSX.Element {
   return (
+    <>
+    <Head>
+      <title>Max Hernandez</title>
+    </Head>
     <section className={styles.container}>
       <div className={styles.header}>
         <div className={styles.logo}>
@@ -21,5 +27,6 @@ export default function Layout({
         {children}
       </div>
     </section>
+    </>
   )
 }

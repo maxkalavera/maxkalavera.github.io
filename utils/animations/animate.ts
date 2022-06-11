@@ -9,7 +9,11 @@ import type { AnimationTimerState } from "utils/animations/AnimationTimer"
 interface AnimateCallback {
   (
     progress: number,
-    clear: () => void
+    commands: {
+      next: () => void
+      clear: () => void
+    }
+
   ): void
 }
 
@@ -53,10 +57,9 @@ export default function animate(
   }
   
   const next = () => {
-    if (queue.peek()) {
+    if (queue.peek() && animationTimer.playingState === 'playing') {
+      animationTimer.stop()
       execute()
-    } else {
-      clear()
     }
   }
   
@@ -67,7 +70,7 @@ export default function animate(
         let progressTime = (
           (performance.now() - timerState.startTime) % animation.options.duration!) / animation.options.duration!
         let progress = animation.options.timeFunction!(progressTime)
-        animation.callback(progress, next)
+        animation.callback(progress, { next, clear })
       }, animation.options.refreshRate!)
     }
   }
@@ -78,7 +81,7 @@ export default function animate(
   ) => {
     options = Object.assign(OPTIONS_DEFAULT, options)
     queue.enqueue({ callback, options })
-    next()
+    execute()
     return {
       then: then,
       clear: clear

@@ -12,10 +12,10 @@ function Mandelbrot(): JSX.Element {
       throw "Canvas element not found"
 
     var scape = 0.0
-    let animation = animate((progress, clear) => {
+    let animation = animate((progress, { next }) => {
       scape += progress * 0.05
       if (scape >= 2.0) {
-        clear()
+        next()
       } 
       drawMandelbrot(canvasRef.current!, { scape })
     }, {
@@ -34,8 +34,6 @@ function Mandelbrot(): JSX.Element {
 
   return (
     <canvas
-      width={768}
-      height={768}
       ref={canvasRef}
     />
   )

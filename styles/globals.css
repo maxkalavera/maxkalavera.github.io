@@ -46,6 +46,10 @@ body, h1, h2, h3, h4, h5, p, small {
   margin: 0px;
 }
 
+body, html {
+  min-height: -webkit-fill-available;
+}
+
 .primary-h1 {
   font-family: 'Work Sans', sans-serif;
   font-style: normal;
@@ -192,4 +196,20 @@ body, h1, h2, h3, h4, h5, p, small {
   font-style: normal;
   font-weight: 400;
   font-size: 0.75rem;
+}
+
+/******************************************************************************/
+
+body {
+  background: linear-gradient(270deg, #000011 0%, #010033 100%);
+}
+
+#canvas-background {
+  /*width: 720px;*/
+  /*height: 720px;*/
+  display: block;
+  position: fixed;
+  top: calc(50% - 360px + var(--header-height));
+  left: calc(50% - 360px);
+  z-index: 9999;
 }

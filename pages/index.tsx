@@ -1,24 +1,20 @@
 import type { NextPage } from 'next'
-//import Image from 'next/image'
+import Image from 'next/image'
 
-import Mandelbrot from 'components/fractals/Maldelbrot'
-//import profilePicture from 'public/me.jpg'
+import animateMandelbrot from 'utils/fractals/animateMandelbrot'
+import profilePicture from 'public/me.jpg'
+import { useEffect } from 'react'
 import styles from 'styles/Home.module.css'
 
 const Home: NextPage = () => {
+
+  useEffect(() => {
+    let animation = animateMandelbrot()
+    return () => animation.clear()
+  }, [])
+
   return (
     <div className={styles.container}>
-      <div className={styles.content}>
-        <Mandelbrot />
-      </div>
-    </div>
-  )
-}
-
-export default Home
-
-
-/*
       <div className={styles.content}>
         <div className={styles.info}>
           <h1 className={`primary-h1 ${styles.infoTitle}`}>
@@ -39,4 +35,8 @@ export default Home
           />
         </div>
       </div>
-*/
+    </div>
+  )
+}
+
+export default Home
