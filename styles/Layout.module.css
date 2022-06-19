@@ -13,6 +13,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;  
+  gap: var(--gap-lg);
 }
 
 .logo {
@@ -30,7 +31,7 @@
   flex-direction: row;
   align-items: center;
   padding: var(--gap-md);
-  gap: var(--gap-lg);
+  gap: var(--gap-md);
   color: var(--text-color);
   user-select: none;
 }

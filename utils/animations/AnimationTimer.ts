@@ -3,14 +3,14 @@ export interface AnimationTimerState {
   timer: number
 }
 
-interface AnimationTimer {
+export interface AnimationTimerType {
   playingState: 'idle' | 'playing' | 'paused'
-  start: (this: AnimationTimer, animationFunction: Function, refreshRate: number) => void
+  start: (this: AnimationTimerType, animationFunction: Function, refreshRate: number) => void
   stop:  () => void
   pause:  () => void
 }
 
-export default function AnimationTimer() {
+export default function AnimationTimer(): AnimationTimerType {
   var state: AnimationTimerState = {  // Private properties
     startTime: 0,
     timer: 0,
@@ -34,6 +34,6 @@ export default function AnimationTimer() {
         state.timer = 0
         this.playingState = 'paused'
       }
-    } as AnimationTimer
+    } as AnimationTimerType
   )
 }

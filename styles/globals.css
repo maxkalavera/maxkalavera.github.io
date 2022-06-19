@@ -37,7 +37,7 @@
 
   --header-height: 72px;
   --footer-height: 0px;
-  --content-container-padding: var(--gap-md);
+  --content-container-padding: var(--gap-sm);
   --content-container-min-height: calc(100vh - var(--header-height) - var(--footer-height));
   --content-height: calc(var(--content-container-min-height) - calc(2 * var(--content-container-padding)));
 }
@@ -200,16 +200,22 @@ body, html {
 
 /******************************************************************************/
 
+
+
 body {
   background: linear-gradient(270deg, #000011 0%, #010033 100%);
 }
 
-#canvas-background {
-  /*width: 720px;*/
-  /*height: 720px;*/
+#canvas-container {
+  width: 100%;
+  height: 100%;
   display: block;
   position: fixed;
-  top: calc(50% - 360px + var(--header-height));
-  left: calc(50% - 360px);
-  z-index: 9999;
+  top: 0;
+  left: 0;
+  z-index: -9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

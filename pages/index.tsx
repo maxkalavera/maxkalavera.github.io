@@ -1,19 +1,21 @@
 import type { NextPage } from 'next'
 import Image from 'next/image'
+import { useEffect } from 'react'
 
 import animateMandelbrot from 'utils/fractals/animateMandelbrot'
 import profilePicture from 'public/me.jpg'
-import { useEffect } from 'react'
 import styles from 'styles/Home.module.css'
 
 const Home: NextPage = () => {
 
   useEffect(() => {
-    let animation = animateMandelbrot()
-    return () => animation.clear()
+    const _animator = animateMandelbrot()
+    _animator.start()
+    return () => _animator.stop()
   }, [])
 
   return (
+    <>
     <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.info}>
@@ -32,10 +34,15 @@ const Home: NextPage = () => {
             width={240}
             height={240}
             quality={95}
+            style={{
+              borderRadius: "12px",
+              border: "12px solid var(--white)"
+            }}
           />
         </div>
       </div>
     </div>
+    </>
   )
 }
 

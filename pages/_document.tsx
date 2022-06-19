@@ -1,23 +1,22 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import { useEffect } from 'react'
 
 export default function Document() {
+
   return (
     <Html>
       <Head>
         <link
-          href="https://fonts.googleapis.com/css?family=Work+Sans|Roboto|PT+Serif&display=swap"
+          href="https://fonts.googleapis.com/css?family=Work+Sans|Roboto|PT|Bad+Script&display=swap"
           rel="stylesheet"
         />
-        <title>Max Hernandez</title>
       </Head>
       <body>
         <Main />
         <NextScript />
-        <canvas 
-          width="720px"
-          height="720px"
-          id="canvas-background" 
-        />
+        <div id="canvas-container">
+          <canvas id="canvas-background" />
+        </div>
       </body>
     </Html>
   )

@@ -15,7 +15,15 @@ export default function Layout({
     <section className={styles.container}>
       <div className={styles.header}>
         <div className={styles.logo}>
-          <h3 className="primary-h3">Max Hernandez</h3>
+          <h3 
+            style={{
+              fontFamily: 'Bad Script',
+              lineHeight: '130%'
+            }}
+            className="primary-h3"
+          >
+            Max Hernandez
+          </h3>
         </div>
         <div className={styles.navbar}>
           <h3 className={`secondary-h3 ${styles.navbarItem}`}>Work</h3>

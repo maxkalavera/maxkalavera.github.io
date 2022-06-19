@@ -1,5 +1,5 @@
 
-interface Queue<Type> {
+export interface QueueType<Type> {
   data: Array<Type>
   enqueue: (item: Type) => void
   dequeue: () => Type | undefined
@@ -7,7 +7,7 @@ interface Queue<Type> {
   clear: () => void
 }
 
-export default function Queue<Type>() {
+export default function Queue<Type>(): QueueType<Type> {
   return Object.create(
     {
       data: Array<Type>(),
@@ -23,6 +23,6 @@ export default function Queue<Type>() {
       clear: function clear() {
         return this.data.splice(0, this.data.length)
       }
-    } as Queue<Type>
+    } as QueueType<Type>
   )
 }
