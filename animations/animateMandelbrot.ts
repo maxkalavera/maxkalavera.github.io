@@ -18,12 +18,10 @@ function draw(array: Float32Array, canvas: HTMLCanvasElement) {
 
   let dataArray = new Uint8ClampedArray(4 * canvas.width * canvas.height).fill(0);
   for (let i = 0; i < array.length; i++) {
-    if (array[i] !== NaN) {
-      dataArray[i * 4] = 255
-      dataArray[(i * 4) + 1] = 255
-      dataArray[(i * 4) + 2] = 255
-      dataArray[(i * 4) + 3] = array[i] * 256
-    }
+    dataArray[i * 4] = 255
+    dataArray[(i * 4) + 1] = 255
+    dataArray[(i * 4) + 2] = 255
+    dataArray[(i * 4) + 3] = array[i] * 256
   }
 
   context.putImageData(

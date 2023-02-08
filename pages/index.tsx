@@ -2,14 +2,15 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useEffect } from 'react'
 
-import animateMandelbrot from 'utils/fractals/animateMandelbrot'
+//import animateMandelbrot from 'animations/animateMandelbrot'
+import animatePentagonGrid from 'animations/animatePentagonGrid'
 import profilePicture from 'public/me.jpg'
 import styles from 'styles/Home.module.css'
 
 const Home: NextPage = () => {
 
   useEffect(() => {
-    const _animator = animateMandelbrot()
+    const _animator = animatePentagonGrid()
     _animator.start()
     return () => _animator.stop()
   }, [])
