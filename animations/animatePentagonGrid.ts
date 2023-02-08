@@ -17,12 +17,15 @@ class PentagonGrid {
     size: {width: 0, height: 0},
     cell: {size: {radius: 24, diameter: 24 * 2}}
   }
+  hexagons: Map<number, Map<number, Pentagon>> = new Map()
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas
     this.canvas.width = canvas.parentElement?.offsetWidth || 0
     this.canvas.height = canvas.parentElement?.offsetHeight || 0
     this.grid.size.width = Math.ceil(this.canvas.width / (2 * this.grid.cell.size.radius))
     this.grid.size.height = Math.ceil(this.canvas.height / (2 * this.grid.cell.size.radius))
+
+    this.generateHexagons()
   }
   rotateLine(
     degrees: number,
@@ -41,10 +44,7 @@ class PentagonGrid {
   ) {
     return Math.sqrt(Math.pow(pointA.x - pointB.x, 2) + Math.pow(pointA.y - pointB.y,2))
   }
-  generateVertices() {
-    const context = this.canvas.getContext("2d")
-    if (context === null) return
-
+  generateHexagons() {
     const hexagons: Map<number, Map<number, Pentagon>> = new Map()
     for (let j = 0; j < 50; j++) {
       let y = Math.floor(j * this.grid.cell.size.radius)
@@ -60,57 +60,45 @@ class PentagonGrid {
         hexagons.get(y)?.set(x, {
           center: {x, y},
           vertices: [
-            {x: x + this.grid.cell.size.radius, y: y},
-            {x: x - this.grid.cell.size.radius, y: y},
-            {x: x - this.grid.cell.size.radius * 0.5, y: y - this.grid.cell.size.radius},
             {x: x - this.grid.cell.size.radius * 0.5, y: y + this.grid.cell.size.radius},
-            {x: x + this.grid.cell.size.radius * 0.5, y: y - this.grid.cell.size.radius},
             {x: x + this.grid.cell.size.radius * 0.5, y: y + this.grid.cell.size.radius},
+            {x: x + this.grid.cell.size.radius, y: y},
+            {x: x + this.grid.cell.size.radius * 0.5, y: y - this.grid.cell.size.radius},
+            {x: x - this.grid.cell.size.radius * 0.5, y: y - this.grid.cell.size.radius},
+            {x: x - this.grid.cell.size.radius, y: y},
           ]
         })
       }
     }
-
-    for (const y of hexagons.keys()) {
-      // @ts-ignore
-      for (const x of hexagons.get(y).keys()) {
-        context.beginPath()
-        context.arc(x, y, 2, 0, 2 * Math.PI, false)
-        context.fillStyle = '#FFFFFFFF'
-        context.fill()
-        context.closePath()
-
-        // @ts-ignore
-        for (const vertex of hexagons.get(y)?.get(x)?.vertices) {
-          context.beginPath()
-          context.arc(vertex.x, vertex.y, 1, 0, 2 * Math.PI, false)
-          context.fillStyle = '#FFFFFF30'
-          context.fill()
-          context.closePath()  
-        }
-      }
-    }
+    this.hexagons = hexagons
   }
-  drawHexagon(center: {x: number, y: number}) {
+  drawHexagons() {
     const context = this.canvas.getContext("2d")
     if (context === null) return
 
-    const angleRadians = (2 * Math.PI) / 6 // 60 degrees
-
-    const vertices = [{
-      x: center.x - (this.grid.cell.size.radius / 2),
-      y: center.y
-    }]
-    for (let i = 0; i < 1; i++) {
-      vertices.push(this.rotateLine(
-        angleRadians,
-        center,
-        vertices[i]
-      ))
+    for (const y of this.hexagons.keys()) {
+      // @ts-ignore
+      for (const x of this.hexagons.get(y).keys()) {
+        context.beginPath()
+        context.shadowBlur = this.grid.cell.size.radius / 2
+        context.shadowColor = '#FFFFFFFF'
+        context.strokeStyle = '#FFFFFF06'
+        // @ts-ignore
+        const vertices = this.hexagons.get(y)?.get(x)?.vertices
+        if (vertices && vertices.length > 1) {
+          context.moveTo(vertices[0].x, vertices[0].y)
+          for (let i = 1; i < vertices.length; i++) {
+            context.lineTo(vertices[i].x, vertices[i].y)
+          }
+          context.lineTo(vertices[0].x, vertices[0].y)
+        }
+        context.stroke()
+        context.closePath()
+      }
     }
   }
   render() {
-    this.generateVertices()
+    this.drawHexagons()
   }
 }
 

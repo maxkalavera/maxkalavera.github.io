@@ -49,5 +49,5 @@
   min-width: 200px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  opacity: 0.0;
+  opacity: 1.0;
 }
