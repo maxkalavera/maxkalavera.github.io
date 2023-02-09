@@ -9,8 +9,9 @@ import type { AnimationTimerType, AnimationTimerState } from "utils/animations/A
 
 interface AnimateCallback {
   (
-    progress: number,
-    commands: {
+    options: {
+      progress: number,
+      progressDelta: number,
       next: () => void
       stop: () => void
     }
@@ -23,14 +24,6 @@ interface AnimationOptions {
   duration?: number // ms
   refreshRate?: number // ms
   timeFunction?: (time: number) => number
-}
-
-interface AnimateReturn {
-  clear: () => void,
-  then: (
-    callback: AnimateCallback,
-    options: AnimationOptions  
-  ) => AnimateReturn
 }
 
 interface AnimationType {
@@ -84,13 +77,13 @@ export default function Animator(): AnimatorType {
   
   const _execute = () => {
     if (animation && animationTimer.playingState !== 'playing') {
-
       animationTimer.start((timerState: AnimationTimerState) => {
         let progressTime = (
           (performance.now() - timerState.startTime) % animation!.options.duration!
           ) / animation!.options.duration!
-        let progress = animation!.options.timeFunction!(progressTime)
-        animation!.callback(progress, { next: next, stop: stop })
+        const progress = animation!.options.timeFunction!(progressTime)
+        const progressDelta = animation!.options.timeFunction!(performance.now() - timerState.startTime)
+        animation!.callback({ progress, progressDelta, next: next, stop: stop })
       }, animation!.options.refreshRate!)
     }
   }

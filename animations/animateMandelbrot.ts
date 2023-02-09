@@ -43,7 +43,7 @@ export default function animateMandelbrot(): AnimatorType {
 
     var mandelBrotArray = drawMandelbrot(canvas.width, canvas.height, { scape: MAX_SCAPE })
     mandelBrotArray = filterConvolutionMatrix(mandelBrotArray, masks.boxBlurMask)
-    animator.set((progress, { stop }) => {
+    animator.set(({ progress, stop }) => {
         let array = normalizeMandelbrotArray(mandelBrotArray, 0.3 + (progress * 0.7))
         draw(array, canvas)
         //stop()

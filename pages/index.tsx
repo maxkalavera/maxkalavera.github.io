@@ -3,14 +3,14 @@ import Image from 'next/image'
 import { useEffect } from 'react'
 
 //import animateMandelbrot from 'animations/animateMandelbrot'
-import animatePentagonGrid from 'animations/animatePentagonGrid'
+import animateHexagonGrid from 'animations/animateHexagonGrid'
 import profilePicture from 'public/me.jpg'
 import styles from 'styles/Home.module.css'
 
 const Home: NextPage = () => {
 
   useEffect(() => {
-    const _animator = animatePentagonGrid()
+    const _animator = animateHexagonGrid()
     _animator.start()
     return () => _animator.stop()
   }, [])

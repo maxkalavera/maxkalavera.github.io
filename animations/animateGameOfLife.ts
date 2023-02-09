@@ -139,7 +139,7 @@ export default function animateGameOfLife(): AnimatorType {
   const canvas = getBackgroundCanvas()
   const gameOfLife = new GameOfLife(canvas)
 
-  animator.set((progress) => {
+  animator.set(() => {
     gameOfLife.next()
   }, {
     label: 'Conway\'s Game of life',
