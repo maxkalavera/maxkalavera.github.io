@@ -5,21 +5,20 @@ import { useEffect } from 'react'
 //import animateMandelbrot from 'animations/animateMandelbrot'
 import animateHexagonGrid from 'animations/animateHexagonGrid'
 import profilePicture from 'public/me.jpg'
-import styles from 'styles/Home.module.css'
+import styles from 'styles/home.module.css'
 
 const Home: NextPage = () => {
 
   useEffect(() => {
     const _animator = animateHexagonGrid()
-    _animator.start()
+    _animator.resume()
     return () => _animator.stop()
   }, [])
 
   return (
-    <>
     <div className={styles.container}>
-      <div className={styles.content}>
-        <div className={styles.info}>
+      <div className={`${styles.content} hexagon-background-animation`}>
+        <div className={`${styles.info}`}>
           <h1 className={`primary-h1 ${styles.infoTitle}`}>
             I am Max Hernandez
           </h1>
@@ -27,7 +26,7 @@ const Home: NextPage = () => {
             A software engineer by logical conclusion, fan of comedy by nature and dancer by fortune.
           </h3>
         </div>
-        <div className={styles.profilePictureWrapper}>
+        <div className={`${styles.profilePictureWrapper}`}>
           <Image
             className={styles.profilePicture}
             src={profilePicture}
@@ -43,7 +42,6 @@ const Home: NextPage = () => {
         </div>
       </div>
     </div>
-    </>
   )
 }
 

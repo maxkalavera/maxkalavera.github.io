@@ -11,7 +11,7 @@ interface AnimateCallback {
   (
     options: {
       progress: number,
-      progressDelta: number,
+      progressTime: number,
       next: () => void
       stop: () => void
     }
@@ -78,12 +78,12 @@ export default function Animator(): AnimatorType {
   const _execute = () => {
     if (animation && animationTimer.playingState !== 'playing') {
       animationTimer.start((timerState: AnimationTimerState) => {
-        let progressTime = (
+        const deltaTime = (
           (performance.now() - timerState.startTime) % animation!.options.duration!
           ) / animation!.options.duration!
-        const progress = animation!.options.timeFunction!(progressTime)
-        const progressDelta = animation!.options.timeFunction!(performance.now() - timerState.startTime)
-        animation!.callback({ progress, progressDelta, next: next, stop: stop })
+        const progressTime = performance.now() - timerState.startTime
+        const progress = animation!.options.timeFunction!(deltaTime)
+        animation!.callback({ progress, progressTime, next: next, stop: stop })
       }, animation!.options.refreshRate!)
     }
   }

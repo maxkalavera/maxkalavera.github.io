@@ -18,7 +18,23 @@
   --gray-800: #424242;
   --gray-900: #212121;
 
-  --primary: var(--gray-700);
+  --primary: #1f1fff;
+  --primary-100: #7979ff;
+  --primary-200: #6262ff;
+  --primary-300: #4c4cff;
+  --primary-400: #3535ff;
+  --primary-500: #1c1ce6;
+  --primary-600: #1919cc;
+  --primary-700: #1616b3;
+  --primary-800: #131399;
+  --primary-900: #101080;
+
+  --primary-1000: #0c0c66;
+  --primary-1100: #09094c;
+  --primary-1200: #060633;
+  --primary-1300: #030319;
+  --primary-1400: #000000;
+
   --primary-contrast: var(--white);
 
   --text-color: var(--gray-200);
@@ -200,10 +216,8 @@ body, html {
 
 /******************************************************************************/
 
-
-
 body {
-  background: linear-gradient(270deg, #000011 0%, #010033 100%);
+  background: linear-gradient(270deg, var(--primary-1200) 0%, var(--primary-1300) 100%);
 }
 
 #canvas-container {
