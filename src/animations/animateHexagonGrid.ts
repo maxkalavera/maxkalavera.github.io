@@ -1,13 +1,8 @@
-import getBackgroundCanvas from "utils/animations/getBackgroundCanvas"
-import getAnimator from "utils/animations/getAnimator"
-import linear from "utils/animations/linear"
-import throttle from "utils/misc/throttle"
-import quadratic from "utils/animations/quadratic"
-import halfSin from "utils/animations/halfSin"
-import Loop from "utils/animations/Loop"
-import { sampleSize } from 'lodash'
+import getBackgroundCanvas from "src/utils/animations/getBackgroundCanvas"
+import throttle from "src/utils/throttle"
+import Loop from "src/utils/animations/Loop"
 
-import type { Hexagon } from "animations/animateHexagonGrid.d"
+import type { Hexagon } from "src/animations/animateHexagonGrid.d"
 
 class HexagonGrid {
   canvas: HTMLCanvasElement
@@ -34,8 +29,9 @@ class HexagonGrid {
     this.generateHexagons()
   }
   setCanvasSize() {
-    this.canvas.width = this.canvas.parentElement?.offsetWidth || 0
-    this.canvas.height = this.canvas.parentElement?.offsetHeight || 0
+    if (this.canvas === null || this.canvas.parentElement === null) return;
+    this.canvas.width = this.canvas.parentElement.offsetWidth || 0
+    this.canvas.height = this.canvas.parentElement.offsetHeight || 0
     this.grid.size.width = Math.ceil(this.canvas.width / (2 * this.grid.cell.size.radius))
     this.grid.size.height = Math.ceil(this.canvas.height / (this.grid.cell.size.radius))
     this.updateAreasOfInterest()
@@ -124,8 +120,7 @@ class HexagonGrid {
     const context = this.canvas.getContext("2d")
     if (context === null) return
 
-    for (const key of this.hexagons.keys()) {
-      const {x, y} = JSON.parse(key)
+    for (const key of Array.from(this.hexagons.keys())) {
       if (this.onActivationHexagons.has(key)) {
         const hexagon = this.onActivationHexagons.get(key)!
         context.beginPath()
@@ -197,7 +192,7 @@ class HexagonGrid {
   }
   addAreaOfInterest(className: string){
     const elements = document.getElementsByClassName(className)
-    for (const element of elements) {
+    for (const element of Array.from(elements)) {
       const rect = element.getBoundingClientRect()
       const horizontals = this.horizontalHexagonCoordinates.filter(
         (item) => item >= rect.left && item <= rect.right)
@@ -225,7 +220,7 @@ class HexagonGrid {
     }
   }
   updateHexagonsState(delta: number=0.1) {
-    for (const key of this.onActivationHexagons.keys()) {
+    for (const key of Array.from(this.onActivationHexagons.keys())) {
       const hexagon = this.onActivationHexagons.get(key)!
       hexagon.activation += (delta * hexagon.activationDelta) 
       if (hexagon.activation <= hexagon.activationMin) {

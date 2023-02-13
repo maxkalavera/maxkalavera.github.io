@@ -1,13 +1,9 @@
-import type { NextPage } from 'next'
-import Image from 'next/image'
 import { useEffect } from 'react'
+import animateHexagonGrid from 'src/animations/animateHexagonGrid'
+import profilePicture from 'src/assets/me.jpg'
+import styles from 'src/styles/home.module.css'
 
-//import animateMandelbrot from 'animations/animateMandelbrot'
-import animateHexagonGrid from 'animations/animateHexagonGrid'
-import profilePicture from 'public/me.jpg'
-import styles from 'styles/home.module.css'
-
-const Home: NextPage = () => {
+export default function Home() {
 
   useEffect(() => {
     const _animator = animateHexagonGrid()
@@ -27,13 +23,12 @@ const Home: NextPage = () => {
           </h3>
         </div>
         <div className={`${styles.profilePictureWrapper}`}>
-          <Image
+          <img
             className={styles.profilePicture}
-            src={profilePicture}
-            alt="Picture of the author"
+            src={profilePicture}    
+            alt='Profile avatar'      
             width={240}
             height={240}
-            quality={95}
             style={{
               borderRadius: "12px",
               border: "12px solid var(--white)"
@@ -44,5 +39,3 @@ const Home: NextPage = () => {
     </div>
   )
 }
-
-export default Home
