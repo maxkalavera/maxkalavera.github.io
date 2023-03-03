@@ -33,6 +33,7 @@ class Loop {
       iterationCount: iterationCount,
       iterations: 0
     })
+    return this;
   }
   resume() {
     this.playingState = 'playing'
@@ -63,15 +64,18 @@ class Loop {
         }
       }
     }, this.options.refreshRate)
+    return this;
   }
   stop() {
     clearInterval(this.timer)
     this.playingState = 'idle'
+    return this;
   }
   pause() {
     clearInterval(this.timer)
     this.timer = 0 as unknown as NodeJS.Timer
     this.playingState = 'paused'
+    return this;
   }
 }
 

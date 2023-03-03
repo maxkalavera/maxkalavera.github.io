@@ -16,6 +16,11 @@
   gap: var(--gap-lg);
 }
 
+.footer {
+  width: 100%;
+  height: var(--footer-height);
+}
+
 .logo {
   color: var(--text-color);
   user-select: none;

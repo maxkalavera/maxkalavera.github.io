@@ -29,6 +29,9 @@ export default function Layout({
         <div className={styles.content}>
           {children}
         </div>
+        <div className={`${styles.footer} hexagon-animation-docking`}>
+
+        </div>
       </section>
       <div id="canvas-container">
         <canvas id="canvas-background" />
