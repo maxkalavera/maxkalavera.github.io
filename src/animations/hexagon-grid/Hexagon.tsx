@@ -22,4 +22,20 @@ export default class Hexagon {
   setNeighbour(key: HexagonSideAngles, neighbour: Hexagon) {
     this.neighbours.set(key, neighbour);
   }
+  draw(context: CanvasRenderingContext2D, color=`rgba(255, 255, 255, 0.15)`) {
+    context.beginPath();
+    context.strokeStyle = color;
+    context.fillStyle = color;
+    const vertices = this.vertices;
+    if (vertices && vertices.length > 1) {
+      context.moveTo(vertices[0].x, vertices[0].y);
+      for (let i = 1; i < vertices.length; i++) {
+        context.lineTo(vertices[i].x, vertices[i].y);
+      }
+      context.lineTo(vertices[0].x, vertices[0].y);
+    }
+    context.stroke();
+    context.fill();
+    context.closePath();
+  }
 };

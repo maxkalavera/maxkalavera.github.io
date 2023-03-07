@@ -21,8 +21,12 @@ export function approximateDegreesAngle(
   }
 };
 
-export function distance2Points(pointA: Coordinate, pointB: Coordinate) {
+export function calculateDistance2Points(pointA: Coordinate, pointB: Coordinate) {
   return Math.sqrt(Math.pow(pointA.x - pointB.x, 2) + Math.pow(pointA.y - pointB.y, 2));
+}
+
+export function calculateDistanceSegment(valueA: number, valueB: number) {
+  return Math.abs(valueB - valueA)
 }
 
 export function calculateAngle2Points(pointA: Coordinate, pointB: Coordinate) {
