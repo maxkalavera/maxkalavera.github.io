@@ -1,53 +1,29 @@
 import Hexagon from "src/animations/hexagon-grid/Hexagon";
-import HexagonParticle from "src/animations/hexagon-grid/HexagonParticle";
+
 import type HexagonGrid from "src/animations/hexagon-grid/HexagonGrid";
+import type { IndexRect } from "src/animations/hexagon-grid/hexagon-grid.d";
 
 export default class AreaOfInterest {
-  classNames: Set<string>;
   grid: HexagonGrid;
-  elements: Set<Element>;
-  constructor(grid: HexagonGrid, classNames: string[] = []) {
+  className: string;
+  element: Element;
+  indexRect: IndexRect
+  hexagons: Hexagon[]
+  static locations: Set<Hexagon> = new Set();
+  constructor(
+    grid: HexagonGrid, 
+    className: string,
+    element: Element,
+    indexRect: IndexRect, 
+    hexagons: Hexagon[]
+  ) {
     this.grid = grid;
-    this.classNames = new Set(classNames);
-    this.elements = new Set();
+    this.className = className;
+    this.element = element;
+    this.indexRect = indexRect;
+    this.hexagons = hexagons;
   }
-  addClassName(className: string) {
-    this.classNames.add(className);
-  }
-  update() {
-  }
-  getHTMLElements() {
-    const elements = Array.from(this.classNames)
-      .map((className) => document.getElementsByClassName(className))
-      .reduce<Element[]>((accumulator, items) => accumulator.concat(Array.from(items)), []);
-    this.elements = new Set(elements);
-    return this.elements;
-  }
-  locateHexagonsInElement(element: Element) {
-    /*
-    const rect = element.getBoundingClientRect();
-    return Array.from(this.grid.coordinatesDict.entries())
-    .filter(([x, ySet]) => x >= rect.left && x <= rect.right)
-    .map(([x, ySet]) => 
-      Array.from(ySet.values())
-        .filter((y) => y >= rect.top && y <= rect.bottom)
-        .map((y) => ({x, y}))
-    )
-    .reduce((accumulator, variations) => accumulator.concat(variations), [])
-    .map((item) => this.grid.hexagons.get(JSON.stringify(item)))
-    .filter((hexagon) => hexagon) as Hexagon[];
-    */
-  }
-  locateHexagonsInArea() {
-    /*
-    const hexagons: Hexagon[] = [];
-    this.elements.forEach((element) =>
-      this.locateHexagonsInElement(element)
-        .forEach((hexagon) => hexagons.push(hexagon)));
-    return hexagons;
-    */
-  }
-  delete() {
-
+  draw(context: CanvasRenderingContext2D, hexagonColor=`rgba(255, 255, 255, 0.15)`) {
+    this.hexagons.forEach((hexagon) => hexagon.draw(context, hexagonColor));
   }
 };

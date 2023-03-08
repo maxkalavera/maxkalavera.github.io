@@ -1,7 +1,9 @@
-//import DockingArea from "src/animations/hexagon-grid/DockingArea";
-//import TargetArea from "src/animations/hexagon-grid/TargetArea";
+
 import cloneDeep from "lodash/cloneDeep";
 import HexagonGrid from "src/animations/hexagon-grid/HexagonGrid";
+import DockingArea from "src/animations/hexagon-grid/DockingArea";
+import TargetArea from "src/animations/hexagon-grid/TargetArea";
+import Particle from "src/animations/hexagon-grid/Particle";
 import throttle from "src/utils/throttle";
 
 import type Hexagon from "src/animations/hexagon-grid/Hexagon";
@@ -17,8 +19,8 @@ export default class HexagonGridAnimation {
     canvas: {width: 0, height: 0}
   }
   cursorLocation: Hexagon | undefined;
-  //dockingAreas: Set<DockingArea> = new Set();
-  //targetAreas: Set<TargetArea> = new Set();
+  dockingAreas: DockingArea[] = [];
+  targetAreas: TargetArea[] = [];
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
     this.grid = new HexagonGrid(canvas);
@@ -56,27 +58,17 @@ export default class HexagonGridAnimation {
     ) {
       const x = Math.floor(event.clientX - canvasBoundingRect.left);
       const y = Math.floor(event.clientY - canvasBoundingRect.top);
-      this.cursorLocation = this.grid.findOverlapingHexagon({x, y});
-      //console.log('MOUSE', {x, y}, this.cursorLocation);
-      //this.mousePosition = {x, y};
-      //const hexagon = this.findOverlapingHexagon(this.mousePosition);
-      //if (hexagon) this.cursorParticle.setLocation(hexagon);
+      this.cursorLocation = this.grid.findOverlapingHexagon([x, y]);
     }
   }
-  /*
-  addDockingArea(classNames: string[]) {
-    const dockingArea = new DockingArea(this.grid, classNames);
-    dockingArea.update();
-    this.dockingAreas.add(dockingArea);
+  addDockingArea(className: string) {
+    this.grid.getDockingAreasByClassName(className)
+      .forEach((dockingArea) => this.dockingAreas.push(dockingArea));
   }
-  */
-  /*
-  addTargetArea(classNames: string[]) {
-    const targetArea = new TargetArea(this.grid, classNames);
-    targetArea.update();
-    this.targetAreas.add(targetArea);
+  addTargetArea(className: string) {
+    this.grid.getTargetAreasByClassName(className)
+      .forEach((targetArea) => this.targetAreas.push(targetArea));
   }
-  */
   clearCanvas(context: CanvasRenderingContext2D) {
     context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
@@ -86,9 +78,20 @@ export default class HexagonGridAnimation {
 
     this.clearCanvas(context);
     this.grid.draw(context);
+    this.dockingAreas.forEach((dockingArea) => dockingArea.draw(context));
+    this.targetAreas.forEach((targetArea) => targetArea.draw(context));
     this.cursorLocation?.draw(context, `rgba(255, 0, 0, 0.55)`);
+
+    // REMOVE
+    Particle.globalParticles.forEach((particle) => particle.draw(context));
   }
   step(delta: number) {
+    Particle.step();
+    TargetArea.step();
+
+    //console.log('Particles ->', Particle.globalParticles.length);
+    //console.log('Particles without target ->', Particle.getParticlesWithoutTarget().length);
+    //console.log('Deactivated targets -> ', Target.getDeactivatedTargets().length);
     this.render();
   }
 };

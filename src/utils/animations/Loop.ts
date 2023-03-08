@@ -63,7 +63,7 @@ class Loop {
           }
         }
       }
-    }, this.options.refreshRate)
+    }, this.options.duration! / this.options.refreshRate!)
     return this;
   }
   stop() {

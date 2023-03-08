@@ -8,8 +8,8 @@ export default function animateHexagonGrid() {
   if (!singleton) {
     const canvas = getBackgroundCanvas();
     singleton =  new HexagonGridAnimation(canvas);
-    //singleton.addDockingArea(['hexagon-animation-docking']);
-    //singleton.addTargetArea(['hexagon-animation-background']);
+    singleton.addDockingArea('hexagon-animation-docking');
+    singleton.addTargetArea('hexagon-animation-background');
   }
 
   return new Loop(1000, 24)

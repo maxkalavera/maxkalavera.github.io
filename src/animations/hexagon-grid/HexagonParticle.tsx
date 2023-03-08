@@ -1,10 +1,11 @@
 import Hexagon from "src/animations/hexagon-grid/Hexagon";
-import { calculateAngle2Points } from "src/animations/hexagon-grid/utils";
+//import { calculateAngle2Points } from "src/animations/hexagon-grid/utils";
 
 import type HexagonGrid from "src/animations/hexagon-grid/HexagonGrid";
 import type { ParticleBehavior } from "src/animations/hexagon-grid/hexagon-grid.d";
 
 export default class HexagonParticle {
+  /*
   static particles: HexagonParticle[] = [];
   static cooldown: number = 1.0;
   grid: HexagonGrid;
@@ -54,4 +55,5 @@ export default class HexagonParticle {
     this.setLocation(neighbourHexagon);
     this.hasReachedTarget = this.location === this.target;
   }
+  */
 };

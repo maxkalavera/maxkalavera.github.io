@@ -7,14 +7,14 @@ export default class Hexagon {
   isTarget: boolean;
 
   constructor(x: number, y: number, radius: number) {
-    this.center = {x, y};
+    this.center = [x, y];
     this.vertices = [
-      {x: x - radius * 0.5, y: y + radius},
-      {x: x + radius * 0.5, y: y + radius},
-      {x: x + radius, y: y},
-      {x: x + radius * 0.5, y: y - radius},
-      {x: x - radius * 0.5, y: y - radius},
-      {x: x - radius, y: y},
+      [x - radius * 0.5, y + radius],
+      [x + radius * 0.5, y + radius],
+      [x + radius, y],
+      [x + radius * 0.5, y - radius],
+      [x - radius * 0.5, y - radius],
+      [x - radius, y],
     ];
     this.neighbours = new Map();
     this.isTarget = false;
@@ -28,11 +28,11 @@ export default class Hexagon {
     context.fillStyle = color;
     const vertices = this.vertices;
     if (vertices && vertices.length > 1) {
-      context.moveTo(vertices[0].x, vertices[0].y);
+      context.moveTo(vertices[0][0], vertices[0][1]);
       for (let i = 1; i < vertices.length; i++) {
-        context.lineTo(vertices[i].x, vertices[i].y);
+        context.lineTo(vertices[i][0], vertices[i][1]);
       }
-      context.lineTo(vertices[0].x, vertices[0].y);
+      context.lineTo(vertices[0][0], vertices[0][1]);
     }
     context.stroke();
     context.fill();

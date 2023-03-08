@@ -22,19 +22,13 @@ export default function Home() {
             A software engineer by logical conclusion, fan of comedy by nature and dancer by fortune.
           </h3>
         </div>
-        <div className={`${styles.profilePictureWrapper}`}>
-          <img
-            className={styles.profilePicture}
-            src={profilePicture}    
-            alt='Profile avatar'      
-            width={240}
-            height={240}
-            style={{
-              borderRadius: "12px",
-              border: "12px solid var(--white)"
-            }}
-          />
-        </div>
+        <img
+          className={styles.profilePicture}
+          src={profilePicture}    
+          alt='Profile avatar'      
+          width={240}
+          height={240}
+        />
       </div>
     </div>
   )
