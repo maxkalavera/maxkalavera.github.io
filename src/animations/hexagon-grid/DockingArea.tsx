@@ -5,8 +5,6 @@ import { calculateDistance2Points } from "src/animations/hexagon-grid/utils";
 import type HexagonGrid from "src/animations/hexagon-grid/HexagonGrid";
 import type Target from "src/animations/hexagon-grid/Target";
 import type Hexagon from "src/animations/hexagon-grid/Hexagon";
-import type { IndexRect } from "src/animations/hexagon-grid/hexagon-grid.d";
-
 
 export default class DockingArea extends AreaOfInterest {
   static globalDockingAreas: DockingArea[] = [];
@@ -26,10 +24,10 @@ export default class DockingArea extends AreaOfInterest {
     grid: HexagonGrid, 
     className: string,
     element: Element,
-    indexRect: IndexRect, 
+    rect: DOMRect, 
     hexagons: Hexagon[]
   ) {
-    super(grid, className, element, indexRect, hexagons);
+    super(grid, className, element, rect, hexagons);
     DockingArea.globalDockingAreas.push(this);
     hexagons.forEach((hexagon) => DockingArea.globalLocations.add(hexagon));
   }

@@ -6,8 +6,6 @@ export type ParticleBehavior = 'static';
 
 export type HexagonSideAngles = 30 | 90 | 150 | 210 | 270 | 330;
 
-export type IndexRect = {x: [number, number], y: [number, number]};
-
 export interface GridInfo {
   canvas: {width: number, height: number},
   size: {width: number, height: number}

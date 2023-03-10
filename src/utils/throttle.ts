@@ -7,7 +7,7 @@ export default function throttle(
     resetOnFinish=false
   }
 ) {
-  var inThrottle = false;
+  let inThrottle = false;
   return function () {
       if (!inThrottle) {
           inThrottle = true;

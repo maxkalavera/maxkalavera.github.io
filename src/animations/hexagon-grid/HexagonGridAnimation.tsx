@@ -37,6 +37,7 @@ export default class HexagonGridAnimation {
     if (JSON.stringify(info) !== JSON.stringify(this.info)) {
       this.updateCanvasSize(info, this.canvas);
       this.grid.update(this.canvas);
+      TargetArea.globalTargetAreas.forEach((targetArea) => targetArea.update());
     }
   }
   calculateCanvasSize(info: HexagonGridAnimationInfo, canvas: HTMLCanvasElement) {
@@ -80,10 +81,8 @@ export default class HexagonGridAnimation {
     this.grid.draw(context);
     this.dockingAreas.forEach((dockingArea) => dockingArea.draw(context));
     this.targetAreas.forEach((targetArea) => targetArea.draw(context));
-    this.cursorLocation?.draw(context, `rgba(255, 0, 0, 0.55)`);
-
-    // REMOVE
     Particle.globalParticles.forEach((particle) => particle.draw(context));
+    this.cursorLocation?.draw(context, `rgba(255, 0, 0, 0.55)`);
   }
   step(delta: number) {
     Particle.step();

@@ -92,21 +92,23 @@ export default class HexagonGrid {
       .map((column) => column.filter((hexagon) => hexagon))
       .reduce((accumulator, column) => accumulator.concat(column), []);
 
-    return { indexRect, hexagons };
+    return hexagons;
   }
   getDockingAreasByClassName(className: string) {
     const elements = this.getHTMLElements(className);
     const dockingAreas = elements.map((element) => {
-      const {indexRect, hexagons} = this.locateHexagonsByDOMRect(element.getBoundingClientRect());
-      return new DockingArea(this, className, element, indexRect, hexagons);
+      const rect = element.getBoundingClientRect();
+      const hexagons = this.locateHexagonsByDOMRect(rect);
+      return new DockingArea(this, className, element, rect, hexagons);
     });
     return dockingAreas;
   }
   getTargetAreasByClassName(className: string) {
     const elements = this.getHTMLElements(className);
     const targetAreas = elements.map((element) => {
-      const {indexRect, hexagons} = this.locateHexagonsByDOMRect(element.getBoundingClientRect());
-      return new TargetArea(this, className, element, indexRect, hexagons);
+      const rect = element.getBoundingClientRect();
+      const hexagons = this.locateHexagonsByDOMRect(rect);
+      return new TargetArea(this, className, element, rect, hexagons);
     });
     return targetAreas;
   }

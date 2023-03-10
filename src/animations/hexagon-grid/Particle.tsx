@@ -5,7 +5,7 @@ import type { Coordinate } from "src/animations/hexagon-grid/hexagon-grid.d"
 import Hexagon from "./Hexagon";
 
 export default class Particle {
-  static globalParticles: Particle[] = [];
+  static globalParticles: Set<Particle> = new Set();
   static step() {
     Particle.globalParticles.forEach((particle) => {
       if (particle.target && !particle.target.isActive) {
@@ -15,7 +15,7 @@ export default class Particle {
     });
   }
   static getParticlesWithoutTarget() {
-    return Particle.globalParticles.filter((particle) => particle.target === null);
+    return Array.from(Particle.globalParticles).filter((particle) => particle.target === null);
   }
 
   private position: Coordinate;
@@ -27,7 +27,7 @@ export default class Particle {
     if (target) this.setTarget(target);
     this.targetReached = this.hasReachedTarget();
 
-    Particle.globalParticles.push(this);
+    Particle.globalParticles.add(this);
   }
   setTarget(target: Target) {
     if (target.particle === null) {
@@ -67,5 +67,8 @@ export default class Particle {
     context.arc(this.position[0], this.position[1], 3, 0, 2 * Math.PI);
     context.fill();
     context.closePath();
+  }
+  delete() {
+    Particle.globalParticles.delete(this);
   }
 };
