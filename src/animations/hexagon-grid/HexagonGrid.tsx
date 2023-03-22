@@ -4,9 +4,11 @@ import DockingArea from "src/animations/hexagon-grid/DockingArea";
 import TargetArea from "src/animations/hexagon-grid/TargetArea";
 import {calculateDistance2Points} from "src/animations/hexagon-grid/utils";
 
+import type HexagonGridAnimation from 'src/animations/hexagon-grid/HexagonGridAnimation';
 import type { GridInfo, Coordinate } from "src/animations/hexagon-grid/hexagon-grid.d";
 
 export default class HexagonGrid {
+  context: HexagonGridAnimation;
   info: GridInfo = {
     canvas: {width: 0, height: 0},
     size: {width: 0, height: 0},
@@ -14,11 +16,15 @@ export default class HexagonGrid {
   };
   hexagons: Hexagon[] = [];
   matrix: Hexagon[][] = [];
-  constructor(canvas: HTMLCanvasElement, hexagonRadius=12) {
-    this.info = this.setGridSize({
-      ...this.info,
-      cell: {size: {radius: hexagonRadius, diameter: hexagonRadius * 2}},
-    }, canvas);
+  constructor(context: HexagonGridAnimation, hexagonRadius=12) {
+    this.context = context;
+    this.info = this.setGridSize(
+      {
+        ...this.info,
+        cell: {size: {radius: hexagonRadius, diameter: hexagonRadius * 2}},
+      }, 
+      this.context.canvas
+    );
   }
   setGridSize(info: GridInfo, canvas: HTMLCanvasElement) {
     info.canvas.width = canvas.width;
@@ -99,7 +105,7 @@ export default class HexagonGrid {
     const dockingAreas = elements.map((element) => {
       const rect = element.getBoundingClientRect();
       const hexagons = this.locateHexagonsByDOMRect(rect);
-      return new DockingArea(this, className, element, rect, hexagons);
+      return new DockingArea(this.context, className, element, rect, hexagons);
     });
     return dockingAreas;
   }
@@ -108,7 +114,7 @@ export default class HexagonGrid {
     const targetAreas = elements.map((element) => {
       const rect = element.getBoundingClientRect();
       const hexagons = this.locateHexagonsByDOMRect(rect);
-      return new TargetArea(this, className, element, rect, hexagons);
+      return new TargetArea(this.context, className, element, rect, hexagons);
     });
     return targetAreas;
   }
