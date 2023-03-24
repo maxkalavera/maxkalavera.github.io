@@ -4,15 +4,14 @@ import { calculateDistance2Points } from "src/animations/hexagon-grid/utils";
 
 import type { Coordinate } from "src/animations/hexagon-grid/hexagon-grid.d";
 import type HexagonGridAnimation from 'src/animations/hexagon-grid/HexagonGridAnimation';
-import type Hexagon from "src/animations/hexagon-grid/Hexagon";
 
 export default class DockingArea extends AreaOfInterest {
-  static assignLocation(context: HexagonGridAnimation, target: Coordinate): Hexagon | undefined {
-    let distanceTuple: [number, Hexagon | undefined] = [Infinity, undefined];
-    context.dockingAreaLocations.forEach((hexagon) => {
-      const distance = calculateDistance2Points(hexagon.center, target);
+  static assignLocation(context: HexagonGridAnimation, target: Coordinate): Coordinate | undefined {
+    let distanceTuple: [number, Coordinate | undefined] = [Infinity, undefined];
+    context.dockingAreaHexagonsCenters.forEach((center) => {
+      const distance = calculateDistance2Points(center, target);
       if (distance < distanceTuple[0]) {
-        distanceTuple = [distance, hexagon];
+        distanceTuple = [distance, center];
       }
     });
     return distanceTuple[1];

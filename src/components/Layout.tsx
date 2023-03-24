@@ -8,7 +8,7 @@ export default function Layout({
   return (
     <>
       <section className={`${styles.container}`}>
-        <div className={`${styles.header}`}>
+        <div className={`${styles.header} hexagon-animation-docking`}>
           <div className={`${styles.logo}`}>
             <h3 
               style={{
@@ -29,7 +29,7 @@ export default function Layout({
         <div className={styles.content}>
           {children}
         </div>
-        <div className={`${styles.footer} hexagon-animation-docking`}>
+        <div className={`${styles.footer} `}>
 
         </div>
       </section>

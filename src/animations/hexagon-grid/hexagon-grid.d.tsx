@@ -16,3 +16,8 @@ export interface AreaOfInterest {
   indexRect: {x: [number, number], y: [number, number]}
   hexagons: Hexagon[],
 }
+
+export interface RectAreaBounds {
+  horizontal: [number, number],
+  vertical: [number, number]
+}

@@ -5,8 +5,8 @@ import TargetArea from "src/animations/hexagon-grid/TargetArea";
 import Particle from "src/animations/hexagon-grid/Particle";
 import throttle from "src/utils/throttle";
 
-import type { Coordinate } from "src/animations/hexagon-grid/hexagon-grid.d"
-import type Hexagon from "src/animations/hexagon-grid/Hexagon";
+import type { Coordinate } from "src/animations/hexagon-grid/hexagon-grid.d";
+//import type Hexagon from "src/animations/hexagon-grid/Hexagon";
 
 interface HexagonGridAnimationInfo {
   canvas: {width: number, height: number}
@@ -16,11 +16,11 @@ export default class HexagonGridAnimation {
   canvas: HTMLCanvasElement;
   grid: HexagonGrid;
   info: HexagonGridAnimationInfo = {canvas: {width: 0, height: 0}};
-  cursorLocation: Hexagon | undefined;
+  cursorLocation: Coordinate | undefined;
   dockingAreas: DockingArea[] = [];
-  dockingAreaLocations: Set<Hexagon> = new Set();
+  dockingAreaHexagonsCenters: Set<Coordinate> = new Set();
   targetAreas: TargetArea[] = [];
-  targetAreaLocations: Set<string> = new Set();
+  targetAreaHexagonsCenters: Set<string> = new Set();
   particles: Set<Particle> = new Set();
   targetToParticle: Map<string, Particle> = new Map();
   constructor(canvas: HTMLCanvasElement) {
@@ -31,12 +31,8 @@ export default class HexagonGridAnimation {
   }
  updateParticles() {
   const particlesWithoutTarget = Array.from(this.particles).filter((particle) => 
-    particle.target === null || !this.targetAreaLocations.has(particle.targetAsKey));
-  //console.log('PARTICLES', this.particles.size)
-  console.log('PARTICLES WITHOUT TARGET', particlesWithoutTarget.length)
-  //console.log('TARGET AREA LOCATIONS', this.targetAreaLocations.size)
-
-  this.targetAreaLocations.forEach((target) => {
+    particle.target === null || !this.targetAreaHexagonsCenters.has(particle.targetAsKey));
+  this.targetAreaHexagonsCenters.forEach((target) => {
     if (!this.targetToParticle.has(target)) {
       const targetCoordinate = JSON.parse(target) as Coordinate;
       if (particlesWithoutTarget.length > 0) {
@@ -53,9 +49,10 @@ export default class HexagonGridAnimation {
   });
 
   // Remove unused particles
-  //particlesWithoutTarget.forEach((particle) => this.particles.delete(particle));
+  particlesWithoutTarget.forEach((particle) => this.particles.delete(particle));
  }
   bindListeners() {
+    window.addEventListener('scroll', throttle(this.update.bind(this), {wait: 1000/24}));
     window.addEventListener('resize', throttle(this.update.bind(this), {wait: 1000/24}));
     window.document.addEventListener('mousemove', throttle(this.trackMousePosition.bind(this), {wait: 1000/60}));
   }
@@ -95,32 +92,35 @@ export default class HexagonGridAnimation {
     const dockingAreas = this.grid.getDockingAreasByClassName(className);
     this.dockingAreas = this.dockingAreas.concat(dockingAreas);
     this.dockingAreas.forEach((dockingArea) => 
-      dockingArea.hexagons.forEach((location) => 
-        this.dockingAreaLocations.add(location)));
+      dockingArea.hexagonsCenters.forEach((center) => 
+        this.dockingAreaHexagonsCenters.add(center)));
   }
   updateDockingAreas() {
     this.dockingAreas.forEach((dockingArea) => dockingArea.update());
-    this.dockingAreaLocations = new Set();
+    this.dockingAreaHexagonsCenters = new Set();
     this.dockingAreas.forEach((dockingArea) => 
-      dockingArea.hexagons.forEach((location) => 
-        this.dockingAreaLocations.add(location)));
+      dockingArea.hexagonsCenters.forEach((center) => 
+        this.dockingAreaHexagonsCenters.add(center)));
   }
   addTargetArea(className: string) {
     const targetAreas = this.grid.getTargetAreasByClassName(className);
     this.targetAreas = this.targetAreas.concat(targetAreas);
     this.targetAreas.forEach((targetArea) => 
-      targetArea.hexagons.forEach((location) => 
-        this.targetAreaLocations.add(JSON.stringify(location.center))));
+      targetArea.hexagonsCenters.forEach((center) => 
+        this.targetAreaHexagonsCenters.add(JSON.stringify(center))));
   }
   updateTargetAreas() {
     this.targetAreas.forEach((targetArea) => targetArea.update());
-    this.targetAreaLocations = new Set();
+    this.targetAreaHexagonsCenters = new Set();
     this.targetAreas.forEach((targetArea) => 
-      targetArea.hexagons.forEach((location) => 
-        this.targetAreaLocations.add(JSON.stringify(location.center))));
+      targetArea.hexagonsCenters.forEach((center) => 
+        this.targetAreaHexagonsCenters.add(JSON.stringify(center))));
   }
   clearCanvas(context: CanvasRenderingContext2D) {
     context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+  drawCursorLocation(context: CanvasRenderingContext2D, color=`rgba(255, 0, 0, 0.55)`) {
+    if (this.cursorLocation) this.grid.drawHexagon(context, this.cursorLocation, color);
   }
   render() {
     const context = this.canvas.getContext("2d");
@@ -131,7 +131,7 @@ export default class HexagonGridAnimation {
     this.dockingAreas.forEach((dockingArea) => dockingArea.draw(context));
     this.targetAreas.forEach((targetArea) => targetArea.draw(context));
     this.particles.forEach((particle) => particle.draw(context));
-    this.cursorLocation?.draw(context, `rgba(255, 0, 0, 0.55)`);
+    this.drawCursorLocation(context);
   }
   step(delta: number) {
     this.updateParticles();
