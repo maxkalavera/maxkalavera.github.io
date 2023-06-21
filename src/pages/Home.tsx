@@ -1,16 +1,8 @@
-import { useEffect } from 'react'
-import animateHexagonGrid from 'src/animations/hexagon-grid'
-import profilePicture from 'src/assets/me.jpg'
-import styles from 'src/styles/home.module.css'
+import { useEffect } from 'react';
+import profilePicture from 'src/assets/me.jpg';
+import styles from 'src/styles/home.module.css';
 
 export default function Home() {
-  useEffect(() => {
-    const _animator = animateHexagonGrid();
-    _animator.resume();
-    return () => {
-      _animator.stop();
-    };
-  }, [])
   return (
     <div className={styles.container}>
       <div className={`${styles.content} hexagon-animation-background`}>
@@ -32,4 +24,4 @@ export default function Home() {
       </div>
     </div>
   )
-}
+};

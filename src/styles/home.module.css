@@ -35,7 +35,7 @@
 
 .infoTitle {
   color: var(--gray-200);
-  text-shadow: 2px 2px var(--primary-1300);
+  
   background-color: #030319AA;
   padding-left: var(--gap-sm);
   padding-right: var(--gap-sm);
@@ -43,7 +43,6 @@
 
 .infoSubtitle {
   color: var(--gray-400);
-  text-shadow: 2px 2px var(--primary-1300);
   background-color: #030319AA;
   padding-left: var(--gap-sm);
   padding-right: var(--gap-sm);
