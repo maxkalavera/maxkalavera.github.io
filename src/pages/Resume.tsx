@@ -9,6 +9,11 @@ import { useState } from 'react';
 export default function Resume() {
   const [flags, setFlags] = useState({
     'general-programing-topics': true,
+    'back-end-development': true,
+    'front-end-development': true,
+    'operations': true,
+    'design': true,
+    'languages': true,
   });
 
   const toggleFlag = (id: keyof typeof flags) => {
@@ -20,13 +25,22 @@ export default function Resume() {
     });
   };
 
-  console.log('FLAGS', flags);
+  const setAll = (flag: boolean=false) => {
+    setFlags({
+      'general-programing-topics': flag,
+      'back-end-development': flag,
+      'front-end-development': flag,
+      'operations': flag,
+      'design': flag,
+      'languages': flag,
+    });
+  };
 
   return (
     <div className={`${styles.container}`}>
       <div className={`${styles.content}`}>
 
-        <div className={styles.row}>
+        <div className={styles['about-me']}>
           <div className={`${styles.column} ${styles['background-frame']}`}>
             <h3 className={`primary`}>About me</h3>
             <p className='secondary'>
@@ -142,8 +156,17 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
           </div>
         </div>
 
-        <div className={`${styles['column']}`}>
-          <h4 className={`primary`}>SKILLS</h4>
+        <div className={`${styles['skills']}`}>
+        <div className={`${styles['row']}`} style={{gap: '12px'}}>
+            <h4 className={`primary`}>SKILLS</h4>
+            <small 
+              className='secondary' 
+              style={{cursor: 'pointer', textDecoration: 'underline'}}
+              onClick={() => setAll(false)}
+            >
+              Hide all
+            </small>
+          </div>
 
           <div className={styles.column}>
             <div className={styles['skills-topic']}
@@ -157,9 +180,9 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
             </div>
 
             <div 
-              className={styles.row}
+              className={styles['skills-row']}
               style={{
-                visibility: flags['general-programing-topics'] ? 'visible' : 'hidden'
+                display: flags['general-programing-topics'] ? 'flex' : 'none'
               }}
             >
               <SkillFrame text='Problem Analysis' />
@@ -169,6 +192,127 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
               <SkillFrame text='Python' />
               <SkillFrame text='Javascript' />
               <SkillFrame text='NodeJS' />
+            </div>
+          </div>
+
+          <div className={styles.column}>
+            <div className={styles['skills-topic']}
+              onClick={() => toggleFlag('back-end-development')}
+            >
+              <p className={`secondary`}>Back-end development</p>
+              <FontAwesomeIcon 
+                icon={flags['back-end-development'] ? faChevronDown : faChevronRight} 
+                className={styles['skills-topic__chevron']} 
+              />
+            </div>
+
+            <div 
+              className={styles['skills-row']}
+              style={{
+                display: flags['back-end-development'] ? 'flex' : 'none'
+              }}
+            >
+              <SkillFrame text='Django' />
+              <SkillFrame text='PostgreSQL' />
+              <SkillFrame text='SQLite' />
+              <SkillFrame text='Redis' />
+              <SkillFrame text='Celery' />
+              <SkillFrame text='REST' />
+            </div>
+          </div>
+
+          <div className={styles.column}>
+            <div className={styles['skills-topic']}
+              onClick={() => toggleFlag('front-end-development')}
+            >
+              <p className={`secondary`}>Front-end development</p>
+              <FontAwesomeIcon 
+                icon={flags['front-end-development'] ? faChevronDown : faChevronRight} 
+                className={styles['skills-topic__chevron']} 
+              />
+            </div>
+
+            <div 
+              className={styles['skills-row']}
+              style={{
+                display: flags['front-end-development'] ? 'flex' : 'none'
+              }}
+            >
+              <SkillFrame text='ReactJS' />
+              <SkillFrame text='Webpack' />
+              <SkillFrame text='RollUp' />
+              <SkillFrame text='HTML5' />
+              <SkillFrame text='CSS' />
+              <SkillFrame text='SASS' />
+              <SkillFrame text='Redux' />
+            </div>
+          </div>
+
+          <div className={styles.column}>
+            <div className={styles['skills-topic']}
+              onClick={() => toggleFlag('operations')}
+            >
+              <p className={`secondary`}>Operations</p>
+              <FontAwesomeIcon 
+                icon={flags['operations'] ? faChevronDown : faChevronRight} 
+                className={styles['skills-topic__chevron']} 
+              />
+            </div>
+
+            <div 
+              className={styles['skills-row']}
+              style={{
+                display: flags['operations'] ? 'flex' : 'none'
+              }}
+            >
+              <SkillFrame text='Docker' />
+              <SkillFrame text='Git' />
+              <SkillFrame text='Bash' />
+            </div>
+          </div>
+
+          <div className={styles.column}>
+            <div className={styles['skills-topic']}
+              onClick={() => toggleFlag('design')}
+            >
+              <p className={`secondary`}>Design</p>
+              <FontAwesomeIcon 
+                icon={flags['design'] ? faChevronDown : faChevronRight} 
+                className={styles['skills-topic__chevron']} 
+              />
+            </div>
+
+            <div 
+              className={styles['skills-row']}
+              style={{
+                display: flags['design'] ? 'flex' : 'none'
+              }}
+            >
+              <SkillFrame text='Figma' />
+              <SkillFrame text='Inkscape' />
+              <SkillFrame text='Gimp' />
+            </div>
+          </div>
+
+          <div className={styles.column}>
+            <div className={styles['skills-topic']}
+              onClick={() => toggleFlag('languages')}
+            >
+              <p className={`secondary`}>Languages</p>
+              <FontAwesomeIcon 
+                icon={flags['languages'] ? faChevronDown : faChevronRight} 
+                className={styles['skills-topic__chevron']} 
+              />
+            </div>
+
+            <div 
+              className={styles['skills-row']}
+              style={{
+                display: flags['languages'] ? 'flex' : 'none'
+              }}
+            >
+              <SkillFrame text='English' />
+              <SkillFrame text='Spanish' />
             </div>
           </div>
         </div>
