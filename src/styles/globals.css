@@ -1,4 +1,4 @@
-/* @import url('https://fonts.googleapis.com/css?family=Work+Sans|Roboto|PT+Serif&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Jost|Archivo+Black|Courier+New&display=swap');
 
 :root {
   --black: #000000;
@@ -18,26 +18,9 @@
   --gray-800: #424242;
   --gray-900: #212121;
 
-  --primary: #1f1fff;
-  --primary-100: #7979ff;
-  --primary-200: #6262ff;
-  --primary-300: #4c4cff;
-  --primary-400: #3535ff;
-  --primary-500: #1c1ce6;
-  --primary-600: #1919cc;
-  --primary-700: #1616b3;
-  --primary-800: #131399;
-  --primary-900: #101080;
+  --primary: #ECB03B;
 
-  --primary-1000: #0c0c66;
-  --primary-1100: #09094c;
-  --primary-1200: #060633;
-  --primary-1300: #030319;
-  --primary-1400: #000000;
-
-  --primary-contrast: var(--white);
-
-  --text-color: var(--gray-200);
+  --primary-contrast: var(--gray-800);
 
   font-size: 14px;
   --content-sm: 35.5rem;   /* 35.5rem 568px */
@@ -51,14 +34,13 @@
   --gap-xl: 8rem;
   --gap-xxl: 16rem;
 
-  --header-height: 72px;
-  --footer-height: var(--gap-md);
-  --content-container-padding: var(--gap-sm);
+  --content-width: 1024px;
+  --header-height: 84px;
+  --footer-height: 48px;
   --content-container-min-height: calc(100vh - var(--header-height) - var(--footer-height));
-  --content-height: calc(var(--content-container-min-height) - calc(2 * var(--content-container-padding)));
 }
 
-body, h1, h2, h3, h4, h5, p, small {
+body, h1, h2, h3, h4, h5, p, small, ul {
   margin: 0px;
 }
 
@@ -66,149 +48,149 @@ body, html {
   min-height: -webkit-fill-available;
 }
 
-.primary-h1 {
-  font-family: 'Work Sans', sans-serif;
+body {
+  background: radial-gradient(75.47% 178.62% at 0% 0%, #121212 0%, #2F2F2F 100%);
+}
+
+.primary {
+  font-family: 'Archivo Black', sans-serif;
+}
+
+h1.primary {
   font-style: normal;
   font-weight: 700;
   font-size: 2.5rem;
   line-height: 2.75rem;
 }
 
-.primary-h2 {
-  font-family: 'Work Sans', sans-serif;
+h2.primary {
   font-style: normal;
   font-weight: 700;
   font-size: 2.0rem;
 }
 
-.primary-h3 {
-  font-family: 'Work Sans', sans-serif;
+h3.primary {
   font-style: normal;
   font-weight: 700;
   font-size: 1.5rem;
 }
 
-.primary-h4 {
-  font-family: 'Work Sans', sans-serif;
+h4.primary {
   font-style: normal;
   font-weight: 700;
   font-size: 1.0rem;
 }
 
-.primary-h5 {
-  font-family: 'Work Sans', sans-serif;
+h5.primary {
   font-style: normal;
   font-weight: 700;
   font-size: 0.75rem;
 }
 
-.primary-p {
-  font-family: 'Work Sans', sans-serif;
+p.primary {
   font-style: normal;
   font-weight: 400;
   font-size: 1.0rem;
 }
 
-.primary-small {
-  font-family: 'Work Sans', sans-serif;
+small.primary {
   font-style: normal;
   font-weight: 400;
   font-size: 0.75rem;
 }
 
-.secondary-h1 {
-  font-family: 'Roboto', serif;
+.secondary {
+  font-family: 'Jost', serif;
+}
+
+h1.secondary {
+  text-transform: uppercase;
   font-style: normal;
   font-weight: 700;
   font-size: 2.5rem;
 }
 
-.secondary-h2 {
-  font-family: 'Roboto', serif;
+h2.secondary {
+  text-transform: uppercase;
   font-style: normal;
   font-weight: 700;
   font-size: 2.0rem;
 }
 
-.secondary-h3 {
-  font-family: 'Roboto', serif;
+h3.secondary {
+  text-transform: uppercase;
   font-style: normal;
   font-weight: 700;
   font-size: 1.5rem;
 }
 
-.secondary-h4 {
-  font-family: 'Roboto', serif;
-  font-style: normal;
-  font-weight: 700;
+h4.secondary {
+  text-transform: uppercase;
+  font-style: bold;
+  font-weight: 900;
   font-size: 1.0rem;
 }
 
-.secondary-h5 {
-  font-family: 'Roboto';
+h5.secondary {
+  text-transform: uppercase;
   font-style: normal;
   font-weight: 700;
   font-size: 0.75rem;
 }
 
-.secondary-p {
-  font-family: 'Roboto', serif;
+p.secondary {
   font-style: normal;
   font-weight: 400;
   font-size: 1.0rem;
 }
 
-.secondary-small {
-  font-family: 'Roboto', serif;
+small.secondary {
   font-style: normal;
   font-weight: 400;
   font-size: 0.75rem;
 }
 
-.tertiary-h1 {
-  font-family: 'PT Serif', serif;
+.tertiary {
+  font-family: 'Courier+New', serif;
+}
+
+h1.tertiary {
   font-style: normal;
   font-weight: 700;
   font-size: 2.5rem;
 }
 
-.tertiary-h2 {
-  font-family: 'PT Serif', serif;
+h2.tertiary{
   font-style: normal;
   font-weight: 700;
   font-size: 2.0rem;
 }
 
-.tertiary-h3 {
-  font-family: 'PT Serif', serif;
+h3.tertiary {
   font-style: normal;
   font-weight: 700;
   font-size: 1.5rem;
 }
 
-.tertiary-h4 {
-  font-family: 'PT Serif', serif;
+h4.tertiary {
   font-style: normal;
   font-weight: 700;
   font-size: 1.0rem;
 }
 
-.tertiary-h5 {
-  font-family: 'PT Serif', serif;
+h5.tertiary {
   font-style: normal;
   font-weight: 700;
   font-size: 0.75rem;
 }
 
-.tertiary-p {
-  font-family: 'PT Serif', serif;
+p.tertiary {
   font-style: normal;
   font-weight: 400;
   font-size: 1.0rem;
 }
 
-.tertiary-small {
-  font-family: 'PT Serif', serif;
+small.tertiary {
   font-style: normal;
   font-weight: 400;
   font-size: 0.75rem;
@@ -216,20 +198,3 @@ body, html {
 
 /******************************************************************************/
 
-body {
-  background: linear-gradient(270deg, var(--primary-1200) 0%, var(--primary-1300) 100%);
-}
-
-#canvas-container {
-  width: 100%;
-  height: 100%;
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -9999;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}

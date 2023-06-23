@@ -1,3 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { Link } from "react-router-dom";
+
 import styles from "src/styles/layout.module.css"
 
 export default function Layout({
@@ -7,41 +12,33 @@ export default function Layout({
 }): JSX.Element {
   return (
     <>
-      <section className={`${styles.container}`}>
-        <div className={`${styles.header} hexagon-animation-docking`}>
-          <div className={`${styles.logo}`}>
-            <h3 
-              style={{
-                fontFamily: 'Bad Script',
-                lineHeight: '130%'
-              }}
-              className="primary-h3"
-            >
-              Max Hernandez
-            </h3>
+      <div className={`${styles.container}`}>
+        <section className={`${styles.header}`}>
+          <div className={`${styles['navbar-content']}`}>
+            <Link to={`/`}><h3 className={`primary ${styles['navbar-logo']}`}>MAX HERNANDEZ</h3></Link>
+            <ul className={styles['navbar-items']}>
+              <li><Link to={`/`}>Home</Link></li>
+              <li><Link to={`/resume/`}>Resume</Link></li>
+              <li><Link to={`/projects/`}>Projects</Link></li>
+            </ul>
           </div>
-          <div className={`${styles.navbar}`}>
-            <h3 className={`secondary-h3 ${styles.navbarItem} hexagon-background-animation`}>Work</h3>
-            <h3 className={`secondary-h3 ${styles.navbarItem} hexagon-background-animation`}>About</h3>
-            <h3 className={`secondary-h3 ${styles.navbarItem} hexagon-background-animation`}>Contact</h3>
-          </div>
-        </div>
-        <div className={styles.content}>
-          {children}
-        </div>
-        <div className={`${styles.footer} `}>
+          <div className={styles.divider}/>
+        </section>
 
-        </div>
-      </section>
-      <div id="canvas-container">
-        <canvas id="canvas-background" />
+        <section className={`${styles.content}`}>
+          {children}
+        </section>
+
+        <section className={`${styles.footer}`}>
+          <div className={`${styles['footer-mail']}`}>
+            <FontAwesomeIcon icon={faEnvelope} size='2x' />
+            <p className={`secondary`}>MaxHernandezCastillo@gmail.com</p>
+          </div>
+          <div className={`${styles['footer-social-networks']}`}>
+            <a href='https://www.linkedin.com/in/max-hernandez-castillo/'><FontAwesomeIcon icon={faLinkedin}/></a>
+          </div>
+        </section>
       </div>
     </>
   )
 }
-
-/*
-    <Head>
-      <title>Max Hernandez</title>
-    </Head>
-*/
