@@ -25,6 +25,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@types/animejs": "^3.1.7",
     "@types/lodash": "^4.14.191",
     "@types/uuid": "^9.0.0"
   },

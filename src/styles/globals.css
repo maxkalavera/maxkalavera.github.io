@@ -23,11 +23,13 @@
   --primary-contrast: var(--gray-800);
 
   font-size: 14px;
+  --content-xs: 25.0rem;   /* 25.0rem 350px */
   --content-sm: 35.5rem;   /* 35.5rem 568px */
   --content-md: 48.0rem;   /* 48.0rem 768px */
   --content-lg: 64.0rem;   /* 64.0rem 1024px */
   --content-xl: 80.0rem;   /* 80.0rem 1280px */
   --content-xxl: 120.0rem; /* 120.0rem 1920px */
+  --gap-xs: 0.5rem;
   --gap-sm: 1rem;
   --gap-md: 2rem;
   --gap-lg: 4rem;
@@ -50,6 +52,10 @@ body, html {
 
 body {
   background: radial-gradient(75.47% 178.62% at 0% 0%, #121212 0%, #2F2F2F 100%);
+}
+
+a {
+  color: var(--gray-100);
 }
 
 .primary {
@@ -198,3 +204,44 @@ small.tertiary {
 
 /******************************************************************************/
 
+.row {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.column {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.gap--xs {
+  gap: var(--gap-xs);
+}
+
+.gap--sm {
+  gap: var(--gap-sm);
+}
+
+.gap--md {
+  gap: var(--gap-md);
+}
+
+.gap--lg {
+  gap: var(--gap-lg);
+}
+
+.gap--xl {
+  gap: var(--gap-xl);
+}
+
+.gap--xxl {
+  gap: var(--gap-xxl);
+}

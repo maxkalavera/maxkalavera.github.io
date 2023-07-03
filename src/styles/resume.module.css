@@ -32,26 +32,6 @@
 
 }
 
-.row {
-  height: fit-content;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: var(--gap-md);
-}
-
-.column {
-  height: fit-content;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: var(--gap-sm);
-}
-
 .background-frame {
   padding: var(--gap-sm);
   background-color: #2C2C2C;
@@ -73,6 +53,13 @@
   gap: 12px;
   background: #ECB03B;
   color: var(--gray-800);
+  cursor: pointer;
+}
+
+.download-pdf-button:hover {
+  color: var(--gray-900);
+  text-decoration: underline;
+  box-shadow: 0px 0px 4px 5px rgba(236, 176, 59, 0.25);
 }
 
 a.link {

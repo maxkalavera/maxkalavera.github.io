@@ -37,12 +37,12 @@ export default function Resume() {
   };
 
   return (
-    <div className={`${styles.container}`}>
-      <div className={`${styles.content}`}>
+    <div className={styles.container}>
+      <div className={styles.content}>
 
         <div className={styles['about-me']}>
-          <div className={`${styles.column} ${styles['background-frame']}`}>
-            <h3 className={`primary`}>About me</h3>
+          <div className={`column gap--sm ${styles['background-frame']}`}>
+            <h3 className='primary'>About me</h3>
             <p className='secondary'>
               Born in Monterrey, Mexico in the nineties, which makes me part of a generation of technological and social transition, full of contrasts that feed a broad perspective for those who know how to observe. Computer programmer by accident but passionate about it by luck, I try to have a simple life and develop my natural abilities as much as possible. Naturally logical, but sensitive, I have sought to develop a balance between my logical side and my emotional side, which has led me to have a great curiosity for art. A fan of comedy, dancing and good stories, I keep my mind stimulated by splitting my time between solving logical problems on a computer and enjoying beautiful experiences on the dance floor. 
 My interest is, for now, in finding a tasks that allows me to survive financially, and to feel that my work contributes something valuable to other people's lives.
@@ -55,40 +55,47 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
           />
         </div>
 
-        <div className={`${styles['download-pdf-button']}`}>
-          <h4 className='primary'>Download as PDF</h4>
+        <a 
+          className={`${styles['download-pdf-button']}`} 
+          href={process.env.PUBLIC_URL + '/Resume.pdf'} 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          <h4 className='primary'>Download PDF version</h4>
           <FontAwesomeIcon icon={faDownload} />
-        </div>
+        </a>
 
-        <div className={`${styles['column']}`}>
-          <h4 className={`primary`}>PROFILE</h4>
+        <div className='column gap--sm'>
+          <h4 className='primary'>PROFILE</h4>
           <p className='secondary'>
           Software engineer born in Monterrey, Mexico, with 3 years of professional experience building web applications. Proficient in Python and Javascript; Skilled translating business requirement into software solutions; Extensive experience with Linux systems, being an active user; Essential knowledge in graphic design focused in the design of software graphical interfaces.
           </p>
         </div>
         
-        <div className={`${styles['column']}`}>
-          <h4 className={`primary`}>EDUCATION</h4>
-          <p className={`secondary`}>
-            AUGUST 2009 - JANUARY 2015
-          </p>
-          <p className='secondary'>
-            Universidad Autónoma de Nuevo León - San Nicolás de los Garza, Nuevo León Bachelor’s degree in Software Engineering (Ingeniería en Tecnología de Software).
-            <br/>
-            <a 
-              href='https://maxkalavera.blogspot.com/p/destacables.html'
-              className={`secondary ${styles.link}`}
-            >
-              Projects highlights
-            </a>
-          </p>
+        <div className='column gap--sm'>
+          <h4 className='primary'>EDUCATION</h4>
+
+          <div className='column gap--xs'>
+            <h4 className='secondary'>Software Engineering</h4>
+            <p className='secondary'>August 2009 - January 2015</p>
+            <p className='secondary'>
+              Universidad Autónoma de Nuevo León - San Nicolás de los Garza, Nuevo León Bachelor’s degree in Software Engineering (Ingeniería en Tecnología de Software).
+              <br/>
+              <a 
+                href='https://maxkalavera.blogspot.com/p/destacables.html'
+                className={`secondary ${styles.link}`}
+              >
+                Projects highlights
+              </a>
+            </p>
+          </div>
         </div>
 
-        <div className={`${styles['column']}`} style={{gap: 'var(--gap-md)'}}>
-          <h4 className={`primary`}>LICENSES & CERTIFICATIONS</h4>
+        <div className='column gap--md'>
+          <h4 className='primary'>LICENSES & CERTIFICATIONS</h4>
 
-          <div className={`${styles['column']}`} style={{gap: 'var(--gap-sm)'}}>
-            <h4 className={`secondary`}>Machine Learning</h4>
+          <div className='column gap--xs'>
+            <h4 className='secondary'>Machine Learning</h4>
             <p className='secondary'>
               Coursera<br/>
               Dec 2020<br/>
@@ -102,8 +109,8 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
             </p>
           </div>
 
-          <div className={`${styles['column']}`} style={{gap: 'var(--gap-sm)'}}>
-            <h4 className={`secondary`}>Graphic Design Specialization</h4>
+          <div className='column gap--xs'>
+            <h4 className='secondary'>Graphic Design Specialization</h4>
             <p className='secondary'>
               Coursera<br/>
               Dec 2020<br/>
@@ -118,14 +125,14 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
           </div>
         </div>
 
-        <div className={`${styles['column']}`} style={{gap: 'var(--gap-md)'}}>
-          <h4 className={`primary`}>PROFESSIONAL EXPERIENCE</h4>
+        <div className='column gap--md'>
+          <h4 className='primary'>PROFESSIONAL EXPERIENCE</h4>
 
-          <div className={`${styles['column']}`} style={{gap: 'var(--gap-sm)'}}>
-            <div className={`${styles['column']}`} style={{gap: '0px'}}>
-              <h4 className={`secondary`}>Full Stack Software Engineer</h4>
-              <h4 className={`secondary`}>Crea Libre / Evient, San Nicolas, Nuevo León</h4>
-              <h4 className={`secondary`}>June 2017 - June 2019, 2 years</h4>
+          <div className='column gap--sm'>
+            <div className='column'>
+              <h4 className='secondary'>Full Stack Software Engineer</h4>
+              <h4 className='secondary'>Crea Libre / Evient, San Nicolas, Nuevo León</h4>
+              <h4 className='secondary'>June 2017 - June 2019, 2 years</h4>
             </div>
 
             <p className='secondary'>
@@ -138,11 +145,11 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
             </ul>
           </div>
 
-          <div className={`${styles['column']}`} style={{gap: 'var(--gap-sm)'}}>
-            <div className={`${styles['column']}`} style={{gap: '0px'}}>
-              <h4 className={`secondary`}>Software Engineer / Front-End Developer</h4>
-              <h4 className={`secondary`}>Wizeline, Guadalajara, Jalisco</h4>
-              <h4 className={`secondary`}>January 2022 - July 2022, 7 months</h4>
+          <div className='column gap--sm'>
+            <div className='column'>
+              <h4 className='secondary'>Software Engineer / Front-End Developer</h4>
+              <h4 className='secondary'>Wizeline, Guadalajara, Jalisco</h4>
+              <h4 className='secondary'>January 2022 - July 2022, 7 months</h4>
             </div>
 
             <p className='secondary'>
@@ -157,8 +164,8 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
         </div>
 
         <div className={`${styles['skills']}`}>
-        <div className={`${styles['row']}`} style={{gap: '12px'}}>
-            <h4 className={`primary`}>SKILLS</h4>
+        <div className='row gap--sm'>
+            <h4 className='primary'>SKILLS</h4>
             <small 
               className='secondary' 
               style={{cursor: 'pointer', textDecoration: 'underline'}}
@@ -168,7 +175,7 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
             </small>
           </div>
 
-          <div className={styles.column}>
+          <div className='column gap--sm'>
             <div className={styles['skills-topic']}
               onClick={() => toggleFlag('general-programing-topics')}
             >
@@ -195,11 +202,11 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
             </div>
           </div>
 
-          <div className={styles.column}>
+          <div className='column gap--sm'>
             <div className={styles['skills-topic']}
               onClick={() => toggleFlag('back-end-development')}
             >
-              <p className={`secondary`}>Back-end development</p>
+              <p className='secondary'>Back-end development</p>
               <FontAwesomeIcon 
                 icon={flags['back-end-development'] ? faChevronDown : faChevronRight} 
                 className={styles['skills-topic__chevron']} 
@@ -221,11 +228,11 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
             </div>
           </div>
 
-          <div className={styles.column}>
+          <div className='column'>
             <div className={styles['skills-topic']}
               onClick={() => toggleFlag('front-end-development')}
             >
-              <p className={`secondary`}>Front-end development</p>
+              <p className='secondary'>Front-end development</p>
               <FontAwesomeIcon 
                 icon={flags['front-end-development'] ? faChevronDown : faChevronRight} 
                 className={styles['skills-topic__chevron']} 
@@ -248,7 +255,7 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
             </div>
           </div>
 
-          <div className={styles.column}>
+          <div className='column gap--sm'>
             <div className={styles['skills-topic']}
               onClick={() => toggleFlag('operations')}
             >
@@ -271,11 +278,11 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
             </div>
           </div>
 
-          <div className={styles.column}>
+          <div className='column gap--sm'>
             <div className={styles['skills-topic']}
               onClick={() => toggleFlag('design')}
             >
-              <p className={`secondary`}>Design</p>
+              <p className='secondary'>Design</p>
               <FontAwesomeIcon 
                 icon={flags['design'] ? faChevronDown : faChevronRight} 
                 className={styles['skills-topic__chevron']} 
@@ -294,11 +301,11 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
             </div>
           </div>
 
-          <div className={styles.column}>
+          <div className='column gap--sm'>
             <div className={styles['skills-topic']}
               onClick={() => toggleFlag('languages')}
             >
-              <p className={`secondary`}>Languages</p>
+              <p className='secondary'>Languages</p>
               <FontAwesomeIcon 
                 icon={flags['languages'] ? faChevronDown : faChevronRight} 
                 className={styles['skills-topic__chevron']} 
@@ -317,10 +324,15 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
           </div>
         </div>
 
-        <div className={`${styles['download-pdf-button']}`}>
-          <h4 className='primary'>Download as PDF</h4>
+        <a 
+          className={`${styles['download-pdf-button']}`} 
+          href={process.env.PUBLIC_URL + '/Resume.pdf'} 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          <h4 className='primary'>Download PDF version</h4>
           <FontAwesomeIcon icon={faDownload} />
-        </div>
+        </a>
       </div>
     </div>
   )
