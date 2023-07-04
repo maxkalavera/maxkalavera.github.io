@@ -1,5 +1,5 @@
 FROM node:20.3-slim
-WORKDIR /build
+WORKDIR /src
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 RUN npm ci
