@@ -36,10 +36,17 @@
   --gap-xl: 8rem;
   --gap-xxl: 16rem;
 
-  --content-width: 1024px;
   --header-height: 84px;
   --footer-height: 48px;
   --content-container-min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+@media (max-width: 960px) and (orientation: portrait) {
+  :root {
+    --header-height: 148px;
+    --footer-height: 48px;
+    --content-container-min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  }
 }
 
 body, h1, h2, h3, h4, h5, p, small, ul {

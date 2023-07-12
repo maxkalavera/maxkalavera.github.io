@@ -14,7 +14,7 @@ export default function Layout({
     <>
       <div className={`${styles.container}`}>
         <section className={`${styles.header}`}>
-          <div className={`${styles['navbar-content']}`}>
+          <div className={`${styles['header__content']}`}>
             <Link to={`/`}><h3 className={`primary ${styles['navbar-logo']}`}>MAX HERNANDEZ</h3></Link>
             <ul className={styles['navbar-items']}>
               <li><Link to={`/`}>Home</Link></li>
@@ -22,7 +22,7 @@ export default function Layout({
               <li><Link to={`/projects/`}>Projects</Link></li>
             </ul>
           </div>
-          <div className={styles.divider}/>
+          <hr className={styles.divider} />
         </section>
 
         <section className={`${styles.content}`}>
@@ -32,7 +32,7 @@ export default function Layout({
         <section className={`${styles.footer}`}>
           <div className={`${styles['footer-mail']}`}>
             <FontAwesomeIcon icon={faEnvelope} size='2x' />
-            <p className={`secondary`}>MaxHernandezCastillo@gmail.com</p>
+            <p className={`secondary`}>maxhernandezcastillo@gmail.com</p>
           </div>
           <div className={`${styles['footer-social-networks']}`}>
             <a href='https://www.linkedin.com/in/max-hernandez-castillo/'><FontAwesomeIcon icon={faLinkedin}/></a>
