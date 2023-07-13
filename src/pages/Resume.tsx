@@ -43,7 +43,7 @@ export default function Resume() {
         <div className={styles['about-me']}>
           <div className={`column gap--sm ${styles['background-frame']}`}>
             <h3 className='primary'>About me</h3>
-            <p className='secondary'>
+            <p className='secondary justify'>
               Born in Monterrey, Mexico in the nineties, which makes me part of a generation of technological and social transition, full of contrasts that feed a broad perspective for those who know how to observe. Computer programmer by accident but passionate about it by luck, I try to have a simple life and develop my natural abilities as much as possible. Naturally logical, but sensitive, I have sought to develop a balance between my logical side and my emotional side, which has led me to have a great curiosity for art. A fan of comedy, dancing and good stories, I keep my mind stimulated by splitting my time between solving logical problems on a computer and enjoying beautiful experiences on the dance floor. 
 My interest is, for now, in finding a tasks that allows me to survive financially, and to feel that my work contributes something valuable to other people's lives.
             </p>
@@ -67,7 +67,7 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
 
         <div className='column gap--sm'>
           <h4 className='primary'>PROFILE</h4>
-          <p className='secondary'>
+          <p className='secondary justify'>
           Software engineer born in Monterrey, Mexico, with 3 years of professional experience building web applications. Proficient in Python and Javascript; Skilled translating business requirement into software solutions; Extensive experience with Linux systems, being an active user; Essential knowledge in graphic design focused in the design of software graphical interfaces.
           </p>
         </div>
@@ -138,7 +138,7 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
             <p className='secondary'>
               Contributed largely in the implementation of a Web application by heavily participating in the planning of the application’s architecture and working on implementing client’s requested features.
             </p>
-            <ul>
+            <ul className='secondary'>
               <li>Developing new Web features for Front-end / Back-end.</li>
               <li>Building a developing environment for a team to develop and actively provide feedback and test new features using Jenkins, Python and ReactJS tools.</li>
               <li>Involved in planning and decision making for implementing new features.</li>
@@ -155,7 +155,7 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
             <p className='secondary'>
               Developing Web interfaces using primarily ReactJS framework.
             </p>
-            <ul>
+            <ul className='secondary'>
               <li>Developing front-end interfaces using ReactJS together with NodeJS developing tools.</li>
               <li>Involved in designing new features using Figma tool.</li>
               <li>Involved in Python async task tool maintenance.</li>
@@ -228,7 +228,7 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
             </div>
           </div>
 
-          <div className='column'>
+          <div className='column gap--sm'>
             <div className={styles['skills-topic']}
               onClick={() => toggleFlag('front-end-development')}
             >

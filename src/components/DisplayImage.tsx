@@ -1,4 +1,3 @@
-import styles from 'src/styles/display-image.module.css';
 
 export default function DisplayImage(
   {

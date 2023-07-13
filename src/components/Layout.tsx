@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
-import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { Link } from "react-router-dom";
 
 import styles from "src/styles/layout.module.css"
@@ -31,11 +31,16 @@ export default function Layout({
 
         <section className={`${styles.footer}`}>
           <div className={`${styles['footer-mail']}`}>
-            <FontAwesomeIcon icon={faEnvelope} size='2x' />
-            <p className={`secondary`}>maxhernandezcastillo@gmail.com</p>
+            <FontAwesomeIcon icon={faEnvelope} />
+            <p className='secondary'>maxhernandezcastillo@gmail.com</p>
           </div>
           <div className={`${styles['footer-social-networks']}`}>
-            <a href='https://www.linkedin.com/in/max-hernandez-castillo/'><FontAwesomeIcon icon={faLinkedin}/></a>
+            <a href='https://github.com/maxkalavera'>
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+            <a href='https://www.linkedin.com/in/max-hernandez-castillo/'>
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
           </div>
         </section>
       </div>

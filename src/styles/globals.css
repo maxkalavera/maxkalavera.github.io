@@ -100,7 +100,9 @@ h5.primary {
   font-size: 0.75rem;
 }
 
-p.primary {
+p.primary,
+ul.primary,
+ol.primary {
   font-style: normal;
   font-weight: 400;
   font-size: 1.0rem;
@@ -151,10 +153,13 @@ h5.secondary {
   font-size: 0.75rem;
 }
 
-p.secondary {
+p.secondary, 
+ul.secondary, 
+ol.secondary {
   font-style: normal;
   font-weight: 400;
   font-size: 1.0rem;
+  line-height: 150%;
 }
 
 small.secondary {
@@ -197,7 +202,9 @@ h5.tertiary {
   font-size: 0.75rem;
 }
 
-p.tertiary {
+p.tertiary, 
+ul.tertiary, 
+ol.tertiary {
   font-style: normal;
   font-weight: 400;
   font-size: 1.0rem;
@@ -207,6 +214,10 @@ small.tertiary {
   font-style: normal;
   font-weight: 400;
   font-size: 0.75rem;
+}
+
+.justify {
+  text-align: justify;
 }
 
 /******************************************************************************/
