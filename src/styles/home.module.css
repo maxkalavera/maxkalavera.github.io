@@ -22,8 +22,7 @@
 
 .left-frame {
   box-sizing: border-box;
-  width: min-content;
-  max-width: 40vw;
+  width: 40vw;
   padding: 0px var(--gap-sm);
   display: flex;
   flex-direction: column;
@@ -53,7 +52,11 @@
   line-height: 60pt;
   text-align: right;
   color: var(--gray-200);
-  text-shadow: 0 0 7px black
+}
+
+.title:focus {
+  border: none;
+  outline: none;
 }
 
 @media (max-width: 960px) and (orientation: portrait) {
@@ -72,6 +75,11 @@
   line-height: 20pt;
   text-align: right;
   color: var(--gray-200);
+}
+
+.subtitle:focus {
+  border: none;
+  outline: none;
 }
 
 @media (max-width: 960px) and (orientation: portrait) {  

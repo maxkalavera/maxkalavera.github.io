@@ -13,7 +13,7 @@ export default function Layout({
   return (
     <>
       <div className={`${styles.container}`}>
-        <section className={`${styles.header}`}>
+        <section className={`${styles.header} fadeInOnHome`}>
           <div className={`${styles['header__content']}`}>
             <Link to={`/`}><h3 className={`primary ${styles['navbar-logo']}`}>MAX HERNANDEZ</h3></Link>
             <ul className={styles['navbar-items']}>
@@ -29,7 +29,7 @@ export default function Layout({
           {children}
         </section>
 
-        <section className={`${styles.footer}`}>
+        <section className={`${styles.footer} fadeInOnHome`}>
           <div className={`${styles['footer-mail']}`}>
             <FontAwesomeIcon icon={faEnvelope} />
             <p className='secondary'>maxhernandezcastillo@gmail.com</p>
