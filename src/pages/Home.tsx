@@ -18,11 +18,6 @@ export default function Home() {
         });
         await fadeInTextLeftRight(
           '464fce7e-d26a-4b08-b038-6cddff68c826', 
-          '',
-          2000
-        );
-        await fadeInTextLeftRight(
-          '464fce7e-d26a-4b08-b038-6cddff68c826', 
           'Hi, I am Max Hernandez',
           3500
         );
