@@ -92,7 +92,7 @@
 
 .right-frame {
   box-sizing: border-box;
-  width: fit-content;
+  width: 100%;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -132,9 +132,8 @@
 
 .display-image {
   height: min-content;
-  width: min-content;
   max-height: 80%;
-  max-width: 80%;
+  max-width: 70%;
   user-select: none;
   -webkit-user-drag: none;
   z-index: -1;
