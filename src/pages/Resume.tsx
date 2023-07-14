@@ -57,7 +57,7 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
 
         <a 
           className={`${styles['download-pdf-button']}`} 
-          href={process.env.PUBLIC_URL + '/Resume.pdf'} 
+          href={process.env.PUBLIC_URL + '/resume.pdf'} 
           target="_blank" 
           rel="noopener noreferrer"
         >
@@ -326,7 +326,7 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
 
         <a 
           className={`${styles['download-pdf-button']}`} 
-          href={process.env.PUBLIC_URL + '/Resume.pdf'} 
+          href={process.env.PUBLIC_URL + '/resume.pdf'} 
           target="_blank" 
           rel="noopener noreferrer"
         >
