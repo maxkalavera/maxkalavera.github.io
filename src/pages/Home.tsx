@@ -32,6 +32,10 @@ export default function Home() {
           1500
         );
         await fadeIn('.fadeInOnHome', 3500);
+        Array.from(document.getElementsByClassName('fadeInOnHome')).forEach(elem => {
+          // @ts-ignore
+          elem.style.opacity = "1.0";
+        });
       })();
       singleExecutionFlag = true;
     }
