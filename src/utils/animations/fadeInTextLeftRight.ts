@@ -1,11 +1,21 @@
 import anime from 'animejs';
 
-function fadeInTextLeftRight (id_: string, text: string, duration=2000) {
-  const element = document.getElementById(id_);
-  if (element === null) return;
+import type { AnimeInstance } from 'animejs';
 
-  return new Promise<void>((resolve, _) => {
-    anime({
+function fadeInTextLeftRight (id_: string, text: string, duration=2000) {
+  const output: {
+    anime: null | AnimeInstance,
+    promise: null | Promise<any>,
+  } = {
+    anime: null,
+    promise: null,
+  };
+
+  output.promise = new Promise<void>((resolve, reject) => {
+    const element = document.getElementById(id_);
+    if (element === null) return reject();
+
+    output.anime = anime({
       duration: duration,
       easing: 'easeInOutSine',
       update: (state) => {
@@ -23,6 +33,8 @@ function fadeInTextLeftRight (id_: string, text: string, duration=2000) {
       }
     });
   });
+
+  return output;
 };
 
 export default fadeInTextLeftRight;

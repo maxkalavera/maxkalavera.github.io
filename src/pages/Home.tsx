@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import fadeInTextLeftRight from 'src/utils/animations/fadeInTextLeftRight';
 import fadeIn from 'src/utils/animations/fadeIn';
@@ -8,37 +8,74 @@ import DisplayImage from 'src/components/DisplayImage';
 var singleExecutionFlag = false;
 
 export default function Home() {
-
   useEffect(() => {
-    if (!singleExecutionFlag) {
-      (async () => {
-        Array.from(document.getElementsByClassName('fadeInOnHome')).forEach(elem => {
-          // @ts-ignore
-          elem.style.opacity = "0.0";
-        });
-        await fadeInTextLeftRight(
-          '464fce7e-d26a-4b08-b038-6cddff68c826', 
-          'Hi, I am Max Hernandez',
-          3500
-        );
-        await fadeInTextLeftRight(
-          'e2e0c90c-6896-46c8-80e5-359f0116404f', 
-          '',
-          1000
-        );
-        await fadeInTextLeftRight(
-          'e2e0c90c-6896-46c8-80e5-359f0116404f', 
-          'a software developer',
-          1500
-        );
-        await fadeIn('.fadeInOnHome', 3500);
-        Array.from(document.getElementsByClassName('fadeInOnHome')).forEach(elem => {
-          // @ts-ignore
-          elem.style.opacity = "1.0";
-        });
-      })();
+    (async () => {
+      if (singleExecutionFlag)
+        return;
       singleExecutionFlag = true;
-    }
+
+      Array.from(document.getElementsByClassName('fadeInOnHome')).forEach(elem => {
+        // @ts-ignore
+        elem.style.opacity = "0.0";
+      });
+
+      const animeQueue = [
+        {
+          callback: fadeInTextLeftRight,
+          args: [
+            '464fce7e-d26a-4b08-b038-6cddff68c826', 
+            'Hi, I am Max Hernandez',
+            3500          
+          ]
+        },
+        {
+          callback: fadeInTextLeftRight,
+          args: [
+            'e2e0c90c-6896-46c8-80e5-359f0116404f', 
+            '',
+            1000
+          ]
+        },
+        {
+          callback: fadeInTextLeftRight,
+          args: [
+            'e2e0c90c-6896-46c8-80e5-359f0116404f', 
+            'a software developer',
+            1500
+          ]
+        },
+        {
+          callback: fadeIn,
+          args: [
+            '.fadeInOnHome', 
+            3500
+          ]
+        }
+      ];
+      
+      for (let i = 0; i < animeQueue.length; i++) {
+        let breakFlagRef = {current: false};
+        let stop = () => {
+          animation.anime?.pause();
+          animation.anime?.seek(100 * animation.anime.duration);
+          breakFlagRef.current = true;     
+        }
+        document.addEventListener('click', stop);
+        document.addEventListener('keydown', stop);
+        // @ts-ignore
+        let animation = animeQueue[i].callback.apply(null, animeQueue[i].args);
+        // @ts-ignore
+        await animation.promise;
+        document.removeEventListener('click', stop);
+        document.addEventListener('keydown', stop);
+        if (breakFlagRef.current) break;
+      }
+
+      Array.from(document.getElementsByClassName('fadeInOnHome')).forEach(elem => {
+        // @ts-ignore
+        elem.style.opacity = "1.0";
+      });
+    })();
   }, []);
 
   return (
