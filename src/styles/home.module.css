@@ -134,6 +134,7 @@
   height: min-content;
   max-height: 80%;
   max-width: 70%;
+  overflow: visible;
   user-select: none;
   -webkit-user-drag: none;
   z-index: -1;

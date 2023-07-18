@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 import fadeInTextLeftRight from 'src/utils/animations/fadeInTextLeftRight';
 import fadeIn from 'src/utils/animations/fadeIn';
-import styles from 'src/styles/home.module.css';
 import DisplayImage from 'src/components/DisplayImage';
+import styles from 'src/styles/home.module.css';
 
 var singleExecutionFlag = false;
 
@@ -71,6 +71,8 @@ export default function Home() {
         if (breakFlagRef.current) break;
       }
 
+      const subtitle = document.getElementById('e2e0c90c-6896-46c8-80e5-359f0116404f');
+      if (subtitle) subtitle.textContent = 'a software developer';
       Array.from(document.getElementsByClassName('fadeInOnHome')).forEach(elem => {
         // @ts-ignore
         elem.style.opacity = "1.0";
