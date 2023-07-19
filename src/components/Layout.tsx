@@ -15,7 +15,7 @@ export default function Layout({
       <div className={`${styles.container}`}>
         <section className={`${styles.header} fadeInOnHome`}>
           <div className={`${styles['header__content']}`}>
-            <Link to={`/`}><h3 className={`primary ${styles['navbar-logo']}`}>MAX HERNANDEZ</h3></Link>
+            <Link to={`/`}><h3 className={`primary ${styles['navbar-logo']}`}>Max Hernandez</h3></Link>
             <ul className={styles['navbar-items']}>
               <li><Link to={`/`}>Home</Link></li>
               <li><Link to={`/resume/`}>Resume</Link></li>
