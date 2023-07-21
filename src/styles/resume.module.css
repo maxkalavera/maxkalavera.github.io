@@ -39,11 +39,6 @@
 
 }
 
-.background-frame {
-  padding: var(--gap-sm);
-  background-color: #2C2C2C;
-}
-
 .portrait {
   width: 25vi;
 }

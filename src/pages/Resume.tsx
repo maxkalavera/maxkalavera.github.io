@@ -41,7 +41,7 @@ export default function Resume() {
       <div className={styles.content}>
 
         <div className={styles['about-me']}>
-          <div className={`column gap--sm ${styles['background-frame']}`}>
+          <div className={`column gap--sm`}>
             <h3 className='primary'>About me</h3>
             <p className='secondary justify'>
               Born in Monterrey, Mexico in the nineties, which makes me part of a generation of technological and social transition, full of contrasts that feed a broad perspective for those who know how to observe. Computer programmer by accident but passionate about it by luck, I try to have a simple life and develop my natural abilities as much as possible. Naturally logical, but sensitive, I have sought to develop a balance between my logical side and my emotional side, which has led me to have a great curiosity for art. A fan of comedy, dancing and good stories, I keep my mind stimulated by splitting my time between solving logical problems on a computer and enjoying beautiful experiences on the dance floor. 
