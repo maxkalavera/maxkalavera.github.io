@@ -5,7 +5,7 @@ before_script:
   - npm ci
 pages:
   variables:
-    PUBLIC_URL: "maxkalavera.gitlab.io/personal-webpage/"
+    PUBLIC_URL: "https://maxkalavera.gitlab.io/personal-webpage/"
   script:
     - npm run build
     - mv build/* public
