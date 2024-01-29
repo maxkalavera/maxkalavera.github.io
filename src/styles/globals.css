@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Jost|Archivo+Black|Courier+New&display=swap');
 
 :root {
   --black: #000000;
@@ -168,7 +167,7 @@ small.secondary {
 }
 
 .tertiary {
-  font-family: 'Courier+New', serif;
+  font-family: 'Courier Prime', serif;
 }
 
 h1.tertiary {
