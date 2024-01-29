@@ -4,6 +4,8 @@ image: node:20.3-slim
 before_script:
   - npm ci
 pages:
+  variables:
+    PUBLIC_URL: "maxkalavera.gitlab.io/personal-webpage/"
   script:
     - npm run build
     - mv build/* public
