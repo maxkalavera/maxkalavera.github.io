@@ -9,14 +9,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup nodejs enviroment
+        uses: actions/setup-node@v3
         with:
           node-version: '14'
-      - run: npm help
-      - run: npm install
-      - run: npm build
-
+      - name: Build code
+        run: |
+          npm install
+          npm run build
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v4
+        with:
+          name: website-build
+          path: ./build
   # Deploy job
   deploy:
     if: github.ref == 'refs/heads/main'
@@ -29,12 +36,12 @@ jobs:
       id-token: write   # to verify the deployment originates from an appropriate source
 
     environment:
-      name: maxkalavera
+      name: website-build
       url: ${{ steps.deployment.outputs.page_url }}
 
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy build to github pages
         id: deployment
         uses: actions/deploy-pages@v3
