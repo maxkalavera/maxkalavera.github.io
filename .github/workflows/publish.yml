@@ -22,19 +22,10 @@ jobs:
         run: |
           npm install
           npm run build
-      - name: Archive code coverage results
+      - name: Upload to an artifact
+        id: a083c17f-6d88-4714-9557-f9bf8422db02
         uses: actions/upload-artifact@v4
         with:
-          name: github-pages
           path: ./build
-
-  deploy:
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy build to github pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Output artifact ID
+        run:  echo 'Artifact ID is ${{ steps.a083c17f-6d88-4714-9557-f9bf8422db02.outputs.artifact-id }}'
