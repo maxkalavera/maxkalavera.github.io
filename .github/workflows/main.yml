@@ -22,11 +22,10 @@ jobs:
       - name: Archive code coverage results
         uses: actions/upload-artifact@v4
         with:
-          name: website-build
+          name: github-pages
           path: ./build
   # Deploy job
   deploy:
-    if: github.ref == 'refs/heads/main'
     # Add a dependency to the build job
     needs: build
 
@@ -36,7 +35,7 @@ jobs:
       id-token: write   # to verify the deployment originates from an appropriate source
 
     environment:
-      name: website-build
+      name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     # Specify runner + deployment step
