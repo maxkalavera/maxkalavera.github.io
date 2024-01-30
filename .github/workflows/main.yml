@@ -1,4 +1,4 @@
-name: Run commands on different operating systems
+name: Deploy website to maxkalavera.github.io
 on:
   push:
     branches: [ main ]
