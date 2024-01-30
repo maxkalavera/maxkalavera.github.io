@@ -23,7 +23,7 @@ jobs:
           npm install
           npm run build
       - name: Upload to an artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: github-pages
           path: ./build
