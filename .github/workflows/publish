@@ -1,0 +1,40 @@
+name: Deploy website to github pages
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup nodejs enviroment
+        uses: actions/setup-node@v3
+      - name: Build code
+        run: |
+          npm install
+          npm run build
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: ./build
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy build to github pages
+        id: deployment
+        uses: actions/deploy-pages@v4
