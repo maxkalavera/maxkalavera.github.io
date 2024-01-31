@@ -40,13 +40,12 @@ function Resume() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-
         <div className={styles['about-me']}>
           <div className={`column gap--sm`}>
             <h4 className='primary'>ABOUT ME</h4>
             <p className='secondary'>
-              Born in Monterrey, Mexico in the nineties, which makes me part of a generation of technological and social transition, full of contrasts that feed a broad perspective for those who know how to observe. Computer programmer by accident but passionate about it by luck, I try to have a simple life and develop my natural abilities as much as possible. Naturally logical, but sensitive, I have sought to develop a balance between my logical side and my emotional side, which has led me to have a great curiosity for art. A fan of comedy, dancing and good stories, I keep my mind stimulated by splitting my time between solving logical problems on a computer and enjoying beautiful experiences on the dance floor. 
-My interest is, for now, in finding a tasks that allows me to survive financially, and to feel that my work contributes something valuable to other people's lives.
+            I was born in Monterrey, Mexico, in the nineties, which makes me part of a generation that has lived through a lot of technological and social transitions, full of contrasts that fed a broad perspective for those who knew how to observe. I am a software engineer and am still not sure if it was luck or an accident. I try to have a simple life and develop my abilities as much as possible. Naturally logical but sensitive, I have sought to develop a balance between my logical side and my emotional side, which has led me to have a great curiosity for art. A fan of comedy, dancing, and good stories, I keep my mind stimulated by splitting my time between solving logical problems on a computer and enjoying beautiful experiences on the dance floor.
+My interest is, for now, finding ways that allow me to strive financially but to feel that my effort contributes to adding something valuable to other people's lives.
             </p>
           </div>
           <img 
@@ -62,14 +61,14 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
           target="_blank" 
           rel="noopener noreferrer"
         >
-          <h4 className='primary'>Download PDF version</h4>
+          <h4 className='primary'>Download CV (PDF)</h4>
           <FontAwesomeIcon icon={faDownload} />
         </a>
 
         <div className='column gap--sm'>
           <h4 className='primary'>PROFILE</h4>
           <p className='secondary'>
-          Software engineer born in Monterrey, Mexico, with 3 years of professional experience building web applications. Proficient in Python and Javascript; Skilled translating business requirement into software solutions; Extensive experience with Linux systems, being an active user; Essential knowledge in graphic design focused in the design of software graphical interfaces.
+            Software engineer born in Monterrey, Mexico, with 3 years of professional experience building web applications. Proficient in Python and Javascript; skilled in translating business requirements into software solutions; Extensive experience with Linux systems, being an active user; Essential knowledge in graphic design, with a focus on the design of software graphical interfaces.
           </p>
         </div>
         
@@ -137,12 +136,12 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
             </div>
 
             <p className='secondary'>
-              Contributed largely in the implementation of a Web application by heavily participating in the planning of the application’s architecture and working on implementing client’s requested features.
+            Contributed largely to the implementation of a web application by heavily participating in the planning of the application’s architecture and working on implementing the client’s requested features.
             </p>
             <ul className='secondary'>
-              <li>Developing new Web features for Front-end / Back-end.</li>
-              <li>Building a developing environment for a team to develop and actively provide feedback and test new features using Jenkins, Python and ReactJS tools.</li>
-              <li>Involved in planning and decision making for implementing new features.</li>
+              <li>Developing new web features for the front-end and back-end.</li>
+              <li>Building a developing environment, actively providing feedback, and testing new features using Jenkins, Python, and ReactJS tools.</li>
+              <li>Involved in planning and decision-making for implementing new features.</li>
             </ul>
           </div>
 
@@ -154,11 +153,11 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
             </div>
 
             <p className='secondary'>
-              Developing Web interfaces using primarily ReactJS framework.
+              Developing web interfaces using primarily the ReactJS framework.
             </p>
             <ul className='secondary'>
-              <li>Developing front-end interfaces using ReactJS together with NodeJS developing tools.</li>
-              <li>Involved in designing new features using Figma tool.</li>
+              <li>Developing front-end interfaces using ReactJS together with NodeJS development tools.</li>
+              <li>Involved in designing new features using the Figma tool.</li>
               <li>Involved in Python async task tool maintenance.</li>
             </ul>
           </div>
@@ -331,7 +330,7 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
           target="_blank" 
           rel="noopener noreferrer"
         >
-          <h4 className='primary'>Download PDF version</h4>
+          <h4 className='primary'>Download CV (PDF)</h4>
           <FontAwesomeIcon icon={faDownload} />
         </a>
       </div>

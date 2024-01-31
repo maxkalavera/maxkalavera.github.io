@@ -14,8 +14,7 @@ function Projects() {
                 React Component Isolator
               </h4>
               <p className={`secondary ${styles['project__description']}`}>
-                React library build with the objective of having a place to visualize React components graphically isolated builded to work in any environment able to run React.
-                Visit the repository main page for more information:&nbsp;
+                React library was built with the objective of having a place to visualize React components graphically isolated and built to work in any environment able to run React. Visit the repository main page for more information:&nbsp;
                 <br />
                 <a href='https://github.com/maxkalavera/react-component-isolator'>
                   https://github.com/maxkalavera/react-component-isolator
