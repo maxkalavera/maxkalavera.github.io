@@ -118,7 +118,7 @@ function Home() {
   }, []);
 
   return (
-    <>
+    <div className={styles.container}>
       <Header />
       <div className={styles.content}>
         <div className={`${styles['left-frame']}`}>
@@ -133,7 +133,7 @@ function Home() {
       <Footer />
 
       <DiagonalLinesDecoration />
-    </>
+    </div>
   )
 };
 

@@ -7,10 +7,10 @@ import styles from "src/styles/footer.module.css"
 export default function Footer () {
   return (
     <section className={`${styles.container} fadeInOnHome`}>
-      <div className={`${styles['mail']}`}>
+      <div className={styles.mail}>
         <a href='mailto:maxhernandezcastillo@gmail.com'>
           <FontAwesomeIcon icon={faEnvelope} />
-          <small className='secondary'>maxhernandezcastillo@gmail.com</small>
+          <h5 className={`${styles['mail__label']}`}>maxhernandezcastillo@gmail.com</h5>
         </a>
       </div>
       <div className={`${styles['social-networks']}`}>
@@ -24,3 +24,5 @@ export default function Footer () {
     </section>
   );
 }
+
+// <small className='secondary'>maxhernandezcastillo@gmail.com</small>

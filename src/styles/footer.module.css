@@ -22,16 +22,24 @@
   align-items: center;
   overflow: hidden;
   gap: var(--gap-xs);
+  font-size: 2.0rem;
+}
+
+.mail__label {
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-size: 1.0rem;
 }
 
 @media (max-width: 960px) and (orientation: portrait) {
-  .mail {
-    gap: var(--gap-xs);
-    font-size: 0.75rem;
+  .mail__label {
+    display: none;
   }
 }
 
 .mail a {
+  width: fit-content;
+  height: fit-content;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -39,14 +47,8 @@
   gap: var(--gap-xs);
 }
 
-.mail svg {
-  height: 24px;
-}
-
-@media (max-width: 960px) and (orientation: portrait) {
-  .mail svg {
-    height: 18px;
-  }
+.mail a:hover {
+  color: var(--primary);
 }
 
 .social-networks {
@@ -54,23 +56,13 @@
   flex-direction: row;
   align-items: center;
   gap: 12px;
+  font-size: 2.0rem;
 }
 
 .social-networks a {
-  height: 24px;
   color: var(--gray-300);
 }
 
 .social-networks a:hover {
-  color: #FFD27B;
-}
-
-.social-networks svg {
-  height: 24px;
-}
-
-@media (max-width: 960px) and (orientation: portrait) {
-  .social-networks svg {
-    height: 18px;
-  }
+  color: var(--primary);
 }
