@@ -5,6 +5,7 @@ import reportWebVitals from 'src/reportWebVitals';
 
 import "typeface-archivo-black";
 import "typeface-courier-prime";
+import "typeface-jost";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
