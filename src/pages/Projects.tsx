@@ -9,7 +9,7 @@ function Projects() {
       <div className={styles['projects__list']}>
         <div className={styles['project']}>
           <div className='column gap--md'>
-            <div className='column gap--sm'>
+            <div className='column gap--md'>
               <h4 className={`primary ${styles['project__title']}`}>
                 React Component Isolator
               </h4>

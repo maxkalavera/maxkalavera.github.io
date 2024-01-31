@@ -22,6 +22,7 @@ function Introduction () {
             className={styles['subtitle']}
             id='e2e0c90c-6896-46c8-80e5-359f0116404f'
           >
+            a software developer
           </div>
     </>
   );
@@ -49,7 +50,8 @@ function Home() {
       if (singleExecutionFlag)
         return;
       singleExecutionFlag = true;
-
+      const subtitle = document.getElementById('e2e0c90c-6896-46c8-80e5-359f0116404f');
+      if (subtitle) subtitle.textContent = '';
       Array.from(document.getElementsByClassName('fadeInOnHome')).forEach(elem => {
         // @ts-ignore
         elem.style.opacity = "0.0";
@@ -107,7 +109,6 @@ function Home() {
         if (breakFlagRef.current) break;
       }
 
-      const subtitle = document.getElementById('e2e0c90c-6896-46c8-80e5-359f0116404f');
       if (subtitle) subtitle.textContent = 'a software developer';
       Array.from(document.getElementsByClassName('fadeInOnHome')).forEach(elem => {
         // @ts-ignore

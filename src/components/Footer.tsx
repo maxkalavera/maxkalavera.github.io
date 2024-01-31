@@ -8,8 +8,10 @@ export default function Footer () {
   return (
     <section className={`${styles.container} fadeInOnHome`}>
       <div className={`${styles['mail']}`}>
-        <FontAwesomeIcon icon={faEnvelope} />
-        <p className='secondary'>maxhernandezcastillo@gmail.com</p>
+        <a href='mailto:maxhernandezcastillo@gmail.com'>
+          <FontAwesomeIcon icon={faEnvelope} />
+          <small className='secondary'>maxhernandezcastillo@gmail.com</small>
+        </a>
       </div>
       <div className={`${styles['social-networks']}`}>
         <a href='https://github.com/maxkalavera'>

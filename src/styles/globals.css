@@ -17,7 +17,7 @@
   --gray-800: #424242;
   --gray-900: #212121;
 
-  --primary: #ECB03B;
+  --primary: #d7a849;
   --primary-contrast: var(--gray-800);
 
   font-size: 14px;
@@ -42,7 +42,7 @@
 @media (max-width: 960px) and (orientation: portrait) {
   :root {
     --header-height: 148px;
-    --footer-height: 48px;
+    --footer-height: 72px;
     --content-container-min-height: calc(100vh - var(--header-height) - var(--footer-height));
   }
 }
@@ -60,7 +60,7 @@ body {
 }
 
 a {
-  color: var(--gray-100);
+  color: var(--gray-300);
 }
 
 .primary {
@@ -113,7 +113,7 @@ small.primary {
 }
 
 .secondary {
-  font-family: 'Jost', serif;
+  font-family: 'Aleo', serif;
 }
 
 h1.secondary {
@@ -155,15 +155,15 @@ p.secondary,
 ul.secondary, 
 ol.secondary {
   font-style: normal;
-  font-weight: 400;
-  font-size: 1.0rem;
+  font-weight: 500;
+  font-size: 1.15rem;
   line-height: 150%;
 }
 
 small.secondary {
   font-style: normal;
   font-weight: 400;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
 }
 
 .tertiary {

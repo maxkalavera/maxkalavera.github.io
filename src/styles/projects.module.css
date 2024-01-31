@@ -21,7 +21,7 @@
   height: fit-content;
   width: 100%;
   text-align: left;
-  color: var(--gray-100);
+  color: var(--gray-400);
 }
 
 .projects__list {
@@ -44,7 +44,7 @@
   padding: var(--gap-md);
   gap: var(--gap-md);
   background: #2C2C2C;
-  border: 1px solid rgba(237, 184, 82, 0.5);
+  border: 1px solid var(--primary);
   overflow: hidden;
 }
 
@@ -59,10 +59,10 @@
   height: fit-content;
   width: 100%;
   text-align: left;
-  color: var(--gray-300);
+  color: var(--gray-400);
 }
 
 .project__description {
   width: 100%;
-  color: var(--gray-300);
+  color: var(--gray-400);
 }

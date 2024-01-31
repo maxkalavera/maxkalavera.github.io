@@ -22,6 +22,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.3",
     "react-scripts": "5.0.1",
+    "typeface-aleo": "^1.1.13",
     "typeface-archivo-black": "^1.1.13",
     "typeface-courier-prime": "^1.1.13",
     "typeface-jost": "^1.1.13",

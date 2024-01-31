@@ -12,7 +12,7 @@
 
 
 .content {
-  background-color: var(--gray-900);
+  background-color: #1b1b1b;
   box-sizing: border-box;
   min-height: var(--content-container-min-height);
   height: min-content;
