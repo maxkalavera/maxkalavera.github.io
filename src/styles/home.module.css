@@ -1,4 +1,4 @@
-.container {
+.content {
   box-sizing: border-box;
   width: 100%;
   min-height: var(--content-container-min-height);
@@ -10,7 +10,7 @@
 }
 
 @media (max-width: 960px) and (orientation: portrait) {
-  .container {
+  .content {
     padding: var(--gap-sm) var(--gap-sm);
     min-height: fit-content;
     flex-direction: column;

@@ -1,9 +1,11 @@
+
+import Layout from 'src/components/Layout';
 import styles from 'src/styles/projects.module.css';
 
-export default function Projects() {
+function Projects() {
   return (
     <div className={`${styles.container}`}>
-      <h3 className={`primary ${styles['title']}`}>Projects</h3>
+      <h3 className={`primary ${styles['title']}`}>PROJECTS</h3>
       <div className={styles['projects__list']}>
         <div className={styles['project']}>
           <div className='column gap--md'>
@@ -11,7 +13,7 @@ export default function Projects() {
               <h4 className={`primary ${styles['project__title']}`}>
                 React Component Isolator
               </h4>
-              <p className={`secondary justify ${styles['project__description']}`}>
+              <p className={`secondary ${styles['project__description']}`}>
                 React library build with the objective of having a place to visualize React components graphically isolated builded to work in any environment able to run React.
                 Visit the repository main page for more information:&nbsp;
                 <br />
@@ -26,3 +28,11 @@ export default function Projects() {
     </div>
   )
 };
+
+export default function ProjectsWrapper () {
+  return (
+    <Layout>
+      <Projects />
+    </Layout>
+  );
+}

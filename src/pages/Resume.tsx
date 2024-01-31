@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
+import Layout from 'src/components/Layout';
 import SkillFrame from 'src/components/SkillFrame';
 import Portrait from 'src/assets/portrait.svg';
 import styles from 'src/styles/resume.module.css';
 import { useState } from 'react';
 
-export default function Resume() {
+function Resume() {
   const [flags, setFlags] = useState({
     'general-programing-topics': true,
     'back-end-development': true,
@@ -42,8 +43,8 @@ export default function Resume() {
 
         <div className={styles['about-me']}>
           <div className={`column gap--sm`}>
-            <h3 className='primary'>About me</h3>
-            <p className='secondary justify'>
+            <h4 className='primary'>ABOUT ME</h4>
+            <p className='secondary'>
               Born in Monterrey, Mexico in the nineties, which makes me part of a generation of technological and social transition, full of contrasts that feed a broad perspective for those who know how to observe. Computer programmer by accident but passionate about it by luck, I try to have a simple life and develop my natural abilities as much as possible. Naturally logical, but sensitive, I have sought to develop a balance between my logical side and my emotional side, which has led me to have a great curiosity for art. A fan of comedy, dancing and good stories, I keep my mind stimulated by splitting my time between solving logical problems on a computer and enjoying beautiful experiences on the dance floor. 
 My interest is, for now, in finding a tasks that allows me to survive financially, and to feel that my work contributes something valuable to other people's lives.
             </p>
@@ -67,7 +68,7 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
 
         <div className='column gap--sm'>
           <h4 className='primary'>PROFILE</h4>
-          <p className='secondary justify'>
+          <p className='secondary'>
           Software engineer born in Monterrey, Mexico, with 3 years of professional experience building web applications. Proficient in Python and Javascript; Skilled translating business requirement into software solutions; Extensive experience with Linux systems, being an active user; Essential knowledge in graphic design focused in the design of software graphical interfaces.
           </p>
         </div>
@@ -337,3 +338,11 @@ My interest is, for now, in finding a tasks that allows me to survive financiall
     </div>
   )
 };
+
+export default function ResumeWrapper () {
+  return (
+    <Layout>
+      <Resume />
+    </Layout>
+  );
+}
