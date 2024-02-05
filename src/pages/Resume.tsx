@@ -44,8 +44,7 @@ function Resume() {
           <div className={`column gap--sm`}>
             <h4 className='primary'>ABOUT ME</h4>
             <p className='secondary'>
-            I was born in Monterrey, Mexico, in the nineties, which makes me part of a generation that has lived through a lot of technological and social transitions, full of contrasts that fed a broad perspective for those who knew how to observe. I am a software engineer and am still not sure if it was luck or an accident. I try to have a simple life and develop my abilities as much as possible. Naturally logical but sensitive, I have sought to develop a balance between my logical side and my emotional side, which has led me to have a great curiosity for art. A fan of comedy, dancing, and good stories, I keep my mind stimulated by splitting my time between solving logical problems on a computer and enjoying beautiful experiences on the dance floor.
-My interest is, for now, finding ways that allow me to strive financially but to feel that my effort contributes to adding something valuable to other people's lives.
+            application development expertise. competent in Javascript and Python; adept in converting business needs into technological solutions; extensive knowledge of Linux systems and active participation in their use; Basic understanding of visual design, with an emphasis on using tools to create software graphical user interfaces.
             </p>
           </div>
           <img 
