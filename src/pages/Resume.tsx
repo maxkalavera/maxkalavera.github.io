@@ -112,8 +112,8 @@ function Resume() {
             <h4 className='secondary'>Graphic Design Specialization</h4>
             <p className='secondary'>
               Coursera<br/>
-              Dec 2020<br/>
-              Credential ID: A8FCSDG5P9M9<br/>
+              Aug 2021<br/>
+              Credential ID: K6495WPA96GR<br/>
               <a 
                 href='https://www.coursera.org/account/accomplishments/specialization/certificate/K6495WPA96GR'
                 className={`secondary ${styles.link}`}
