@@ -44,7 +44,7 @@ function Resume() {
           <div className={`column gap--sm`}>
             <h4 className='primary'>ABOUT ME</h4>
             <p className='secondary'>
-            application development expertise. competent in Javascript and Python; adept in converting business needs into technological solutions; extensive knowledge of Linux systems and active participation in their use; Basic understanding of visual design, with an emphasis on using tools to create software graphical user interfaces.
+            Application development expertise. competent in Javascript and Python; adept in converting business needs into technological solutions; extensive knowledge of Linux systems and active participation in their use; Basic understanding of visual design, with an emphasis on using tools to create software graphical user interfaces.
             </p>
           </div>
           <img 
