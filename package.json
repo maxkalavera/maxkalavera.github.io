@@ -53,5 +53,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/lodash.get": "^4.4.9",
+    "lodash.get": "^4.4.2"
   }
 }
