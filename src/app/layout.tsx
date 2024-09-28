@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { 
   Archivo_Black as FontDisplay,
   Fira_Sans as FontBody,
-  Fira_Code as CodeFont,
 } from 'next/font/google';
 import { cn } from "@/lib/utils";
 import "@/assets/globals.css";

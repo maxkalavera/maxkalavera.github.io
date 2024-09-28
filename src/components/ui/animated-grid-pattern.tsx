@@ -10,12 +10,17 @@ interface GridPatternProps {
   height?: number;
   x?: number;
   y?: number;
-  strokeDasharray?: any;
+  strokeDasharray?: number;
   numSquares?: number;
   className?: string;
   maxOpacity?: number;
   duration?: number;
-  repeatDelay?: number;
+  //repeatDelay?: number;
+}
+
+interface Dimensions {
+  width: number;
+  height: number;
 }
 
 export function GridPattern({
@@ -25,31 +30,16 @@ export function GridPattern({
   y = -1,
   strokeDasharray = 0,
   numSquares = 50,
-  className,
+  className='',
   maxOpacity = 0.5,
   duration = 4,
-  repeatDelay = 0.5,
+  //repeatDelay = 0.5,
   ...props
 }: GridPatternProps) {
   const id = useId();
   const containerRef = useRef(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [squares, setSquares] = useState(() => generateSquares(numSquares));
-
-  function getPos() {
-    return [
-      Math.floor((Math.random() * dimensions.width) / width),
-      Math.floor((Math.random() * dimensions.height) / height),
-    ];
-  }
-
-  // Adjust the generateSquares function to return objects with an id, x, and y
-  function generateSquares(count: number) {
-    return Array.from({ length: count }, (_, i) => ({
-      id: i,
-      pos: getPos(),
-    }));
-  }
+  const [dimensions, setDimensions] = useState<Dimensions>({ width: 0, height: 0 });
+  const [squares, setSquares] = useState(() => generateSquares(numSquares, dimensions, width, height));
 
   // Function to update a single square's position
   const updateSquarePosition = (id: number) => {
@@ -58,7 +48,7 @@ export function GridPattern({
         sq.id === id
           ? {
               ...sq,
-              pos: getPos(),
+              pos: getPos(dimensions, width, height),
             }
           : sq,
       ),
@@ -68,14 +58,14 @@ export function GridPattern({
   // Update squares to animate in
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
-      setSquares(generateSquares(numSquares));
+      setSquares(generateSquares(numSquares, dimensions, width, height));
     }
-  }, [dimensions, numSquares]);
+  }, [dimensions, height, numSquares, width]);
 
   // Resize observer to update container dimensions
   useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
+      for (const entry of entries) {
         setDimensions({
           width: entry.contentRect.width,
           height: entry.contentRect.height,
@@ -89,6 +79,7 @@ export function GridPattern({
 
     return () => {
       if (containerRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         resizeObserver.unobserve(containerRef.current);
       }
     };
@@ -148,3 +139,19 @@ export function GridPattern({
 }
 
 export default GridPattern;
+
+
+function getPos(dimensions: Dimensions, width: number, height: number) {
+  return [
+    Math.floor((Math.random() * dimensions.width) / width),
+    Math.floor((Math.random() * dimensions.height) / height),
+  ];
+};
+
+// Adjust the generateSquares function to return objects with an id, x, and y
+function generateSquares(count: number, dimensions: Dimensions, width: number, height: number) {
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    pos: getPos(dimensions, width, height),
+  }));
+};

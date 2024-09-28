@@ -1,13 +1,9 @@
 "use client"
 import { cn } from "@/lib/utils";
-import React, { useEffect, useMemo } from "react";
-
-function delay(duration=10) {
-  return `${(Math.random() * 1000 * duration) | 0}ms`;
-}
+import React from "react";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface Props extends React.ComponentPropsWithoutRef<React.ElementType>  {
+interface Props extends React.ComponentPropsWithoutRef<React.ElementType> {
 
 }
 

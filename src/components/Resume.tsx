@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { cn } from "@/lib/utils";
 import React, { Fragment } from "react";
 import get from "lodash.get";
 import resume from '@/assets/resume.json';
 import resumePicture from '@/assets/images/resume.png'
 import Image from "next/image";
-import { LinkIcon, MailIcon, MapPinIcon, PhoneIcon, PinIcon } from "lucide-react";
+import { LinkIcon, MailIcon, MapPinIcon, PhoneIcon } from "lucide-react";
 
 // This code is greatly based on:
 // https://github.com/AmruthPillai/Reactive-Resume/blob/1bed63a4af591182295eca311e41dac34a283b8c/apps/artboard/src/templates/azurill.tsx#L563
@@ -313,7 +314,7 @@ const Profiles = () => {
               url={item.url}
               label={item.username}
               icon={
-                <img
+                <Image
                   className="ph"
                   width={fontSize}
                   height={fontSize}
