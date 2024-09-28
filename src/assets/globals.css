@@ -88,6 +88,9 @@
     --header-height: theme(spacing[24]);
     --content-height: calc(100dvh - theme(spacing[48]));
     --footer-height: theme(spacing[24]);
+
+    --content-padding: theme(spacing[4]);
+    --content-slide: calc(var(--content-height) - (2 * var(--content-padding)));
   }
 }
 

@@ -19,6 +19,8 @@ const config: Config = {
         'header': 'var(--header-height)',
         'footer': 'var(--footer-height)',
         'content': 'var(--content-height)',
+				'content-padding': 'var(--content-padding)',
+				'content-slide': 'var( --content-slide)',
       },
 			screens: {
 				print: { raw: 'print' },

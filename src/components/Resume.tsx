@@ -72,6 +72,11 @@ export default Resume
 * Secondary components
 *******************************************************************************/
 
+const isHTMLContentEmpty = (html: string) => {
+  if (html === "<p></p>") return true;
+  return html.trim().length === 0;
+};
+
 const Header = () => {
   const basics = resume.basics
   return (
@@ -130,7 +135,7 @@ const Header = () => {
 const Summary = () => {
   const section = resume.sections.summary;
 
-  if (!section.visible || section.content === '') return null;
+  if (!section.visible || isHTMLContentEmpty(section.content)) return null;
 
   return (
     <section id={section.id}>
@@ -274,7 +279,7 @@ const Section = ({
               >
                 <div>{children?.(item as any)}</div>
 
-                {summary !== undefined && summary === '' && (
+                {summary !== undefined && isHTMLContentEmpty(summary) && (
                   <div dangerouslySetInnerHTML={{ __html: summary }} className="wysiwyg" />
                 )}
 

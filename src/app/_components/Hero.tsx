@@ -19,7 +19,7 @@ const Hero = React.forwardRef<HTMLDivElement, Props>((
       {...props}
       ref={forwardedRef}
       className={cn(
-        "content-area w-full h-full",
+        "w-full max-h-content-slide",
         "flex flex-col justify-center items-center gap-0 md:flex-row",
       )}
     >
@@ -38,7 +38,7 @@ const Hero = React.forwardRef<HTMLDivElement, Props>((
         </h4>
       </div>
       <div
-        className="min-w-80 w-full h-full z-0"
+        className="min-w-80 max-w-full z-0"
       >
         <DisplayIlustration />
       </div>
