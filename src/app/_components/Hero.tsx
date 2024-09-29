@@ -30,10 +30,10 @@ const Hero = React.forwardRef<HTMLDivElement, Props>((
           "flex flex-col justify-center items-end gap-2",
         )}
       >
-        <h1 className="font-display text-foreground text-6xl text-center md:text-end">
+        <h1 className="font-display text-foreground text-2xl md:text-6xl text-center md:text-end">
           Hi, I am Max Hernandez
         </h1>
-        <h4 className="font-body text-amber-600  dark:text-primary-300 text-2xl text-center md:text-end">
+        <h4 className="font-body text-amber-600  dark:text-primary-300 text-lg md:text-2xl text-center md:text-end">
           Crafting code with innovation and boundless creativity!
         </h4>
       </div>
