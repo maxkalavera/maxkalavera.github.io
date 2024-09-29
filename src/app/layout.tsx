@@ -69,7 +69,7 @@ export default function RootLayout({
           <main
             className={cn(
               "w-full min-h-content h-fit",
-              "flex flex-col justify-stretch items-stretch",
+              "flex flex-col justify-stretch items-center",
             )}
           >
             {children}
