@@ -8,6 +8,8 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import ThemesButton from "./ThemesButton";
+import { Separator } from "@/components/ui/separator"
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface Props extends React.ComponentPropsWithoutRef<React.ElementType>  {
@@ -68,6 +70,17 @@ const Navbar = React.forwardRef<HTMLDivElement, Props>((
           </Link>
         </NavigationMenuItem>
         */}
+
+        <Separator orientation="vertical" />
+
+        <NavigationMenuItem asChild>
+          <ThemesButton 
+            className={cn(
+              navigationMenuTriggerStyle({}),
+              "p-1"
+            )}
+          />  
+        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   )

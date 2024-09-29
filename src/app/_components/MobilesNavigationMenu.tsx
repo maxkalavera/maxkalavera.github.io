@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 import React, { useState } from "react";
 import Link from "next/link";
@@ -55,20 +54,18 @@ const MobilesNavigationMenu = React.forwardRef<HTMLDivElement, Props>((
         <SheetHeader>
           <SheetTitle></SheetTitle>
           <SheetDescription></SheetDescription>
-          {/*
-            <div
-              className={cn(
-                'flex flex-row justify-start items-center gap-2'
-              )}
-            >
-              <ThemesButton 
-                className={navigationMenuTriggerStyle({})}
-              />
-            </div>
-            <Separator 
-              className='my-4'
+          <div
+            className={cn(
+              'flex flex-row justify-start items-center gap-2'
+            )}
+          >
+            <ThemesButton 
+              className={navigationMenuTriggerStyle({})}
             />
-          */}
+          </div>
+          <Separator 
+            className='my-4'
+          />
         </SheetHeader>
         
         <div

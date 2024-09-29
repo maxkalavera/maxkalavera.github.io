@@ -4,6 +4,7 @@ import {
   Fira_Sans as FontBody,
 } from 'next/font/google';
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "next-themes";
 import "@/assets/globals.css";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
@@ -50,7 +51,8 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          'dark',
+          //'dark',
+          'bg-gradient-to-br from-gray-50 to-slate-50 dark:from-gray-950 dark:to-stone-950 dark:bg-background',
           'max-w-[100dvw] min-h-[100dvh]',
           'font-sans antialiased',
           'flex flex-col justify-start items-center gap-0',
@@ -60,21 +62,23 @@ export default function RootLayout({
           fontBody.variable,
         )}
       >
-        <Header 
-          className="w-full h-header print:hidden z-10"
-        />
-        <main
-          className={cn(
-            "w-full min-h-content h-fit",
-            "flex flex-col justify-stretch items-stretch",
-          )}
-        >
-          {children}
-        </main>
+        <ThemeProvider attribute="class">
+          <Header 
+            className="w-full h-header print:hidden z-10"
+          />
+          <main
+            className={cn(
+              "w-full min-h-content h-fit",
+              "flex flex-col justify-stretch items-stretch",
+            )}
+          >
+            {children}
+          </main>
 
-        <Footer 
-          className="w-full h-footer print:hidden z-10"
-        />
+          <Footer 
+            className="w-full h-footer print:hidden z-10"
+          />
+        </ThemeProvider>
       </body>
     </html>
   );
