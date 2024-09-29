@@ -61,7 +61,7 @@ export default function RootLayout({
         )}
       >
         <Header 
-          className="h-header print:hidden z-10"
+          className="w-full h-header print:hidden z-10"
         />
         <main
           className={cn(
@@ -73,7 +73,7 @@ export default function RootLayout({
         </main>
 
         <Footer 
-          className="h-footer print:hidden z-10"
+          className="w-full h-footer print:hidden z-10"
         />
       </body>
     </html>

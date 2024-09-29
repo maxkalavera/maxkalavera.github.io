@@ -33,7 +33,12 @@ const Resume = React.forwardRef<HTMLDivElement, Props>((
     "publications",
   ];
   const main: string[] = [
-        "profiles", "summary", "experience", "education", "projects", "references"
+    "profiles", 
+    "summary", 
+    "experience", 
+    "education", 
+    "projects", 
+    "references",
   ];
 
   return (
@@ -46,8 +51,9 @@ const Resume = React.forwardRef<HTMLDivElement, Props>((
       )}
     >
       <Header />
-
-      <div className="grid grid-cols-3 gap-x-4">
+      
+      {/* For large screens */}
+      <div className="hidden md:grid grid-cols-3 gap-x-4">
         <div className="sidebar group space-y-4">
           {sidebar.map((section) => (
             <Fragment key={section}>{mapSectionToComponent(section)}</Fragment>
@@ -60,6 +66,15 @@ const Resume = React.forwardRef<HTMLDivElement, Props>((
           ))}
         </div>
       </div>
+
+      {/* For mobile device's screens */}
+      <div className="md:hidden main group">
+          {[...main, ...sidebar].map((section) => (
+            <Fragment key={section}>
+              {mapSectionToComponent(section)}
+            </Fragment>
+          ))}
+        </div>
 
     </section>
   )
@@ -96,7 +111,7 @@ const Header = () => {
         <div className="text-base">{basics.headline}</div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-sm">
+      <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-0.5 text-sm">
         {basics.location && (
           <div className="flex items-center gap-x-1.5">
             <MapPinIcon className="w-4 h-4 text-primary"/>

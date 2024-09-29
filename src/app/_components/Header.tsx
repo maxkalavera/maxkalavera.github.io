@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import MobilesNavigationMenu from "./MobilesNavigationMenu";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface Props extends React.ComponentPropsWithoutRef<React.ElementType>  {
@@ -42,14 +43,20 @@ const Header = React.forwardRef<HTMLDivElement, Props>((
           >
             <h2
               className={cn(
-                "font-display text-3xl text-foreground",
+                "font-display text-xl md:text-3xl text-foreground",
               )}
             >
               Max Hernandez
             </h2>
           </Button>
         </ Link>
-        <Navbar />
+
+        <Navbar 
+          className='hidden md:block' 
+        />
+        <MobilesNavigationMenu 
+          className='md:hidden'
+        />
       </div>
     </header>
   )

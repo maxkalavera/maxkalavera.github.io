@@ -25,6 +25,9 @@ const Navbar = React.forwardRef<HTMLDivElement, Props>((
     <NavigationMenu
       {...props}
       ref={forwardedRef}
+      className={cn(
+        (props.className || ''),
+      )}
     >
       <NavigationMenuList>
         <NavigationMenuItem>

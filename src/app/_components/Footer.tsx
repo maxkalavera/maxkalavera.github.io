@@ -40,8 +40,8 @@ const Footer = React.forwardRef<HTMLDivElement, Props>((
           asChild
         >
           <a href="mailto:maxhernandezcastillo@gmail.com">
-            <MailIcon className="w-4 h-4" />
-            <h4 className="text-xs">MaxHernandezCastillo@gmail.com</h4>          
+            <MailIcon className="w-6 h-6" />
+            <h4 className="text-xs hidden sm:inline-block">MaxHernandezCastillo@gmail.com</h4>          
           </a>
         </Button>
         <div
