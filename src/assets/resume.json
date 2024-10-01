@@ -122,7 +122,7 @@
           "position": "Software Engineer / Front-End Developer",
           "location": "Guadalajara, Jalisco, México",
           "date": "January 2022 - July 2022",
-          "summary": "<p>Developed web interfaces primarily using ReactJS, collaborating closely with the NodeJS backend development team.</p><p>• Designed user interfaces with Figma and maintained Python asynchronous task tools.</p><p>• Contributed to front-end performance optimization and feature development.</p>",
+          "summary": "<p>Developed web interfaces primarily using React.js, collaborating closely with the NodeJS backend development team.</p><p>• Designed user interfaces with Figma and maintained Python asynchronous task tools.</p><p>• Contributed to front-end performance optimization and feature development.</p>",
           "url": {
             "label": "",
             "href": "https://www.wizeline.com/"
@@ -257,12 +257,11 @@
           "level": 5,
           "keywords": [
             "HTML",
-            "CSS",
-            "JavaScript",
-            "ReactJS",
-            "NextJS",
-            "UX Design",
-            "UI Design"
+            "CSS / LESS / SCSS / Tailwind",
+            "JavaScript / Node.js",
+            "React",
+            "Redux / Jotai",
+            "Next.js"
           ]
         },
         {
@@ -272,15 +271,24 @@
           "description": "",
           "level": 4,
           "keywords": [
-            "Python",
-            "Flask",
-            "NodeJS",
-            "Microservices",
+            "Python / Node.js",
+            "Flask / Django / Express",
+            "SQL / PostgreSQL / MySQL / SQLite",
             "Jenkins",
-            "SQL",
-            "NoSQL",
-            "Linux",
-            "DevOps"
+            "Linux / Bash",
+          ]
+        },
+        {
+          "id": "#4",
+          "visible": true,
+          "name": "UX/UI Design",
+          "description": "",
+          "level": 4,
+          "keywords": [
+            "Good fundamentals in graphic design",
+            "Figma",
+            "Inkscape / Vectornator",
+            "Gimp",
           ]
         }
       ]
