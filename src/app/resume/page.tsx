@@ -16,7 +16,8 @@ export default function ResumePage() {
         className={cn(
           "w-full flex flex-row justify-center sm:justify-end items-center px-4 z-50",
           "fixed bottom-4",
-          "sm:sticky sm:top-4"
+          "sm:sticky sm:top-4",
+          "print:hidden",
         )}
       >
         <Button
