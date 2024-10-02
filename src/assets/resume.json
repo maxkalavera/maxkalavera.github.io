@@ -103,19 +103,6 @@
       "id": "experience",
       "items": [
         {
-          "id": "i490qklngpi5xewnokj4kdlh",
-          "visible": true,
-          "company": "Crea Libre / Evient",
-          "position": "Full Stack Software Engineer",
-          "location": "San Nicolas, Nuevo León, México",
-          "date": "",
-          "summary": "<p>Played a key role in building a web application, heavily contributing to the architecture design and feature implementation.</p><p>• Developed front-end and back-end features using modern tools like Jenkins, Python, and ReactJS.</p><p>• Actively involved in decision-making for new feature development and system improvements.</p>",
-          "url": {
-            "label": "",
-            "href": "https://evient.mx/"
-          }
-        },
-        {
           "id": "e2mlgnirwaxhymkenbfjmf8e",
           "visible": true,
           "company": "Wizeline",
@@ -126,6 +113,19 @@
           "url": {
             "label": "",
             "href": "https://www.wizeline.com/"
+          }
+        },
+        {
+          "id": "i490qklngpi5xewnokj4kdlh",
+          "visible": true,
+          "company": "Crea Libre / Evient",
+          "position": "Full Stack Software Engineer",
+          "location": "San Nicolas, Nuevo León, México",
+          "date": "",
+          "summary": "<p>Played a key role in building a web application, heavily contributing to the architecture design and feature implementation.</p><p>• Developed front-end and back-end features using modern tools like Jenkins, Python, and ReactJS.</p><p>• Actively involved in decision-making for new feature development and system improvements.</p>",
+          "url": {
+            "label": "",
+            "href": "https://evient.mx/"
           }
         }
       ]
