@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Provider } from 'jotai'
 import { 
   Archivo_Black as FontDisplay,
   Fira_Sans as FontBody,
@@ -46,6 +47,7 @@ export default function RootLayout({
   return (
     <html 
       lang="en"
+      suppressHydrationWarning={true}
     >
       <head>
       </head>
@@ -62,23 +64,25 @@ export default function RootLayout({
           fontBody.variable,
         )}
       >
-        <ThemeProvider attribute="class">
-          <Header 
-            className="w-full h-header print:hidden z-10"
-          />
-          <main
-            className={cn(
-              "w-full min-h-content h-fit",
-              "flex flex-col justify-stretch items-center",
-            )}
-          >
-            {children}
-          </main>
+        <Provider>
+          <ThemeProvider attribute="class">
+            <Header 
+              className="w-full h-header print:hidden z-10"
+            />
+            <main
+              className={cn(
+                "w-full min-h-content h-fit",
+                "flex flex-col justify-stretch items-center",
+              )}
+            >
+              {children}
+            </main>
 
-          <Footer 
-            className="w-full h-footer print:hidden z-10"
-          />
-        </ThemeProvider>
+            <Footer 
+              className="w-full h-footer print:hidden z-10"
+            />
+          </ThemeProvider>
+        </Provider>
       </body>
     </html>
   );

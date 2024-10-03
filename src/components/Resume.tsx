@@ -71,7 +71,7 @@ const Resume = React.forwardRef<HTMLDivElement, Props>((
       ref={forwardedRef}
       className={cn(
         className,
-        "p-custom space-y-3"
+        "space-y-3"
       )}
     >
       <Header />

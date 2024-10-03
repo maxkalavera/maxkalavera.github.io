@@ -22,10 +22,11 @@ interface Props extends React.ComponentPropsWithoutRef<React.ElementType>  {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const MobilesNavigationMenu = React.forwardRef<HTMLDivElement, Props>((
+const MobilesNavigationMenu = React.forwardRef<HTMLButtonElement, Props>((
   {
     ...props
   },
+  forwardRef
 ) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -36,6 +37,7 @@ const MobilesNavigationMenu = React.forwardRef<HTMLDivElement, Props>((
     >
       <SheetTrigger
         asChild={true}
+        ref={forwardRef}
       >
         <Button 
           variant='ghost'

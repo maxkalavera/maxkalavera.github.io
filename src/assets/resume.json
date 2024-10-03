@@ -1,353 +1,131 @@
 {
-  "basics": {
-    "name": "Max Hernandez",
-    "headline": "Software Engineer | Full Stack Developer",
-    "email": "maxhernandezcastillo@gmail.com",
-    "phone": "",
-    "location": "Monterrey, Nuevo León, México",
-    "url": {
-      "label": "",
-      "href": "https://maxkalavera.github.io/"
-    },
-    "customFields": [],
-    "picture": {
-      "url": "https://storage.rxresu.me/cm1743cvu0dkgmtv5nly2jqr2/pictures/cm1743cvu0dkgmtv5nly2jqr2.jpg",
-      "size": 64,
-      "aspectRatio": 1,
-      "borderRadius": 9999,
-      "effects": {
-        "hidden": false,
-        "border": true,
-        "grayscale": false
-      }
-    }
+  "basics":{
+     "location":{
+        "city":"Monterrey",
+        "countryCode":"México",
+        "region":"Nuevo León"
+     },
+     "profiles":[
+        {
+           "network":"LinkedIn",
+           "username":"max-hernandez-castillo",
+           "url":"https://www.linkedin.com/in/max-hernandez-castillo/"
+        },
+        {
+           "network":"Github",
+           "username":"maxkalavera",
+           "url":"https://github.com/maxkalavera"
+        }
+     ],
+     "name":"Max Hernandez",
+     "label":"Software Engineer | Full Stack Developer",
+     "email":"maxhernandezcastillo@gmail.com",
+     "url":"https://maxkalavera.github.io/",
+     "summary":"Experienced software engineer from Monterrey, Mexico, with over 3 years of expertise in web development. \nProficient in Python and JavaScript with a strong ability to transform business requirements into effective software solutions.\nExtensive experience with Linux systems and hands-on knowledge of graphical user interface design and development."
   },
-  "sections": {
-    "summary": {
-      "name": "Summary",
-      "columns": 1,
-      "separateLinks": true,
-      "visible": true,
-      "id": "summary",
-      "content": "<p>Experienced software engineer from Monterrey, Mexico, with over 3 years of expertise in web development.</p><p>Proficient in Python and JavaScript with a strong ability to transform business requirements into effective software solutions.</p><p>Extensive experience with Linux systems and hands-on knowledge of graphical user interface design and development.</p>"
-    },
-    "awards": {
-      "name": "Awards",
-      "columns": 1,
-      "separateLinks": true,
-      "visible": true,
-      "id": "awards",
-      "items": []
-    },
-    "certifications": {
-      "name": "Certifications",
-      "columns": 1,
-      "separateLinks": true,
-      "visible": true,
-      "id": "certifications",
-      "items": [
-        {
-          "id": "so2r3h11agtc7cgqbjdbw3xv",
-          "visible": true,
-          "name": "Machine Learning",
-          "issuer": "Coursera",
-          "date": "Dec 2020",
-          "summary": "<p>Credential ID: A8FCSDG5P9M9</p>",
-          "url": {
-            "label": "See credential",
-            "href": "https://www.coursera.org/account/accomplishments/certificate/A8FCSDG5P9M9"
-          }
-        },
-        {
-          "id": "p1ehuffpxtdurithya71ui80",
-          "visible": true,
-          "name": "Graphic Design Specialization",
-          "issuer": "Coursera",
-          "date": "Aug 2021",
-          "summary": "<p>Credential ID: K6495WPA96GR</p>",
-          "url": {
-            "label": "See credential",
-            "href": "https://www.coursera.org/account/accomplishments/specialization/certificate/K6495WPA96GR"
-          }
-        }
-      ]
-    },
-    "education": {
-      "name": "Education",
-      "columns": 1,
-      "separateLinks": true,
-      "visible": true,
-      "id": "education",
-      "items": [
-        {
-          "id": "kckmqb0cvpvgw4ynulw922mt",
-          "visible": true,
-          "institution": "University of Nuevo León (UANL)",
-          "studyType": "Bachelor’s degree",
-          "area": "Software Engineering",
-          "score": "",
-          "date": "August 2009 - January 2015",
-          "summary": "<p>Earned a strong foundation in software engineering, with expertise in embedded computing, distributed systems, and intelligent systems.</p><p><a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://maxkalavera.blogspot.com/p/destacables.html\">Highlighted Projects</a></p>",
-          "url": {
-            "label": "",
-            "href": "https://www.uanl.mx/"
-          }
-        }
-      ]
-    },
-    "experience": {
-      "name": "Experience",
-      "columns": 1,
-      "separateLinks": true,
-      "visible": true,
-      "id": "experience",
-      "items": [
-        {
-          "id": "e2mlgnirwaxhymkenbfjmf8e",
-          "visible": true,
-          "company": "Wizeline",
-          "position": "Software Engineer / Front-End Developer",
-          "location": "Guadalajara, Jalisco, México",
-          "date": "January 2022 - July 2022",
-          "summary": "<p>Developed web interfaces primarily using React.js, collaborating closely with the NodeJS backend development team.</p><p>• Designed user interfaces with Figma and maintained Python asynchronous task tools.</p><p>• Contributed to front-end performance optimization and feature development.</p>",
-          "url": {
-            "label": "",
-            "href": "https://www.wizeline.com/"
-          }
-        },
-        {
-          "id": "i490qklngpi5xewnokj4kdlh",
-          "visible": true,
-          "company": "Crea Libre / Evient",
-          "position": "Full Stack Software Engineer",
-          "location": "San Nicolas, Nuevo León, México",
-          "date": "",
-          "summary": "<p>Played a key role in building a web application, heavily contributing to the architecture design and feature implementation.</p><p>• Developed front-end and back-end features using modern tools like Jenkins, Python, and ReactJS.</p><p>• Actively involved in decision-making for new feature development and system improvements.</p>",
-          "url": {
-            "label": "",
-            "href": "https://evient.mx/"
-          }
-        }
-      ]
-    },
-    "volunteer": {
-      "name": "Volunteering",
-      "columns": 1,
-      "separateLinks": true,
-      "visible": true,
-      "id": "volunteer",
-      "items": []
-    },
-    "interests": {
-      "name": "Interests",
-      "columns": 1,
-      "separateLinks": true,
-      "visible": true,
-      "id": "interests",
-      "items": []
-    },
-    "languages": {
-      "name": "Languages",
-      "columns": 1,
-      "separateLinks": true,
-      "visible": true,
-      "id": "languages",
-      "items": [
-        {
-          "id": "qf5pr0jh88vwyekujfm3g4c0",
-          "visible": true,
-          "name": "Spanish",
-          "description": "Native speaker",
-          "level": 5
-        },
-        {
-          "id": "zid9pnq91r5easy6f2cf52ku",
-          "visible": true,
-          "name": "English",
-          "description": "Fluent",
-          "level": 4
-        }
-      ]
-    },
-    "profiles": {
-      "name": "Profiles",
-      "columns": 1,
-      "separateLinks": true,
-      "visible": true,
-      "id": "profiles",
-      "items": [
-        {
-          "id": "ywtgkfuh855hif00cegj0tt4",
-          "visible": true,
-          "network": "LinkedIn",
-          "username": "max-hernandez-castillo",
-          "icon": "linkedin",
-          "url": {
-            "label": "",
-            "href": "https://www.linkedin.com/in/max-hernandez-castillo/"
-          }
-        },
-        {
-          "id": "um0muhi2fyb8y7qem62nve21",
-          "visible": true,
-          "network": "Github",
-          "username": "maxkalavera",
-          "icon": "github",
-          "url": {
-            "label": "",
-            "href": "https://github.com/maxkalavera"
-          }
-        }
-      ]
-    },
-    "projects": {
-      "name": "Projects",
-      "columns": 1,
-      "separateLinks": true,
-      "visible": true,
-      "id": "projects",
-      "items": []
-    },
-    "publications": {
-      "name": "Publications",
-      "columns": 1,
-      "separateLinks": true,
-      "visible": true,
-      "id": "publications",
-      "items": []
-    },
-    "references": {
-      "name": "References",
-      "columns": 1,
-      "separateLinks": true,
-      "visible": true,
-      "id": "references",
-      "items": []
-    },
-    "skills": {
-      "name": "Skills",
-      "columns": 1,
-      "separateLinks": true,
-      "visible": true,
-      "id": "skills",
-      "items": [
-        {
-          "id": "p11s0rctkb681207dyrlo7q4",
-          "visible": true,
-          "name": "Software Engineering Foundations",
-          "description": "",
-          "level": 4,
-          "keywords": [
-            "Algorithms",
-            "Data Structures",
-            "OOP",
-            "Functional Programming",
-            "Network Protocols",
-            "Network Architecture",
-            "Security",
-            "Information Systems",
-            "Embedded Systems"
-          ]
-        },
-        {
-          "id": "ik31p3pzypwc3hmolqt9uksk",
-          "visible": true,
-          "name": "Frontend Development",
-          "description": "",
-          "level": 5,
-          "keywords": [
-            "HTML",
-            "CSS / LESS / SCSS / Tailwind",
-            "JavaScript / Node.js",
-            "React",
-            "Redux / Jotai",
-            "Next.js"
-          ]
-        },
-        {
-          "id": "8fe1qrcr6vp5lkt5j4mlauo5",
-          "visible": true,
-          "name": "Backend Development",
-          "description": "",
-          "level": 4,
-          "keywords": [
-            "Python / Node.js",
-            "Flask / Django / Express",
-            "SQL / PostgreSQL / MySQL / SQLite",
-            "Jenkins",
-            "Linux / Bash"
-          ]
-        },
-        {
-          "id": "#4",
-          "visible": true,
-          "name": "UX/UI Design",
-          "description": "",
-          "level": 4,
-          "keywords": [
-            "Good fundamentals in graphic design",
-            "Figma",
-            "Inkscape / Vectornator",
-            "Gimp"
-          ]
-        }
-      ]
-    },
-    "custom": {}
-  },
-  "metadata": {
-    "template": "azurill",
-    "layout": [
-      [
-        [
-          "profiles",
-          "summary",
-          "experience",
-          "education",
-          "projects",
-          "volunteer",
-          "references"
+  "work":[
+     {
+        "description":"Software consulting company",
+        "name":"Crea Libre / Evient",
+        "position":"Full Stack Software Engineer",
+        "location":"San Nicolas, Nuevo León, México",
+        "url":"https://evient.mx/",
+        "summary":"Played a key role in building a web application, heavily contributing to the architecture design and feature implementation.\nDeveloped front-end and back-end features using modern tools like Jenkins, Python, and ReactJS.\nActively involved in decision-making for new feature development and system improvements.",
+        "startDate":"2017-06-01",
+        "endDate":"2019-07-01"
+     },
+     {
+        "url":"https://www.wizeline.com/",
+        "summary":"Developed web interfaces primarily using React.js, collaborating closely with the NodeJS backend development team.\nDesigned user interfaces with Figma and maintained Python asynchronous task tools.\nContributed to front-end performance optimization and feature development.",
+        "description":"Software consulting company",
+        "location":"Guadalajara, Jalisco, México",
+        "position":"Software Engineer / Front-End Developer",
+        "name":"Wizeline",
+        "startDate":"2022-01-01",
+        "endDate":"2022-07-01"
+     }
+  ],
+  "education":[
+     {
+        "institution":"University of Nuevo León (UANL)",
+        "url":"https://www.uanl.mx/",
+        "area":"Software Engineering",
+        "studyType":"Bachelor’s degree",
+        "startDate":"2009-08-01",
+        "endDate":"2015-01-01"
+     }
+  ],
+  "certificates":[
+     {
+        "issuer":"Coursera",
+        "url":"https://www.coursera.org/account/accomplishments/specialization/certificate/K6495WPA96GR",
+        "name":"Graphic Design Specialization"
+     },
+     {
+        "name":"Machine Learning",
+        "url":"https://www.coursera.org/account/accomplishments/certificate/A8FCSDG5P9M9",
+        "issuer":"Coursera"
+     }
+  ],
+  "skills":[
+     {
+        "keywords":[
+           "Fundamentals",
+           "Figma",
+           "Inkscape / Vectornator",
+           "Gimp"
         ],
-        [
-          "skills",
-          "interests",
-          "certifications",
-          "awards",
-          "publications",
-          "languages"
-        ]
-      ]
-    ],
-    "css": {
-      "value": ".section {\n\toutline: 1px solid #000;\n\toutline-offset: 4px;\n}",
-      "visible": false
-    },
-    "page": {
-      "margin": 18,
-      "format": "a4",
-      "options": {
-        "breakLine": false,
-        "pageNumbers": false
-      }
-    },
-    "theme": {
-      "background": "#efefef",
-      "text": "#0c0c0c",
-      "primary": "#ca8a04"
-    },
-    "typography": {
-      "font": {
-        "family": "IBM Plex Sans",
-        "subset": "latin",
-        "variants": [
-          "regular"
+        "name":"UX/UI Design",
+        "level":"3"
+     },
+     {
+        "keywords":[
+           "Python / Node.js",
+           "Flask / Django / Express",
+           "SQL / PostgreSQL / MySQL / SQLite",
+           "Jenkins",
+           "Linux / Bash"
         ],
-        "size": 14
-      },
-      "lineHeight": 1.5,
-      "hideIcons": false,
-      "underlineLinks": true
-    },
-    "notes": ""
-  }
+        "name":"Backend Development",
+        "level":"4"
+     },
+     {
+        "keywords":[
+           "HTML",
+           "CSS / LESS / SCSS/ Tailwind",
+           "JavaScript / Node.js",
+           "React",
+           "Redux / Jotai",
+           "Next.js"
+        ],
+        "name":"Frontend Development",
+        "level":"5"
+     },
+     {
+        "keywords":[
+           "Algorithms",
+           "Data Structures",
+           "OOP",
+           "SOLID",
+           "Functional Programming",
+           "Network Protocols",
+           "Network Architecture",
+           "Security",
+           "Information Systems",
+           "Embedded Systems"
+        ],
+        "name":"Software Engineering Foundations",
+        "level":"4"
+     }
+  ],
+  "languages":[
+     {
+        "language":"English",
+        "fluency":"5"
+     },
+     {
+        "language":"Spanish",
+        "fluency":"6"
+     }
+  ]
 }

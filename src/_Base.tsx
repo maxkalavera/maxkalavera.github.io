@@ -19,7 +19,7 @@ const Base = React.forwardRef<HTMLDivElement, Props>((
     >
     </div>
   )
-})
+});
 
 Base.displayName = 'Base';
 
