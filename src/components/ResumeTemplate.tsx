@@ -229,7 +229,7 @@ function Header() {
             alt="Profile"
             className={cn(
               "shadow-md shadow-gray-300 dark:shadow-sm dark:shadow-primary-500 print:shadow-none",
-              "bg-transparent w-24 h-24 rounded-lg relative z-20 object-cover",
+              "bg-white w-24 h-24 rounded-lg relative z-20 object-cover",
               "select-none pointer-events-none"
             )}
           />
