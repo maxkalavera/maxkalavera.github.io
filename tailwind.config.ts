@@ -11,8 +11,9 @@ const config: Config = {
   theme: {
   	extend: {
 			fontFamily: {
-        display: ["var(--font-display)", ...fontFamily.sans],
-        body: ["var(--font-body)", ...fontFamily.serif],
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+        serif: ["var(--font-serif)", ...fontFamily.serif],
+				mono: ["var(--font-mono)", ...fontFamily.mono],
       },
 			spacing: {
         'header': 'var(--header-height)',
@@ -114,6 +115,8 @@ const config: Config = {
       },
   	},
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+		require("tailwindcss-animate"),
+	],
 };
 export default config;

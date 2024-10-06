@@ -92,6 +92,14 @@
     --content-padding: theme(spacing[4]);
     --content-slide: calc(var(--content-height) - (2 * var(--content-padding)));
   }
+
+  @media print {
+    :root {
+      font-size: 12px;
+      -webkit-print-color-adjust: exact;   /* Chrome,Safari,Edge etc*/
+      color-adjust: exact;  
+    }
+  }
 }
 
 

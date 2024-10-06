@@ -37,7 +37,7 @@ const Navbar = React.forwardRef<HTMLDivElement, Props>((
             <NavigationMenuLink 
               className={cn(
                 navigationMenuTriggerStyle(),
-                "font-body text-md"
+                "font-serif text-md"
               )}
             >
               Home
@@ -49,7 +49,7 @@ const Navbar = React.forwardRef<HTMLDivElement, Props>((
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
-                "font-body text-md"
+                "font-serif text-md"
               )}
             >
               Resume
@@ -62,7 +62,7 @@ const Navbar = React.forwardRef<HTMLDivElement, Props>((
             <NavigationMenuLink
               className={cn(
                 navigationMenuTriggerStyle(),
-                "font-body text-md"
+                "font-serif text-md"
               )}
             >
               Projects

@@ -1,7 +1,10 @@
-import Resume from "@/components/Resume";
+//import Resume from "@/components/Resume";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { DownloadIcon } from "lucide-react";
+import ResumeTemplate from "@/components/ResumeTemplate";
+import resume from '@/assets/resume.json';
+import resumePicture from '@/assets/images/resume.png'
 
 export default function ResumePage() {
   return (
@@ -11,7 +14,6 @@ export default function ResumePage() {
         "flex flex-col justify-start items-center gap-8",
       )}
     >
-
       <div
         className={cn(
           "w-full flex flex-row justify-center sm:justify-end items-center px-4 z-50",
@@ -36,7 +38,12 @@ export default function ResumePage() {
 
         </Button>
       </div>
-      <Resume />
+      <ResumeTemplate 
+        resume={resume}
+        meta={{ 
+          profilePicture: resumePicture 
+        }}
+      />
     </div>
   );
 }

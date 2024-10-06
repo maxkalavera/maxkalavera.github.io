@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Provider } from 'jotai'
 import { 
-  Archivo_Black as FontDisplay,
-  Fira_Sans as FontBody,
+  Archivo_Black as FontSans,
+  Fira_Sans as FontSerif,
+  Fira_Mono as FontMono,
 } from 'next/font/google';
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "next-themes";
@@ -20,17 +21,24 @@ import Footer from "./_components/Footer";
     - captions    
 */
 
-const fontDisplay = FontDisplay({
+const fontSans = FontSans({
   subsets: ["latin"],
   weight: ["400"],
-  variable: "--font-display",
+  variable: "--font-sans",
   display: 'swap',
 });
 
-const fontBody = FontBody({
+const fontSerif= FontSerif({
   subsets: ["latin"],
   weight: ["400"],
-  variable: "--font-body",
+  variable: "--font-serif",
+  display: 'swap',
+});
+
+const fontMono = FontMono({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-mono",
   display: 'swap',
 });
 
@@ -59,9 +67,10 @@ export default function RootLayout({
           'font-sans antialiased',
           'flex flex-col justify-start items-center gap-0',
           'overflow-x-hidden',
-          fontDisplay.className,
-          fontDisplay.variable,
-          fontBody.variable,
+          fontSans.variable,
+          fontSerif.variable,
+          fontMono.variable,
+          'font-serif',
         )}
       >
         <Provider>
