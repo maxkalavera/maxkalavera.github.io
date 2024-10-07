@@ -24,6 +24,16 @@
      "summary":"Experienced software engineer from Monterrey, Mexico, with over 3 years of expertise in web development. \nProficient in Python and JavaScript with a strong ability to transform business requirements into effective software solutions.\nExtensive experience with Linux systems and hands-on knowledge of graphical user interface design and development."
   },
   "work":[
+      {
+         "url":"https://www.wizeline.com/",
+         "summary":"Developed web interfaces primarily using React.js, collaborating closely with the NodeJS backend development team.\nDesigned user interfaces with Figma and maintained Python asynchronous task tools.\nContributed to front-end performance optimization and feature development.",
+         "description":"Software consulting company",
+         "location":"Guadalajara, Jalisco, México",
+         "position":"Software Engineer / Front-End Developer",
+         "name":"Wizeline",
+         "startDate":"2022-01-01",
+         "endDate":"2022-07-01"
+      },
      {
         "description":"Software consulting company",
         "name":"Crea Libre / Evient",
@@ -33,16 +43,6 @@
         "summary":"Played a key role in building a web application, heavily contributing to the architecture design and feature implementation.\nDeveloped front-end and back-end features using modern tools like Jenkins, Python, and ReactJS.\nActively involved in decision-making for new feature development and system improvements.",
         "startDate":"2017-06-01",
         "endDate":"2019-07-01"
-     },
-     {
-        "url":"https://www.wizeline.com/",
-        "summary":"Developed web interfaces primarily using React.js, collaborating closely with the NodeJS backend development team.\nDesigned user interfaces with Figma and maintained Python asynchronous task tools.\nContributed to front-end performance optimization and feature development.",
-        "description":"Software consulting company",
-        "location":"Guadalajara, Jalisco, México",
-        "position":"Software Engineer / Front-End Developer",
-        "name":"Wizeline",
-        "startDate":"2022-01-01",
-        "endDate":"2022-07-01"
      }
   ],
   "education":[
