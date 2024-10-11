@@ -92,6 +92,14 @@ const MobilesNavigationMenu = React.forwardRef<HTMLButtonElement, Props>((
               Resume
             </Button>
           </Link>
+          <Link href="/blog" legacyBehavior passHref>
+            <Button 
+              variant='ghost'
+              onClick={() => setIsOpen(false)}
+            >
+              Blog
+            </Button>
+          </Link>
         </div>
       </SheetContent>
     </Sheet>

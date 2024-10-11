@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { DownloadIcon } from "lucide-react";
 import ResumeTemplate from "@/components/ResumeTemplate";
 import resume from '@/assets/resume.json';
-import resumePicture from '@/assets/images/resume.png'
+import profilePicture from "@/assets/images/profile.png";
 
 export default function ResumePage() {
   return (
@@ -41,7 +41,7 @@ export default function ResumePage() {
       <ResumeTemplate 
         resume={resume}
         meta={{ 
-          profilePicture: resumePicture 
+          profilePicture 
         }}
       />
     </div>

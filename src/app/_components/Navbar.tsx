@@ -56,6 +56,18 @@ const Navbar = React.forwardRef<HTMLDivElement, Props>((
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Link href="/blog" legacyBehavior passHref>
+            <NavigationMenuLink
+              className={cn(
+                navigationMenuTriggerStyle(),
+                "font-serif text-md"
+              )}
+            >
+              Blog
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
         {/*
         <NavigationMenuItem>
           <Link href="/projects" legacyBehavior passHref>
