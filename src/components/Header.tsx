@@ -2,20 +2,21 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import React from "react";
 import Link from "next/link";
-import Navbar from "./Navbar";
+import Navbar from "@/components/Navbar";
 import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import MobilesNavigationMenu from "./MobilesNavigationMenu";
+import MobilesNavigationMenu from "@/components/MobilesNavigationMenu";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface Props extends React.ComponentPropsWithoutRef<React.ElementType>  {
-
+  sticky?: boolean;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Header = React.forwardRef<HTMLDivElement, Props>((
   {
+    sticky,
     ...props
   }, 
   forwardedRef
@@ -25,9 +26,11 @@ const Header = React.forwardRef<HTMLDivElement, Props>((
       {...props}
       ref={forwardedRef}
       className={cn(
-        props.className,
+        "header",
         "w-full",
         "flex flex-row justify-center items-stretch gap-2",
+        !!sticky && "sticky top-0 backdrop-blur",
+        props.className,
       )}
     >
       <div

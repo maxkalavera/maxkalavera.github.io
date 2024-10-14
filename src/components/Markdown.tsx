@@ -17,8 +17,8 @@ const Markdown = React.forwardRef<HTMLDivElement, Props>((
     <ReactMarkdown 
       {...props}
       className={cn(
+        "text-md font-serif prose prose-gray dark:prose-invert prose-sm md:prose-base",
         props.className,
-        "text-md font-serif"
       )}
       components={{
         a: (props) => (

@@ -8,18 +8,8 @@ import {
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "next-themes";
 import "@/assets/globals.css";
-import Header from "./_components/Header";
-import Footer from "./_components/Footer";
-
-/*
-  fonts classification:
-    - display
-    - body
-    - cta (call to action)
-    - code (To show programming language code)
-    - navigation
-    - captions    
-*/
+//import Header from "@/components/Header";
+//import Footer from "@/components/Footer";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -61,35 +51,37 @@ export default function RootLayout({
       </head>
       <body
         className={cn(
-          //'dark',
           'bg-gradient-to-br from-gray-50 to-slate-50 dark:from-gray-950 dark:to-stone-950 dark:bg-background',
           'max-w-[100dvw] min-h-[100dvh]',
           'font-sans antialiased',
-          'flex flex-col justify-start items-center gap-0',
           'overflow-x-hidden',
           fontSans.variable,
           fontSerif.variable,
           fontMono.variable,
           'font-serif',
+          'flex flex-col justify-start items-center gap-0',
         )}
       >
         <Provider>
           <ThemeProvider attribute="class">
-            <Header 
-              className="w-full h-header print:hidden z-10"
-            />
-            <main
-              className={cn(
-                "w-full min-h-content h-fit",
-                "flex flex-col justify-stretch items-center",
-              )}
-            >
-              {children}
-            </main>
+            {/* 
+              <Header 
+                className="w-full h-header print:hidden z-10"
+              />
+              <main
+                className={cn(
+                  "w-full min-h-content h-fit",
+                  "flex flex-col justify-stretch items-center",
+                )}
+              >
+                {children}
+              </main>
+              <Footer
+                className="w-full h-footer print:hidden z-10"
+              />
+            */}
+            {children}
 
-            <Footer 
-              className="w-full h-footer print:hidden z-10"
-            />
           </ThemeProvider>
         </Provider>
       </body>

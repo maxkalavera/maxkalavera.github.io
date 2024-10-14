@@ -8,7 +8,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import ThemesButton from "./ThemesButton";
+import ThemesButton from "@/components/ThemesButton";
 import { Separator } from "@/components/ui/separator"
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type

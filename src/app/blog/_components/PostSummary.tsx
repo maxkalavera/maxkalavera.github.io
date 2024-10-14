@@ -2,6 +2,7 @@ import { PostMeta } from "@/types/blog";
 import { ArrowRight } from "lucide-react";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import profilePicture from "@/assets/images/profile.png";
 import { cn } from "@/lib/utils";
 import moment from "moment";
@@ -74,15 +75,15 @@ const PostSummary = React.forwardRef<HTMLDivElement, Props>((
         </div>
       </div>
 
-      <h2 
-        className="text-xl font-bold tracking-tight text-gray-900 dark:text-white"
+      <Link
+        href={`/blog/post/${postMeta.id}`}
       >
-        <a 
-          href="#"
+        <h2 
+          className="w-fill text-left text-xl font-bold tracking-tight text-gray-900 dark:text-white"
         >
-          {postMeta.title || 'Untitled'}
-        </a>
-      </h2>
+            {postMeta.title || 'Untitled'}
+        </h2>
+      </Link>
 
       <Markdown
         data-testid="summary"
@@ -109,15 +110,15 @@ const PostSummary = React.forwardRef<HTMLDivElement, Props>((
                 Max Hernandez
             </span>
           </div>
-          <a
+          <Link
             className="inline-flex items-center text-sm md:text-md font-serif font-medium text-primary-600 dark:text-primary-500 hover:underline" 
-            href="#" 
+            href={`/blog/post/${postMeta.id}`}
           >
-            Read more
+                        Read more
             <ArrowRight 
               className="ml-2 w-4 h-4"
             />
-          </a>
+          </Link>
       </div>
   </article> 
   )
