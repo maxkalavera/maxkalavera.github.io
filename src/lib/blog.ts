@@ -2,10 +2,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
 import { globSync } from 'glob';
-import { PostMeta } from '@/types/blog';
+import { PostData } from '@/types/blog';
 
 type PostPath = string;
 
+const PAGINATION_PAGE_SIZE = 20;
 const contentDirectory = path.join(process.cwd(), 'content');
 const postsDirectory = path.join(contentDirectory, 'posts');
 
@@ -31,16 +32,18 @@ export function collectPosts () {
       excerpt: matterResult.excerpt,
       content: matterResult.content,
       ...matterResult.data,
-    } as PostMeta;
+    } as PostData;
   });
 
-  return allPostsData.sort((a, b) => {
-    if ((a.date || a.id) < (b.date || b.id)) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+  return allPostsData
+    .filter((item) => !(item.draft || false))
+    .sort((a, b) => {
+      if ((a.date || a.id) < (b.date || b.id)) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
 }
 
 export function collectPost (id: string) {
@@ -51,4 +54,29 @@ export function collectPost (id: string) {
   } else {
     return null;
   }
+}
+
+export function countPosts () {
+  return collectPosts().length;
+}
+
+export function countPages () {
+  const numberPosts = countPosts();
+  return Math.ceil(numberPosts / PAGINATION_PAGE_SIZE);
+}
+
+export function getPagesParams () {
+  const numberPosts = countPosts();
+  return Array(Math.ceil(numberPosts / PAGINATION_PAGE_SIZE))
+    .fill(null)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    .map((_, index) => ({ page: (index + 1).toString() }))
+}
+
+export function getPostsByPage (page: number): PostData[] {
+  const allPostsData = collectPosts();
+  return allPostsData.slice(
+    (page - 1) * PAGINATION_PAGE_SIZE,
+    (page) * PAGINATION_PAGE_SIZE
+  );
 }

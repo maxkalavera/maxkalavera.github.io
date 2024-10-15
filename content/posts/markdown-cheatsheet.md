@@ -1,6 +1,6 @@
 ---
 title: 'Markdown cheatsheet'
-date: '2024-110-13'
+date: '2024-11-13'
 tags: ['article']
 ---
 Cheatsheet with the most important artifacts to use Markdown.
@@ -211,6 +211,11 @@ You can cerate both inline and full block code snippets. You can also define pro
     const x = "Block code snippet in JS";
     console.log(x);
     ```
+```
+
+```js
+const x = "Block code snippet in JS";
+console.log(x);
 ```
 
 I created `.env` file at the root.
@@ -474,3 +479,7 @@ You can also use raw HTML in your Markdown file. Most of the times that will wor
 
 ##### Section with some ID
 
+
+$$
+L = \frac{1}{2} \rho v^2 S C_L
+$$

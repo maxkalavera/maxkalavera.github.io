@@ -26,7 +26,7 @@ export default async function BlogPostPage(
       <section 
         className={cn(
           "w-full p-4 sm:p-8",
-          "bg-primary-500/5",
+          "dark:bg-primary-500/5",
           "flex flex-col justify-start items-center",
           "prose prose-gray dark:prose-invert prose-sm sm:prose-base"
         )}

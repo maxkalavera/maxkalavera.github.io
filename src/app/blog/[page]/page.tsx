@@ -1,11 +1,25 @@
 import { cn } from '@/lib/utils';
-import PostSummary from './_components/PostSummary';
-import { getPostsByPage } from '@/lib/blog';
+import PostSummary from '../_components/PostSummary';
+import { getPagesParams, getPostsByPage } from '@/lib/blog';
 import GeneralLayout from '@/layouts/GeneralLayout';
-import BlogPagination from './_components/BlogPagination';
+import BlogPagination from '../_components/BlogPagination';
 
-export default async function BlogPage() {
-  const posts = getPostsByPage(1);
+export async function generateStaticParams() {
+  return getPagesParams();
+}
+
+export default async function Page(
+  {
+    params: {
+      page
+    }
+  }: {
+    params: {
+      page: string
+    }
+  },
+) {
+  const posts = getPostsByPage(parseInt(page));
 
   return (
     <GeneralLayout>
@@ -35,7 +49,7 @@ export default async function BlogPage() {
         </div>
 
         <BlogPagination 
-          page={1}
+          page={parseInt(page)}
         />
       </section>
     </GeneralLayout>

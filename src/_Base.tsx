@@ -23,4 +23,4 @@ const Base = React.forwardRef<HTMLDivElement, Props>((
 
 Base.displayName = 'Base';
 
-export default Base
+export default Base;
