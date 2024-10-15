@@ -3,6 +3,7 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import { globSync } from 'glob';
 import { PostData } from '@/types/blog';
+import moment from "moment";
 
 type PostPath = string;
 
@@ -38,11 +39,11 @@ export function collectPosts () {
   return allPostsData
     .filter((item) => !(item.draft || false))
     .sort((a, b) => {
-      if ((a.date || a.id) < (b.date || b.id)) {
-        return 1;
-      } else {
-        return -1;
+      if (a.date && b.date) {
+        return moment(a.date).toDate() < moment(b.date).toDate() ? 1 : -1;
       }
+
+      return a.id < b.id ? 1 : -1;
     });
 }
 

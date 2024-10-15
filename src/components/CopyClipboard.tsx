@@ -1,5 +1,5 @@
 "use client"
-import React, { ReactNode, useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CopyIcon } from "lucide-react";
 import {
@@ -11,7 +11,7 @@ import {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface Props extends React.ComponentPropsWithoutRef<React.ElementType>  {
-  content: String;
+  content: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -41,7 +41,9 @@ const CopyClipboard = React.forwardRef<HTMLButtonElement, Props>((
       }, 1000);
     }
     return () => {
-      callback && clearTimeout(callback);
+      if (callback) {
+        clearTimeout(callback);
+      }
     };
   }, [isOpen]);
 

@@ -1,4 +1,4 @@
-import { PostMeta } from "@/types/blog";
+import { PostData } from "@/types/blog";
 import { ArrowRight } from "lucide-react";
 import React from "react";
 import Image from "next/image";
@@ -10,7 +10,7 @@ import Markdown from "@/components/Markdown";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface Props extends React.ComponentPropsWithoutRef<React.ElementType>  {
-  postMeta: PostMeta
+  postMeta: PostData
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

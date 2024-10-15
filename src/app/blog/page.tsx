@@ -23,9 +23,18 @@ export default async function BlogPage() {
           Max Hernandez&apos;s Blog
         </h1>
         <div
-          className="grid gap-8 md:grid-cols-2"
+          className={cn(
+            "w-full grid gap-8 md:grid-cols-2 content-center place-content-center items-center place-items-center"
+          )}
         >
-          {posts.map((post) => (
+          {posts.slice(0, 1).map((post) => (
+            <PostSummary 
+              className="w-full max-w-screen-sm col-span-2"
+              key={post.id}
+              postMeta={post}
+            />
+          ))}
+          {posts.slice(1, -1).map((post) => (
             <PostSummary 
               className="w-full max-w-screen-sm"
               key={post.id}

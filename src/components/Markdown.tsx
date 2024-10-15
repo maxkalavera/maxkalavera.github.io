@@ -58,10 +58,11 @@ const Markdown = React.forwardRef<HTMLDivElement, Props>((
             <SyntaxHighlighter
               {...rest as unknown as SyntaxHighlighterProps}
               PreTag="div"
-              children={String(children).replace(/\n$/, '')}
               language={match[1]}
               style={syntaxHighlighterStyle}
-            />
+            >
+              { String(children).replace(/\n$/, '') }
+            </SyntaxHighlighter>
           ) : (
             <code {...rest} className={className}>
               {children}
