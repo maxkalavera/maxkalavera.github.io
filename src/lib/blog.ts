@@ -23,7 +23,7 @@ export function collectPosts () {
     const matterResult = matter(
       fileContents,
       {
-        excerpt_separator: '---'
+        excerpt_separator: '<!-- excerpt -->'
       }
     );
 

@@ -96,7 +96,8 @@
            "JavaScript / Node.js",
            "React",
            "Redux / Jotai",
-           "Next.js"
+           "Next.js",
+           "Electron"
         ],
         "name":"Frontend Development",
         "level":"5"

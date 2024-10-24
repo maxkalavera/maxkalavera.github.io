@@ -6,6 +6,7 @@ import { Prism as SyntaxHighlighter, SyntaxHighlighterProps } from "react-syntax
 import { cb as syntaxHighlighterStyle } from "react-syntax-highlighter/dist/esm/styles/prism";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+import rehypeRaw from "rehype-raw";
 import 'katex/dist/katex.min.css'
 import CopyClipboard from "./CopyClipboard";
 
@@ -33,6 +34,7 @@ const Markdown = React.forwardRef<HTMLDivElement, Props>((
       ]}
       rehypePlugins={[
         rehypeKatex,
+        rehypeRaw,
       ]}
       components={{
         a: (props) => (
@@ -114,6 +116,10 @@ const Markdown = React.forwardRef<HTMLDivElement, Props>((
           <img
             {...props}
             alt={(props.alt || "") as unknown as string}
+            className={cn(
+              props.className || '',
+              "object-cover object-center w-full rounded-lg max-h-96",
+            )}
           />
         ), 
         li: (props) => (
