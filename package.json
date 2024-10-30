@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "gen:jsonresume": "json-schema-to-zod -i ./node_modules/@jsonresume/schema/schema.json -o ./src/types/jsonResume.generated.ts",
-    "gen:blogindex": "node ./scripts/collectPosts.mjs"
+    "resume:schema": "json-schema-to-zod -i ./node_modules/@jsonresume/schema/schema.json -o ./src/types/jsonResume.generated.ts",
+    "resume:pdf": "node ./scripts/latex.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",

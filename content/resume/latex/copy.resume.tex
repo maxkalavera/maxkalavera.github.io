@@ -1,0 +1,316 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This file is developed to be build to be compilied first with handlebars.js
+% second with xelated in mind.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[letterpaper]{article}
+\usepackage{fontawesome5}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{ragged2e}
+\usepackage{sectsty}
+\usepackage{titlesec}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Geometry
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\usepackage{paracol}
+\geometry{hmargin=1.75cm, vmargin=2.5cm}
+\columnratio{0.25, 0.75}
+\setlength\columnsep{0.05\textwidth}
+\setlength\parindent{0pt}
+\setlength{\smallskipamount}{8pt plus 3pt minus 3pt}
+\setlength{\medskipamount}{16pt plus 6pt minus 6pt}
+\setlength{\bigskipamount}{24pt plus 8pt minus 8pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Color definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{primary-50}{HTML}{fafaf9} 
+\definecolor{primary-100}{HTML}{f5f5f4}
+\definecolor{primary-200}{HTML}{e7e5e4}
+\definecolor{primary-300}{HTML}{d6d3d1}
+\definecolor{primary-400}{HTML}{a8a29e}
+\definecolor{primary-500}{HTML}{78716c}
+\definecolor{primary-600}{HTML}{57534e}
+\definecolor{primary-700}{HTML}{44403c}
+\definecolor{primary-800}{HTML}{292524}
+\definecolor{primary-900}{HTML}{1c1917}
+\definecolor{primary-950}{HTML}{0c0a09}
+
+\definecolor{accent-50}{HTML}{fffbeb} 
+\definecolor{accent-100}{HTML}{fef3c7}
+\definecolor{accent-200}{HTML}{fde68a}
+\definecolor{accent-300}{HTML}{fcd34d}
+\definecolor{accent-400}{HTML}{fbbf24}
+\definecolor{accent-500}{HTML}{f59e0b}
+\definecolor{accent-600}{HTML}{d97706}
+\definecolor{accent-700}{HTML}{b45309}
+\definecolor{accent-800}{HTML}{92400e}
+\definecolor{accent-900}{HTML}{78350f}
+\definecolor{accent-950}{HTML}{451a03}
+
+\definecolor{columns-divider}{HTML}{feead3}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sections formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Section seperators command
+%\newcommand{\sectionsep}[0]{\vspace{2\baselineskip}}
+\newcommand{\sectionsep}[0]{}
+
+% Subsection seperators command
+%\newcommand{\subsectionsep}[0]{\vspace{0.5\baselineskip}}
+\newcommand{\subsectionsep}[0]{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\color{primary-950}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+  \textbf {
+    \Huge
+    \color{primary-950}{{ basics.firstName }}
+    \color{accent-600}{{ basics.lastName }}
+  }
+\end{center}
+
+\begin{center}
+  \centering\textbf {
+    \color{primary-950}\large {{ basics.label }}
+  }
+\end{center}
+
+\begin{center}
+  \centering { 
+    \normalsize
+    \href{ {{ basics.url }} }{\faIcon{link}\vspace{5mm} {{ basics.url }} }\hspace{0.2cm}
+    \href{ {{ basics.email }} }{\faIcon{envelope}\vspace{5mm} {{ basics.email }} }\hspace{0.2cm}
+    \faIcon{globe-americas}\vspace{5mm} {{ basics.locationSummary }}
+  }
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Side column
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{minipage}[t][5cm][t]{0.25\textwidth} 
+\begin{small}
+\sectionfont{\normalsize\bfseries\uppercase}
+\subsectionfont{\color{accent-600}\normalsize\bfseries}
+
+  {{#if skills}}
+  \section*{Skills}{
+  {{#each skills}}
+    \subsection*{ {{ name }} }{
+      {{ level }}\newline
+      {{#each keywords}}{{ this }}{{/each}}\newline
+    }
+    {{#unless @last}} \subsectionsep {{/unless}}
+    {{/each}}
+  }
+  \sectionsep
+  {{/if}}
+
+  {{#if certificates}}
+  \section*{Certifications}{
+    {{#each certificates}}
+    \subsection*{ {{ name }} } {
+      {{ date }}\newline
+      {{ issuer }}\newline
+      {{ url }}\newline
+    }
+    {{#unless @last}} \subsectionsep {{/unless}}
+    {{/each}}
+  }
+  \sectionsep
+  {{/if}}
+
+  {{#if interests}}
+  \section*{Interests} {
+    {{#each interests}}
+    \subsection*{ {{ name }} } {
+      {{#each keywords}}
+        {{ this }} 
+      {{/each}}\newline
+    }
+    {{#unless @last}} \subsectionsep {{/unless}}
+    {{/each}}
+  }
+  \sectionsep
+  {{/if}}
+
+  {{#if languages}}
+  \section*{Languages} {
+    {{#each languages}}
+    \subsection*{ {{ language }} } {
+      {{ fluency }}\newline
+    }
+    {{#unless @last}} \subsectionsep {{/unless}}
+    {{/each}}
+  }
+  \sectionsep
+  {{/if}}
+
+  {{#if awards}}
+  \section*{Awards} {
+    {{#each awards}}
+    \subsection*{ {{ title }} } {
+      {{ date }}\newline
+      {{ awarder }}\newline
+      {{ summary }}\newline
+    }
+    {{#unless @last}} \subsectionsep {{/unless}}
+    {{/each}}
+  }
+  \sectionsep
+  {{/if}}
+
+  {{#if volunteer}}
+  \section*{Volunteer} {
+    {{#each volunteer}}
+    \subsection*{ {{ position }} } {
+      {{ organization }}\newline
+      {{ url }}\newline
+      {{ startDate }}\newline
+      {{ endDate }}\newline
+      {{ summary }}\newline
+    }
+    {{#each highlights}}
+      {{ this }} 
+    {{/each}}\newline
+    {{#unless @last}} \subsectionsep {{/unless}}
+    {{/each}}
+  }
+  \sectionsep
+  {{/if}}
+
+  {{#if publications}}
+  \section*{Publications} {
+    {{#each publications}}
+    \subsection*{ {{ name }} } {
+      {{ publisher }}\newline
+      {{ releaseDate }}\newline
+      {{ url }}\newline
+      {{ summary }}\newline
+    }
+    {{#each highlights}}
+      {{ this }} 
+    {{/each}}\newline
+    {{#unless @last}} \subsectionsep {{/unless}}
+    {{/each}}
+  }
+  \sectionsep
+  {{/if}}
+
+\end{small}
+\end{minipage}
+\hspace{1em}
+\textcolor{columns-divider}{\vrule width 1pt}
+\hspace{1em}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main column
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}[t]{0.75\textwidth} 
+  \sectionfont{\bfseries\large\uppercase}
+  \subsectionfont{\color{accent-600}\normalsize\bfseries}
+
+  {{#if basics.summary}}
+  \section*{Profile} {
+    { {{ basics.summary }} }
+  }
+  \sectionsep
+  {{/if}}
+  
+  {{#if work}}
+  \section*{Experience} {
+    {{#each work}}
+    \subsection*{ {{ position }} } {
+      {{#if url}}{{ url }}\newline{{/if}}
+      {{#if summary}}{{ summary }}\newline{{/if}}
+      {{#if description}}{{ description }}\newline{{/if}}
+      {{#if location}}{{ location }}\newline{{/if}}
+      {{#if name}}{{ name }}\newline{{/if}}
+      {{#if startDate}}{{ startDate }}\newline{{/if}}
+      {{#if endDate}}{{ endDate }}\newline{{/if}}
+      {{#if endDate}}
+        {{#each highlights}}
+          {{ this }} 
+        {{/each}}\newline
+      {{/if}}
+    }
+    {{#unless @last}} \subsectionsep {{/unless}}
+    {{/each}}
+  }
+  \sectionsep
+  {{/if}}
+  
+  {{#if education}}
+  \section*{Education} {
+    {{#each education}}
+    \subsection*{ {{ area }} } {
+      {{#if institution}}{{ institution }}\newline{{/if}}
+      {{#if url}}{{ url }}\newline{{/if}}
+      {{#if studyType}}{{ studyType }}\newline{{/if}}
+      {{#if startDate}}{{ startDate }}\newline{{/if}}
+      {{#if endDate}}{{ endDate }}\newline{{/if}}
+      {{#if score}}{{ score }}\newline{{/if}}
+      {{#if courses}}
+        {{#each courses}}
+          {{ this }} 
+        {{/each}}\newline
+      {{/if}}
+    }
+    {{#unless @last}} \subsectionsep {{/unless}}
+    {{/each}}
+  }
+  \sectionsep
+  {{/if}}
+
+  {{#if projects}}
+  \section*{Projects} {
+    {{#each projects}}
+    \subsection*{ {{ name }} } {
+      {{#if description}}{{ description }}\newline{{/if}}
+      {{#if startDate}}{{ startDate }}\newline{{/if}}
+      {{#if startDate}}{{ startDate }}\newline{{/if}}
+      {{#if url}}{{ url }}\newline{{/if}}
+      {{#if highlights}}
+        {{#each highlights}}
+          {{ this }} 
+        {{/each}}\newline
+      {{/if}}
+    }
+    {{#unless @last}} \subsectionsep {{/unless}}
+    {{/each}}
+  }
+  \sectionsep
+  {{/if}}
+
+  {{#if references}}
+  \section*{References} {
+    {{#each references}}
+    \subsection*{ {{ name }} } {
+      {{#if reference}}{{ reference }}\newline{{/if}}
+    }
+    {{#unless @last}} \subsectionsep {{/unless}}
+    {{/each}}
+  }
+  {{/if}}
+
+
+\end{minipage}
+
+\end{document}
