@@ -55,9 +55,9 @@
   }],
   "references": [{
     "name": "Jane Doe",
-    "reference": "Reference…"
+    "reference": "Director of Sales, North America\nABC Company\n1234 Main St\nAustin, TX 78701\n512-555-6789\nl.martinez@abccompany.com"
   }],
-  
+
   "volunteer": [{
     "organization": "Organization",
     "position": "Volunteer",

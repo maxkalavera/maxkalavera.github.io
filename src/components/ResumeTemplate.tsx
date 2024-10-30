@@ -228,7 +228,7 @@ function Header() {
             src={profilePicture}
             alt="Profile"
             className={cn(
-              "shadow-md shadow-gray-300 dark:shadow-sm dark:shadow-primary-500 print:shadow-none",
+              "dark:shadow-sm dark:shadow-primary-500 print:shadow-none",
               "bg-white w-24 h-24 rounded-lg relative z-20 object-cover",
               "select-none pointer-events-none"
             )}
@@ -662,7 +662,7 @@ function Profiles() {
   const profiles = useAtomValue(profilesAtom);
   return (
     <div
-      className="flex flex-row justify-start items-center"
+      className="w-full flex flex-row justify-start items-center flex-wrap sm:flex-nowrap"
     >
       {
         profiles.map((profile, index) => (
@@ -954,7 +954,6 @@ function Rating (
             className={cn(
               "border-solid border-primary border-[1px]",
               "w-3 h-3 rounded-full",
-              "shadow-md shadow-gray-400 dark:shadow-none print:shadow-none",
               (item <= level ? 
                 "bg-primary print:bg-primary" :
                 "bg-primary/5 print:bg-transparent"

@@ -27,11 +27,7 @@
 \setlength\columnsep{0.05\textwidth}
 \setlength\parindent{0pt}
 \setlength\textfloatsep{0pt}
-\setlength\parskip{0.7em}
-%\setlength{\smallskipamount}{8pt plus 3pt minus 3pt}
-%\setlength{\medskipamount}{16pt plus 6pt minus 6pt}
-%\setlength{\bigskipamount}{24pt plus 8pt minus 8pt}
-
+\setlength\parskip{0.4em}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Color definitions
@@ -71,9 +67,7 @@
 \newcommand{\customtitlerule}{\color{accent-900}\titlerule}
 \titleformat{\section}{\color{accent-700}\raggedright\normalsize\bfseries\uppercase}{}{0em}{}
 \titleformat{\subsection}{\color{accent-700}\raggedright\normalsize\bfseries}{}{0em}{}
-\titlespacing{\section}{12pc}{0.9ex plus .1ex minus .2ex}{0.75ex}
-%\titlespacing{\section}{0pt}{\smallskipamount}{\smallskipamount}
-%\titlespacing{\subsection}{0pt}{\smallskipamount}{\smallskipamount}
+\titlespacing{\section}{12pc}{0.75ex plus .1ex minus .2ex}{0.75ex}
 
 \newcommand{\headertitle}[1]{\hphantom{}{\color{accent-700}\raggedright\normalsize\bfseries\titlecap{#1}}}
 \newcommand{\headersubtitle}[1]{\hphantom{}{\raggedright\normalsize\bfseries\titlecap{#1}}}
@@ -100,7 +94,7 @@
 
 \begin{document}
 \color{primary-950}
-\fontsize{11pt}{16pt}\selectfont
+\fontsize{11pt}{14pt}\selectfont
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Side column
@@ -218,7 +212,7 @@
       \color{primary-950}\large {{ basics.label }}
     }\\\smallskip
 
-    \begin{supertabular}{lll}
+    \begin{supertabular}{l l l}
       \href { {{ basics.url }} }{\faIcon{link} {{ basics.url }} } &
       \href { mailto:{{ basics.email }} }{\faIcon{envelope} {{ basics.email }} } &
       \faIcon{globe-americas} {{ basics.locationSummary }} \\
@@ -256,17 +250,10 @@
   {{#if projects}}
   \section*{Projects} {
     {{#each projects}}
-    \subsection*{ {{ name }} } {
+      {{ header }}
       {{#if description}}{{ description }}\newline{{/if}}
-      {{#if startDate}}{{ startDate }}\newline{{/if}}
-      {{#if startDate}}{{ startDate }}\newline{{/if}}
-      {{#if url}}{{ url }}\newline{{/if}}
-      {{#if highlights}}
-        {{#each highlights}}
-          {{ this }} 
-        {{/each}}\newline
-      {{/if}}
-    }
+      {{#if formatedHighlights}}\bfseries Highlights: \normalfont {{ formatedHighlights }}\newline{{/if}}
+      {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
     {{/each}}
   }
   {{/if}}
@@ -274,9 +261,8 @@
   {{#if references}}
   \section*{References} {
     {{#each references}}
-    \subsection*{ {{ name }} } {
-      {{#if reference}}{{ reference }}\newline{{/if}}
-    }
+      {{#if formatedReference}}{{ formatedReference }}\newline{{/if}}
+      \par
     {{/each}}
   }
   {{/if}}
