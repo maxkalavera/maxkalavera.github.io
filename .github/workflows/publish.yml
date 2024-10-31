@@ -27,7 +27,7 @@ jobs:
           path: node_modules
           key: node-modules-${{ hashFiles('package-lock.json') }}
       - name: install Texlive
-        run: sudo apt install texlive -y
+        run: sudo apt install texlive texlive-xetex -y
       - name: Install Node.js dependencies
         shell: bash
         run: npm ci
