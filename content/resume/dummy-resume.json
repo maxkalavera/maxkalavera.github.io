@@ -53,11 +53,16 @@
     ],
     "url": "https://project.com/"
   }],
-  "references": [{
-    "name": "Jane Doe",
-    "reference": "Director of Sales, North America\nABC Company\n1234 Main St\nAustin, TX 78701\n512-555-6789\nl.martinez@abccompany.com"
-  }],
-
+  "references": [
+    {
+      "name": "Jane Doe",
+      "reference": "Director of Sales, North America<br />ABC Company<br />1234 Main St<br />Austin, TX 78701<br />512-555-6789<br />l.martinez@abccompany.com"
+    },
+    {
+      "name": "John Doe",
+      "reference": "Is good"
+    }
+  ],
   "volunteer": [{
     "organization": "Organization",
     "position": "Volunteer",
@@ -69,17 +74,27 @@
       "Awarded 'Volunteer of the Month'"
     ]
   }],
-  "awards": [{
-    "title": "Award",
-    "date": "2014-11-01",
-    "awarder": "Company",
-    "summary": "There is no spoon."
+
+  "skills": [{
+    "name": "Web Development",
+    "level": "5",
+    "keywords": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Ferrets",
+      "Unicorns"
+    ]
   }],
   "certificates": [{
     "name": "Certificate",
     "date": "2021-11-07",
     "issuer": "Company",
     "url": "https://certificate.com"
+  }],
+  "languages": [{
+    "language": "English",
+    "fluency": "4"
   }],
   "publications": [{
     "name": "Publication",
@@ -88,18 +103,11 @@
     "url": "https://publication.com",
     "summary": "Description…"
   }],
-  "skills": [{
-    "name": "Web Development",
-    "level": "Master",
-    "keywords": [
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ]
-  }],
-  "languages": [{
-    "language": "English",
-    "fluency": "Native speaker"
+  "awards": [{
+    "title": "Award",
+    "date": "2014-11-01",
+    "awarder": "Company",
+    "summary": "There is no spoon."
   }],
   "interests": [{
     "name": "Wildlife",

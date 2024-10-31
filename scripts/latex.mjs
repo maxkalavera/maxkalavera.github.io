@@ -14,11 +14,10 @@ const JSON_RESUME_FILE = path.resolve("./content/resume/dummy-resume.json");
   const sidebar: string[] = [
     "skills",
     "certifications",
-    "interests",
     "languages",
-    "awards",
-    "volunteer",
     "publications",
+    "awards",
+    "interests",
   ];
   const main: string[] = [
     "profiles", 
@@ -27,6 +26,7 @@ const JSON_RESUME_FILE = path.resolve("./content/resume/dummy-resume.json");
     "education", 
     "projects", 
     "references",
+    "volunteer",
   ];
 */
 
@@ -55,7 +55,7 @@ function formatHeader (
         \\bfseries{${startDate || ''}}&\\headertitle{${title}}\\\\
         \\bfseries{${endDate || ''}}&\\headersubtitle{${subtitle}}\\\\
       \\end{supertabular}
-    }\\par`;
+    }`;
   } else if (title && !subtitle && (startDate || endDate)) {
     return `{
       \\setlength{\\tabcolsep}{0pt}
@@ -63,7 +63,7 @@ function formatHeader (
         \\bfseries{${startDate || ''}}&\\\\
         \\bfseries{${endDate || ''}}&\\headertitle{${title}}\\\\
       \\end{supertabular}
-    }\\par`; // 
+    }`; 
   } else if (title && subtitle && !(startDate || endDate)) {
     return `{
       \\setlength{\\tabcolsep}{0pt}
@@ -71,19 +71,26 @@ function formatHeader (
         \\headertitle{${title}}\\\\
         \\headersubtitle{${subtitle}}\\\\
       \\end{supertabular}
-    }\\par`;
+    }`;
   } else {
-    return `\\headertitle{${title}} \\par`;
+    return `\\headertitle{${title}}`;
   }
 }
 
+function formatMarkdown(content) {
+  if (content) {
+    return `\\begin{markdown}\n${content.replace(/<br *\/?>/g, '\\\n')}\n\\end{markdown}`;
+  }
+  return null;
+}
+
 function formatReference (name, reference) {
-  return `\\headertitle{${name}}\\\\${reference}`;
+  return `\\headertitle{${name}}\\\\${formatMarkdown(reference)}`;
 }
 
 function formatEnumerate (items) {
   if (Array.isArray(items)) {
-    return `\\begin{inparaenum}${ items.map(item => `\\item ${item}`) }\\end{inparaenum}`;
+    return `\\begin{inparaenum}[]\n${items.map(item => (`\\item ${item}`)).join(',\n')}\\end{inparaenum}\n`;
   }
   return null;
 }
@@ -92,15 +99,35 @@ function formatLink (link) {
   return `\\link{${link || ''}}{${link || ''}}`;
 }
 
+function formatRatingBar (value) {
+  if (value > 0 && value <= 5) {
+    return (
+      '{\n' + 
+      '\\setlength{\\tabcolsep}{1mm} \\color{accent-500}\\scriptsize\n' +
+      '\\begin{tabular}{l l l l l}\n' + 
+      (
+        Array(5).fill(null).map((_, index) => 
+          index + 1 < value ? `\\faIcon{circle}` :  `\\faIcon[regular]{circle}`
+        ).join(' & ')
+      ) +
+      '\\\\[2mm] \\end{tabular} \n' +
+      '}\n'
+    );
+  }
+  return null;
+}
+
 function prepareData (data) {
   const name = data.basics.name.trim().replace(/\s+/g,' ');
   const location = data.basics.location;
   return {
     ...data,
+    // Main column
     basics: {
       ...data.basics,
       firstName: name.split(' ')[0].toUpperCase(),
       lastName: name.split(' ').slice(1).join(' ').toUpperCase(),
+      formatedSummary: formatMarkdown(data.basics.summary),
       locationSummary: [location.city, location.countryCode].filter((item) => item !== null).join(', '),
     },
     work: data.work.map(item => ({
@@ -111,6 +138,7 @@ function prepareData (data) {
         startDate: formatDate(item.startDate, 'MMM YYYY'),
         endDate: formatDate(item.endDate, 'MMM YYYY'),
       }),
+      formatedSummary: formatMarkdown(item.summary),
       formatedHighlights: formatEnumerate(item.highlights),
       formatedLink: formatLink(item.url),
     })),
@@ -131,6 +159,7 @@ function prepareData (data) {
         title: item.name,
         subtitle: (item.startDate || item.endDate) ? `${formatDate(item.startDate, 'MMM YYYY')} - ${formatDate(item.endDate, 'MMM YYYY')}` : undefined,
       }),
+      formatedDescription: formatMarkdown(item.description),
       formatedHighlights: formatEnumerate(item.highlights),
       formatedLink: formatLink(item.url),
     })),
@@ -140,20 +169,66 @@ function prepareData (data) {
     })),
     volunteer: data.volunteer.map(item => ({
       ...item,
-      startDate: formatDate(item.startDate, 'MMM YYYY'),
-      endDate: formatDate(item.endDate, 'MMM YYYY'),
+      header: formatHeader({
+        title: item.position,
+        subtitle: item.organization,
+        startDate: formatDate(item.startDate, 'MMM YYYY'),
+        endDate: formatDate(item.endDate, 'MMM YYYY'),
+      }),
+      formatedSummary: formatMarkdown(item.summary),
+      formatedHighlights: formatEnumerate(item.highlights),
     })),
-    awards: data.awards.map(item => ({
+    
+    // Side column
+    skills: data.skills.map(item => ({
       ...item,
-      date: formatDate(item.date, 'MMMM DD YYYY'),
+      header: formatHeader({
+        title: item.name,
+      }),
+      formatedkeywords: formatEnumerate(item.keywords),
+      formatedLevel: formatRatingBar(item.level),
     })),
     certificates: data.certificates.map(item => ({
       ...item,
-      date: formatDate(item.date, 'MMMM DD YYYY'),
+      header: formatHeader({
+        title: item.name,
+        subtitle: item.issuer,
+      }),
+      formatedDate: formatDate(item.date, 'MMM YYYY'),
+      formatedLink: formatLink(item.url),
+    })),
+    languages: data.languages.map(item => ({
+      ...item,
+      header: formatHeader({
+        title: item.language,
+      }),
+      formatedFluency: formatRatingBar(item.fluency),
     })),
     publications: data.publications.map(item => ({
       ...item,
-      date: formatDate(item.date, 'MMMM DD YYYY'),
+      header: formatHeader({
+        title: item.name,
+        subtitle: item.issuer,
+      }),
+      frmatedReleaseDate: formatDate(item.releaseDate, 'MMMM DD YYYY'),
+      formatedSummary: formatMarkdown(item.summary),
+      formatedLink: formatLink(item.url),
+    })),
+    awards: data.awards.map(item => ({
+      ...item,
+      header: formatHeader({
+        title: item.title,
+        subtitle: item.awarder,
+      }),
+      formatedDate: formatDate(item.date, 'MMM YYYY'),
+      formatedSummary: formatMarkdown(item.summary),
+    })),
+    interests: data.interests.map(item => ({
+      ...item,
+      header: formatHeader({
+        title: item.name,
+      }),
+      formatedkeywords: formatEnumerate(item.keywords),
     })),
   }
 }
@@ -173,8 +248,7 @@ function main () {
     fs.mkdirSync(COMPILING_DIR, { recursive: true });
   }
   fs.writeFileSync(path.join(COMPILING_DIR, 'resume.tex'), latexContent);
-  execSync(`xelatex -output-directory=${COMPILING_DIR} ${path.join(COMPILING_DIR, 'resume.tex')}`, {stdio: 'inherit'});
-
+  execSync(`xelatex --shell-escape -output-directory=${COMPILING_DIR} ${path.join(COMPILING_DIR, 'resume.tex')}`, {stdio: 'inherit'});
   // fs.copyFileSync(path.join(OUTPUT_DIR, "resume.pdf"), PUBLIC_DIR);
 }
 
