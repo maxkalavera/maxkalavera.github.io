@@ -4,15 +4,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass{article}
-\def\markdownOptionOutputDir{./.latex}
-\ExplSyntaxOn
-\str_new:N
-  \g_luabridge_output_dirname_str
-\str_gset:NV
-  \g_luabridge_output_dirname_str
-  \markdownOptionOutputDir
-\ExplSyntaxOff
-\usepackage{markdown}
+{{ markdownPackage }}
 \usepackage{fontawesome5}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}

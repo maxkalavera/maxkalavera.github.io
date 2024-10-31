@@ -7,28 +7,12 @@ import moment from 'moment';
 const COMPILING_DIR = path.resolve("./.latex/");
 const LATEX_TEMPLATE_FILE = path.resolve("./content/resume/latex/resume.tex");
 const JSON_RESUME_FILE = path.resolve("./content/resume/resume.json");
-//const JSON_RESUME_FILE = path.resolve("./content/resume/dummy-resume.json");
 const PUBLIC_DIR = path.resolve("./public/static/resume.pdf");
 
-/*
-  const sidebar: string[] = [
-    "skills",
-    "certifications",
-    "languages",
-    "publications",
-    "awards",
-    "interests",
-  ];
-  const main: string[] = [
-    "profiles", 
-    "summary", 
-    "experience", 
-    "education", 
-    "projects", 
-    "references",
-    "volunteer",
-  ];
-*/
+/******************************************************************************
+ * Latex blocks of code to take the data and format it for latex
+ * Kind of what you would do in latex with \newcommand but from js.
+ *****************************************************************************/
 
 function formatDate (date, format) {
   const source = moment(date);
@@ -48,20 +32,20 @@ function formatHeaderSection (data) {
 
   return (
     `\\begin{center}
-  \\textbf {
-    \\Huge
-    \\color{primary-950}${ firstName }
-    \\color{accent}${ lastName }
-  }\\\\ \\smallskip
-  \\textbf {
-    \\color{primary-950}\\large ${ label }
-  }\\\\ \\smallskip
+      \\textbf {
+        \\Huge
+        \\color{primary-950}${ firstName }
+        \\color{accent}${ lastName }
+      }\\\\ \\smallskip
+      \\textbf {
+        \\color{primary-950}\\large ${ label }
+      }\\\\ \\smallskip
 
-  \\begin{supertabular}{l}
-    \\href {${ url }}{\\faIcon{link} ${ trim(url, 47) }} \\\\
-    \\href { mailto:{{ basics.email }} }{\\faIcon{envelope} ${ email }} \\\\
-    \\faIcon{globe-americas} ${ formatedLocation } \\\\
-  \\end{supertabular}
+      \\begin{supertabular}{l}
+        \\href {${ url }}{\\faIcon{link} ${ trim(url, 47) }} \\\\
+        \\href { mailto:{{ basics.email }} }{\\faIcon{envelope} ${ email }} \\\\
+        \\faIcon{globe-americas} ${ formatedLocation } \\\\
+      \\end{supertabular}
     \\end{center}`
   )
 }
@@ -126,13 +110,6 @@ function formatEnumerate (items) {
   return null;
 }
 
-function trim (value, maxSize) {
-  if (value.length > maxSize) {
-    return `${value.slice(0, maxSize)}...`;
-  }
-  return value;
-}
-
 function formatLink (url, { label, maxSize }={ label: undefined, maxSize: 67 }) {
   let formatedLabel = trim(label || url, maxSize);
   return `\\href{${url}}{\\hphantom{}{\\footnotesize\\textcolor{accent}{\\faIcon{link}}} ${formatedLabel}}`;
@@ -156,11 +133,31 @@ function formatRatingBar (value) {
   return null;
 }
 
+function includeMarkdownPackage () {
+  return `
+\\def\\markdownOptionOutputDir{${COMPILING_DIR}}
+\\ExplSyntaxOn
+\\str_new:N
+\\g_luabridge_output_dirname_str
+\\str_gset:NV
+\\g_luabridge_output_dirname_str
+\\markdownOptionOutputDir
+\\ExplSyntaxOff
+\\usepackage{markdown}
+  `;
+}
+
+/******************************************************************************
+ * Takes the Raw data given to the handlebars.js template and format it to
+ * create the custom elements for latex.
+ *****************************************************************************/
+
 function prepareData (data) {
   const name = data.basics.name.trim().replace(/\s+/g,' ');
   const location = data.basics.location;
   return {
     ...data,
+    markdownPackage: includeMarkdownPackage(),
     // Main column
     basics: {
       ...data.basics,
@@ -273,6 +270,11 @@ function prepareData (data) {
   }
 }
 
+/******************************************************************************
+ * Script takes the Json Resume content, the LaTeX template 
+ * build the PDF document and copy it to the public folder of the website.
+ *****************************************************************************/
+
 function main () {
   const jsonResume = JSON.parse(fs.readFileSync(JSON_RESUME_FILE, 'utf8'));
   const latexTemplate = fs.readFileSync(LATEX_TEMPLATE_FILE, 'utf8');
@@ -293,3 +295,14 @@ function main () {
 }
 
 main();
+
+/******************************************************************************
+ * Utils
+ *****************************************************************************/
+
+function trim (value, maxSize) {
+  if (value.length > maxSize) {
+    return `${value.slice(0, maxSize)}...`;
+  }
+  return value;
+}
