@@ -33,12 +33,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Geometry
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
 \geometry{hmargin=1.5cm, vmargin=1.5cm}
 \columnratio{0.3, 0.7}
 \setlength\columnsep{0.05\textwidth}
 \setlength\parindent{0pt}
 \setlength\textfloatsep{0pt}
 \setlength\parskip{0.6em}
+\fontsize{11pt}{13pt}\selectfont
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Color definitions
@@ -74,15 +76,12 @@
 
 \newcommand{\headertitle}[1]{\hphantom{}{\color{accent}\raggedright\normalsize\bfseries\titlecap{#1}}}
 \newcommand{\headersubtitle}[1]{\hphantom{}{\raggedright\normalsize\bfseries\titlecap{#1}}}
-% Footer link params: #1: url, #2: label
-\newcommand{\link}[2]{\href{#1}{\hphantom{}{\footnotesize\textcolor{accent}{\faIcon{link}} } #2}} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Document
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \color{primary-950}
-\fontsize{11pt}{13pt}\selectfont
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Side column
@@ -90,7 +89,7 @@
 \begin{paracol}{2}
 \begin{leftcolumn*}
 \titleformat{\section}{\color{accent}\raggedright\normalsize\bfseries\uppercase}{}{0ex}{}
-\titlespacing{\section}{0ex}{0.35ex}{0.75ex}
+\titlespacing{\section}{0ex}{0.75ex}{0.75ex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Skills
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -99,6 +98,7 @@
     {{ header }}\newline
     {{#if formatedkeywords}}{{ formatedkeywords }}\newline{{/if}}
     {{#if formatedLevel}}Level: {{ formatedLevel }}\newline{{/if}}
+    \par
   {{/each}}
 }{{/if}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -109,6 +109,7 @@
     {{ header }}\newline
     {{#if formatedDate}}{{ formatedDate }}\newline{{/if}}
     {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
+    \par
   {{/each}}
 }{{/if}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,6 +119,7 @@
   {{#each languages}}
     {{ header }}\newline
     {{#if formatedFluency}} Fluency: {{ formatedFluency }}\newline{{/if}}
+    \par
   {{/each}}
 }{{/if}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -132,6 +134,7 @@
       \\
     {{/if}}
     {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
+    \par
   {{/each}}
 }{{/if}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -142,6 +145,7 @@
     {{ header }}\newline
     {{#if formatedDate}}{{ formatedDate }}\newline{{/if}}
     {{#if formatedSummary}}{{ formatedSummary }}\newline{{/if}}
+    \par
   {{/each}}
 }{{/if}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -150,7 +154,8 @@
 {{#if interests}}\section*{Interests}{
   {{#each interests}}
     {{ header }}\newline
-    {{#if formatedkeywords}}{{ formatedkeywords }}\newline{{/if}} 
+    {{#if formatedkeywords}}{{ formatedkeywords }}\newline{{/if}}
+    \par
   {{/each}}
 }{{/if}}
 
@@ -165,22 +170,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Header
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{center}
-  \textbf {
-    \Huge
-    \color{primary-950}{{ basics.firstName }}
-    \color{accent}{{ basics.lastName }}
-  }\\\smallskip
-  \textbf {
-    \color{primary-950}\large {{ basics.label }}
-  }\\\smallskip
 
-  \begin{supertabular}{l l l}
-    \href { {{ basics.url }} }{\faIcon{link} {{ basics.url }} } &
-    \href { mailto:{{ basics.email }} }{\faIcon{envelope} {{ basics.email }} } &
-    \faIcon{globe-americas} {{ basics.locationSummary }} \\
-  \end{supertabular}
-\end{center}
+{{ header }}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Profile
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -202,6 +194,7 @@
     {{/if}}
     {{#if formatedHighlights}}\bfseries Highlights: \normalfont {{ formatedHighlights }}\newline{{/if}}
     {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
+    \par
   {{/each}}
 }
 {{/if}}
@@ -214,6 +207,7 @@
     {{ header }}\par
     {{#if formatedCourses}}\bfseries Courses: \normalfont {{ formatedCourses }}\newline{{/if}}
     {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
+    \par
   {{/each}}
 }
 {{/if}}
@@ -230,6 +224,7 @@
     {{/if}}
     {{#if formatedHighlights}}\bfseries Highlights: \normalfont {{ formatedHighlights }}\newline{{/if}}
     {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
+    \par
   {{/each}}
 }
 {{/if}}
@@ -256,6 +251,7 @@
       \par
     {{/if}}
     {{#if formatedHighlights}}\bfseries Highlights: \normalfont {{ formatedHighlights }}\newline{{/if}}
+    \par
   {{/each}}
 }
 {{/if}}

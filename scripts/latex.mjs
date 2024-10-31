@@ -6,9 +6,9 @@ import moment from 'moment';
 
 const COMPILING_DIR = path.resolve("./.latex/");
 const LATEX_TEMPLATE_FILE = path.resolve("./content/resume/latex/resume.tex");
-//const JSON_RESUME_FILE = path.resolve("./content/resume/resume.json");
-const JSON_RESUME_FILE = path.resolve("./content/resume/dummy-resume.json");
-//const PUBLIC_DIR = path.resolve("./public/static/resume.pdf");
+const JSON_RESUME_FILE = path.resolve("./content/resume/resume.json");
+//const JSON_RESUME_FILE = path.resolve("./content/resume/dummy-resume.json");
+const PUBLIC_DIR = path.resolve("./public/static/resume.pdf");
 
 /*
   const sidebar: string[] = [
@@ -35,7 +35,38 @@ function formatDate (date, format) {
   return source.isValid() ? source.format(format) : '';
 } 
 
-function formatHeader (
+function formatHeaderSection (data) {
+  const name = data.basics.name.trim().replace(/\s+/g,' ');
+  const location = data.basics.location;
+  const firstName = name.split(' ')[0].toUpperCase();
+  const lastName = name.split(' ').slice(1).join(' ').toUpperCase();
+  const label = data.basics.label;
+  const url = data.basics.url;
+  const email = data.basics.email;
+  const formatedLocation = [
+    location.city, location.countryCode].filter((item) => item !== null).join(', ');
+
+  return (
+    `\\begin{center}
+  \\textbf {
+    \\Huge
+    \\color{primary-950}${ firstName }
+    \\color{accent}${ lastName }
+  }\\\\ \\smallskip
+  \\textbf {
+    \\color{primary-950}\\large ${ label }
+  }\\\\ \\smallskip
+
+  \\begin{supertabular}{l}
+    \\href {${ url }}{\\faIcon{link} ${ trim(url, 47) }} \\\\
+    \\href { mailto:{{ basics.email }} }{\\faIcon{envelope} ${ email }} \\\\
+    \\faIcon{globe-americas} ${ formatedLocation } \\\\
+  \\end{supertabular}
+    \\end{center}`
+  )
+}
+
+function formatBlockHeader (
   {
     title,
     subtitle,
@@ -95,8 +126,16 @@ function formatEnumerate (items) {
   return null;
 }
 
-function formatLink (link) {
-  return `\\link{${link || ''}}{${link || ''}}`;
+function trim (value, maxSize) {
+  if (value.length > maxSize) {
+    return `${value.slice(0, maxSize)}...`;
+  }
+  return value;
+}
+
+function formatLink (url, { label, maxSize }={ label: undefined, maxSize: 67 }) {
+  let formatedLabel = trim(label || url, maxSize);
+  return `\\href{${url}}{\\hphantom{}{\\footnotesize\\textcolor{accent}{\\faIcon{link}}} ${formatedLabel}}`;
 }
 
 function formatRatingBar (value) {
@@ -107,7 +146,7 @@ function formatRatingBar (value) {
       '\\begin{tabular}{l l l l l}\n' + 
       (
         Array(5).fill(null).map((_, index) => 
-          index + 1 < value ? `\\faIcon{circle}` :  `\\faIcon[regular]{circle}`
+          index + 1 <= value ? `\\faIcon{circle}` :  `\\faIcon[regular]{circle}`
         ).join(' & ')
       ) +
       '\\\\[2mm] \\end{tabular} \n' +
@@ -130,9 +169,10 @@ function prepareData (data) {
       formatedSummary: formatMarkdown(data.basics.summary),
       locationSummary: [location.city, location.countryCode].filter((item) => item !== null).join(', '),
     },
-    work: data.work.map(item => ({
+    header: formatHeaderSection(data),
+    work: (data.work || []).map(item => ({
       ...item,
-      header: formatHeader({
+      header: formatBlockHeader({
         title: item.position,
         subtitle: item.name,
         startDate: formatDate(item.startDate, 'MMM YYYY'),
@@ -142,9 +182,9 @@ function prepareData (data) {
       formatedHighlights: formatEnumerate(item.highlights),
       formatedLink: formatLink(item.url),
     })),
-    education: data.education.map(item => ({
+    education: (data.education || []).map(item => ({
       ...item,
-      header: formatHeader({
+      header: formatBlockHeader({
         title: [item.studyType, item.area].join(' / '),
         subtitle: item.institution,
         startDate: formatDate(item.startDate, 'MMM YYYY'),
@@ -153,9 +193,9 @@ function prepareData (data) {
       formatedCourses: formatEnumerate(item.courses),
       formatedLink: formatLink(item.url),
     })),
-    projects: data.projects.map(item => ({
+    projects: (data.projects || []).map(item => ({
       ...item,
-      header: formatHeader({
+      header: formatBlockHeader({
         title: item.name,
         subtitle: (item.startDate || item.endDate) ? `${formatDate(item.startDate, 'MMM YYYY')} - ${formatDate(item.endDate, 'MMM YYYY')}` : undefined,
       }),
@@ -163,13 +203,13 @@ function prepareData (data) {
       formatedHighlights: formatEnumerate(item.highlights),
       formatedLink: formatLink(item.url),
     })),
-    references: data.references.map(item => ({
+    references: (data.references || []).map(item => ({
       ...item,
       formatedReference: formatReference(item.name, item.reference)
     })),
-    volunteer: data.volunteer.map(item => ({
+    volunteer: (data.volunteer || []).map(item => ({
       ...item,
-      header: formatHeader({
+      header: formatBlockHeader({
         title: item.position,
         subtitle: item.organization,
         startDate: formatDate(item.startDate, 'MMM YYYY'),
@@ -180,33 +220,33 @@ function prepareData (data) {
     })),
     
     // Side column
-    skills: data.skills.map(item => ({
+    skills: (data.skills || []).map(item => ({
       ...item,
-      header: formatHeader({
+      header: formatBlockHeader({
         title: item.name,
       }),
       formatedkeywords: formatEnumerate(item.keywords),
       formatedLevel: formatRatingBar(item.level),
     })),
-    certificates: data.certificates.map(item => ({
+    certificates: (data.certificates || []).map(item => ({
       ...item,
-      header: formatHeader({
+      header: formatBlockHeader({
         title: item.name,
         subtitle: item.issuer,
       }),
       formatedDate: formatDate(item.date, 'MMM YYYY'),
-      formatedLink: formatLink(item.url),
+      formatedLink: formatLink(item.url, { maxSize: 27 }),
     })),
-    languages: data.languages.map(item => ({
+    languages: (data.languages || []).map(item => ({
       ...item,
-      header: formatHeader({
+      header: formatBlockHeader({
         title: item.language,
       }),
       formatedFluency: formatRatingBar(item.fluency),
     })),
-    publications: data.publications.map(item => ({
+    publications: (data.publications || []).map(item => ({
       ...item,
-      header: formatHeader({
+      header: formatBlockHeader({
         title: item.name,
         subtitle: item.issuer,
       }),
@@ -214,18 +254,18 @@ function prepareData (data) {
       formatedSummary: formatMarkdown(item.summary),
       formatedLink: formatLink(item.url),
     })),
-    awards: data.awards.map(item => ({
+    awards: (data.awards || []).map(item => ({
       ...item,
-      header: formatHeader({
+      header: formatBlockHeader({
         title: item.title,
         subtitle: item.awarder,
       }),
       formatedDate: formatDate(item.date, 'MMM YYYY'),
       formatedSummary: formatMarkdown(item.summary),
     })),
-    interests: data.interests.map(item => ({
+    interests: (data.interests || []).map(item => ({
       ...item,
-      header: formatHeader({
+      header: formatBlockHeader({
         title: item.name,
       }),
       formatedkeywords: formatEnumerate(item.keywords),
@@ -249,7 +289,7 @@ function main () {
   }
   fs.writeFileSync(path.join(COMPILING_DIR, 'resume.tex'), latexContent);
   execSync(`xelatex --shell-escape -output-directory=${COMPILING_DIR} ${path.join(COMPILING_DIR, 'resume.tex')}`, {stdio: 'inherit'});
-  // fs.copyFileSync(path.join(OUTPUT_DIR, "resume.pdf"), PUBLIC_DIR);
+  fs.copyFileSync(path.join(COMPILING_DIR, "resume.pdf"), PUBLIC_DIR);
 }
 
 main();

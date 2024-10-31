@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run esume:pdf && next build",
     "start": "next start",
     "lint": "next lint",
     "resume:schema": "json-schema-to-zod -i ./node_modules/@jsonresume/schema/schema.json -o ./src/types/jsonResume.generated.ts",
