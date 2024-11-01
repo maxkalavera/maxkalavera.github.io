@@ -26,8 +26,15 @@ jobs:
         with:
           path: node_modules
           key: node-modules-${{ hashFiles('package-lock.json') }}
-      - name: Install Latex
-        run: ./scripts/install_latex.sh
+      - name: Install dependencies
+        run: sudo apt install -y wget perl libfreetype6 libfreetype6-dev libfontconfig1 libfontconfig1-dev build-essential chrpath libssl-dev libxft-dev
+      - name: Install tinytex
+        run: wget -qO- "https://yihui.org/tinytex/install-bin-unix.sh" | sh
+      - name: Install latex packages
+        run: xargs tlmgr install < "$GITHUB_WORKSPACE"/content/resume/latex/modules.txt && \
+          xargs tlmgr update < "$GITHUB_WORKSPACE"/content/resume/latex/modules.txt
+      #- name: Install tinytex
+      #  run: ./scripts/install_latex.sh
       - name: Install Node.js dependencies
         shell: bash
         run: npm ci

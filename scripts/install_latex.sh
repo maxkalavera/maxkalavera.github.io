@@ -2,9 +2,9 @@
 # docker run --platform linux/x86_64 --volume $(pwd):/root/src/ -w /root/ -it ubuntu /bin/bash
 
 # Update remotes
-apt update -y
+sudo apt update -y
 # Install Ubuntu dependencies
-apt install -y \
+sudo apt install -y \
   wget \
   perl \
   libfreetype6 libfreetype6-dev libfontconfig1 libfontconfig1-dev build-essential chrpath libssl-dev libxft-dev
