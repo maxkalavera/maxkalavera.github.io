@@ -260,14 +260,13 @@ function prepareData (data) {
  * build the PDF document and copy it to the public folder of the website.
  *****************************************************************************/
 
+/*
 function compileLatex () {
   // texlive/texlive
-  /* 
-    mkdir /root/texmf
-    tlmgr init-usertree
-    tlmgr update --self
-    tlmgr update markdown
-  */
+  //  mkdir /root/texmf
+  //  tlmgr init-usertree
+  //  tlmgr update --self
+  //  tlmgr update markdown
   execSync([
     'docker run -i --rm --name latex',
     '-v "$PWD":/usr/src/app:z',
@@ -276,6 +275,7 @@ function compileLatex () {
     `pdflatex --shell-escape -output-directory=./.latex ./content/resume/latex/resume.tex`
   ].join(' '), {stdio: 'inherit'});
 }
+*/
 
 function main () {
   const jsonResume = JSON.parse(fs.readFileSync(JSON_RESUME_FILE, 'utf8'));
@@ -293,7 +293,7 @@ function main () {
   }
   fs.writeFileSync(path.join(COMPILING_DIR, 'resume.tex'), latexContent);
   //compileLatex();
-  execSync(`pdflatex --shell-escape -output-directory=${COMPILING_DIR} ${path.join(COMPILING_DIR, 'resume.tex')}`, {stdio: 'inherit'});
+  execSync(`xelatex --shell-escape -output-directory=${COMPILING_DIR} ${path.join(COMPILING_DIR, 'resume.tex')}`, {stdio: 'inherit'});
   fs.copyFileSync(path.join(COMPILING_DIR, "resume.pdf"), PUBLIC_DIR);
 }
 

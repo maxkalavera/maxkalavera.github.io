@@ -26,12 +26,8 @@ jobs:
         with:
           path: node_modules
           key: node-modules-${{ hashFiles('package-lock.json') }}
-      - name: Install Tex Live
-        run: wget https://github.com/scottkosty/install-tl-ubuntu/raw/master/install-tl-ubuntu && chmod +x ./install-tl-ubuntu && sudo bash ./install-tl-ubuntu 
-      #- name: Update tlmgr
-      #  run: sudo tlmgr update --self
-      #- name: Update latex packages
-      #  run: sudo tlmgr update markdown fontawesome5 fontenc inputenc babel xcolor hyperref ragged2e titlesec libertine microtype supertabular geometry paracol paralist titlecaps array
+      - name: Install Latex
+        run: ./scripts/install_latex.sh
       - name: Install Node.js dependencies
         shell: bash
         run: npm ci
