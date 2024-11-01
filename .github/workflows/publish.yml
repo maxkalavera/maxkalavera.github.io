@@ -28,6 +28,10 @@ jobs:
           key: node-modules-${{ hashFiles('package-lock.json') }}
       - name: install Texlive
         run: sudo apt install texlive texlive-xetex texlive-fonts-extra -y
+      - name: Update tlmgr
+        run: sudo tlmgr update --self
+      - name: Update latex packages
+        run: sudo tlmgr update markdown fontawesome5 fontenc inputenc babel xcolor hyperref ragged2e titlesec libertine microtype supertabular geometry paracol paralist titlecaps array
       - name: Install Node.js dependencies
         shell: bash
         run: npm ci

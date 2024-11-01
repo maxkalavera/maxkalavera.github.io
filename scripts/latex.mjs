@@ -133,20 +133,6 @@ function formatRatingBar (value) {
   return null;
 }
 
-function includeMarkdownPackage () {
-  return `
-\\def\\markdownOptionOutputDir{${COMPILING_DIR}}
-\\ExplSyntaxOn
-\\str_new:N
-\\g_luabridge_output_dirname_str
-\\str_gset:NV
-\\g_luabridge_output_dirname_str
-\\markdownOptionOutputDir
-\\ExplSyntaxOff
-\\usepackage{markdown}
-  `;
-}
-
 /******************************************************************************
  * Takes the Raw data given to the handlebars.js template and format it to
  * create the custom elements for latex.
@@ -157,7 +143,6 @@ function prepareData (data) {
   const location = data.basics.location;
   return {
     ...data,
-    markdownPackage: includeMarkdownPackage(),
     // Main column
     basics: {
       ...data.basics,
