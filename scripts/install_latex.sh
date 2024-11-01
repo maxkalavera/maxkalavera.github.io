@@ -20,7 +20,7 @@ rm TinyTeX.tar.gz
 
 sudo ln -s $HOME/.TinyTeX/bin/*/* /usr/local/bin/ 
 
-if [ -z "$GITHUB_WORKSPACE" ]; then
+if [ ! -z "$GITHUB_WORKSPACE" ]; then
   xargs tlmgr install < "$GITHUB_WORKSPACE"/content/resume/latex/modules.txt
   xargs tlmgr update < "$GITHUB_WORKSPACE"/content/resume/latex/modules.txt
 else
