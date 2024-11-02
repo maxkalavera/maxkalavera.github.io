@@ -5,7 +5,7 @@ import Handlebars from "handlebars";
 import moment from 'moment';
 
 const COMPILING_DIR = path.resolve("./.latex/");
-const LATEX_TEMPLATE_FILE = path.resolve("./content/resume/latex/resume.tex");
+const TEMPLATES_DIR = path.resolve("./content/resume/latex/");
 const JSON_RESUME_FILE = path.resolve("./content/resume/resume.json");
 const PUBLIC_DIR = path.resolve("./public/static/resume.pdf");
 
@@ -43,7 +43,7 @@ function formatHeaderSection (data) {
 
       \\begin{supertabular}{l}
         \\href {${ url }}{\\faIcon{link} ${ trim(url, 47) }} \\\\
-        \\href { mailto:{{ basics.email }} }{\\faIcon{envelope} ${ email }} \\\\
+        \\href { mailto:${ email }} }{\\faIcon{envelope} ${ email }} \\\\
         \\faIcon{globe-americas} ${ formatedLocation } \\\\
       \\end{supertabular}
     \\end{center}`
@@ -260,26 +260,9 @@ function prepareData (data) {
  * build the PDF document and copy it to the public folder of the website.
  *****************************************************************************/
 
-/*
-function compileLatex () {
-  // texlive/texlive
-  //  mkdir /root/texmf
-  //  tlmgr init-usertree
-  //  tlmgr update --self
-  //  tlmgr update markdown
-  execSync([
-    'docker run -i --rm --name latex',
-    '-v "$PWD":/usr/src/app:z',
-    '-w /usr/src/app',
-    'leplusorg/latex',
-    `pdflatex --shell-escape -output-directory=./.latex ./content/resume/latex/resume.tex`
-  ].join(' '), {stdio: 'inherit'});
-}
-*/
-
-function main () {
+function buildResume () {
   const jsonResume = JSON.parse(fs.readFileSync(JSON_RESUME_FILE, 'utf8'));
-  const latexTemplate = fs.readFileSync(LATEX_TEMPLATE_FILE, 'utf8');
+  const latexTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'resume.tex'), 'utf8');
 
   const compiledTemplate = Handlebars.compile(
     latexTemplate, { noEscape: true }
@@ -292,9 +275,37 @@ function main () {
     fs.mkdirSync(COMPILING_DIR, { recursive: true });
   }
   fs.writeFileSync(path.join(COMPILING_DIR, 'resume.tex'), latexContent);
-  //compileLatex();
   execSync(`xelatex --shell-escape -output-directory=${COMPILING_DIR} ${path.join(COMPILING_DIR, 'resume.tex')}`, {stdio: 'inherit'});
   fs.copyFileSync(path.join(COMPILING_DIR, "resume.pdf"), PUBLIC_DIR);
+}
+
+function buildCoverLetter () {
+  const latexTemplate = fs.readFileSync(path.join(TEMPLATES_DIR, 'cover.tex'), 'utf8');
+  const compiledTemplate = Handlebars.compile(
+    latexTemplate, { noEscape: true }
+  );
+
+  const jsonResume = JSON.parse(fs.readFileSync(JSON_RESUME_FILE, 'utf8'));
+  const name = jsonResume.basics.name.trim().replace(/\s+/g,' ');
+  const location = jsonResume.basics.location;
+  const latexContent = compiledTemplate({
+    firstName: name.split(' ')[0].toUpperCase(),
+    lastName: name.split(' ').slice(1).join(' ').toUpperCase(),
+    url: jsonResume.basics.url,
+    email: jsonResume.basics.email,
+    formatedLocation: [location.city, location.countryCode].filter((item) => item !== null).join(', '),
+  });
+  if (!fs.existsSync(COMPILING_DIR)) {
+    fs.mkdirSync(COMPILING_DIR, { recursive: true });
+  }
+  fs.writeFileSync(path.join(COMPILING_DIR, 'cover.tex'), latexContent);
+  execSync(`xelatex --shell-escape -output-directory=${COMPILING_DIR} ${path.join(COMPILING_DIR, 'cover.tex')}`, {stdio: 'inherit'});
+  fs.copyFileSync(path.join(COMPILING_DIR, "cover.pdf"), PUBLIC_DIR);
+}
+
+function main () {
+  //buildResume();
+  buildCoverLetter();
 }
 
 main();

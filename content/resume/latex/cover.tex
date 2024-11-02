@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage{fontawesome5}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage[sf]{libertine}
+\usepackage{geometry}
+\usepackage{supertabular}
+
+\geometry{a4paper}
+\fontsize{12pt}{15pt}\selectfont
+\setlength\parindent{0pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Color definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{primary-50}{HTML}{fafaf9} 
+\definecolor{primary-100}{HTML}{f5f5f4}
+\definecolor{primary-200}{HTML}{e7e5e4}
+\definecolor{primary-300}{HTML}{d6d3d1}
+\definecolor{primary-400}{HTML}{a8a29e}
+\definecolor{primary-500}{HTML}{78716c}
+\definecolor{primary-600}{HTML}{57534e}
+\definecolor{primary-700}{HTML}{44403c}
+\definecolor{primary-800}{HTML}{292524}
+\definecolor{primary-900}{HTML}{1c1917}
+\definecolor{primary-950}{HTML}{0c0a09}
+
+\definecolor{accent}{HTML}{b45309} 
+\definecolor{accent-50}{HTML}{fffbeb} 
+\definecolor{accent-100}{HTML}{fef3c7}
+\definecolor{accent-200}{HTML}{fde68a}
+\definecolor{accent-300}{HTML}{fcd34d}
+\definecolor{accent-400}{HTML}{fbbf24}
+\definecolor{accent-500}{HTML}{f59e0b}
+\definecolor{accent-600}{HTML}{d97706}
+\definecolor{accent-700}{HTML}{b45309}
+\definecolor{accent-800}{HTML}{92400e}
+\definecolor{accent-900}{HTML}{78350f}
+\definecolor{accent-950}{HTML}{451a03}
+
+
+\begin{document}
+\color{primary-950}
+
+%\begin{center}
+%\begin{minipage}{11cm}
+%\begin{center}
+\textbf {
+  \fontsize{26pt}{32pt}\selectfont
+  \color{primary-950}Maximiliano
+  \color{accent}Hernandez Castillo
+}
+%\end{center}
+%\end{minipage}
+%\end{center}
+\vspace{0.5cm}
+
+Greetings.
+\vspace{0.5cm}
+
+I'm Max Hernandez, a software engineer with approximately three years of professional
+experience. I've worked with Python backend scripts, NodeJS frontend applications, and a few
+app designs incorporating graphic design fundamentals with mainly open source tools.
+
+
+I am very confident working with Django to construct backend APIs. I've primarily written RESTFul
+APIs, worked with MySQL and PostgreSQL relational databases, and have some experience with
+related solutions like setting push notifications, adding cache using Redis or building
+asynchronous tasks.
+
+
+I've spent the last few years focusing on building frontend applications with React. I have
+configured projects from scratch with Webpack and Rollup. I've created websites, single-page
+applications, and NodeJS packages. I believe I am adept in HTML5, CSS, and vanilla Javascript.
+I also have good experience with Linux systems, configuration, and bash scripting. I have basic
+understanding of graphic design. I have some experience designing frontend apps with Inkscape,
+Gimp, and Figma. I also have experience working in Agile environments.
+
+
+Thank you for your attention and time. I'm looking forward to learn more about the position, and I
+would welcome the chance to provide insight into my knowledge and experience.
+\vspace{0.5cm}
+
+Best regards.
+\vspace{0.5cm}
+
+{
+  \setlength{\tabcolsep}{0pt}
+  \begin{supertabular}{l}
+    \href{ {{ url }} }{\faIcon{link} {{ url }} } \\
+    \href{ mailto:{{ email }} }{\faIcon{envelope} {{ email }} } \\
+    \faIcon{globe-americas} {{ formatedLocation }}
+  \end{supertabular}
+}
+
+
+\end{document}
