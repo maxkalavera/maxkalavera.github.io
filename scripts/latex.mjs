@@ -7,7 +7,7 @@ import moment from 'moment';
 const COMPILING_DIR = path.resolve("./.latex/");
 const TEMPLATES_DIR = path.resolve("./content/resume/latex/");
 const JSON_RESUME_FILE = path.resolve("./content/resume/resume.json");
-const PUBLIC_DIR = path.resolve("./public/static/resume.pdf");
+const PUBLIC_DIR = path.resolve("./public/static/");
 
 /******************************************************************************
  * Latex blocks of code to take the data and format it for latex
@@ -43,7 +43,7 @@ function formatHeaderSection (data) {
 
       \\begin{supertabular}{l}
         \\href {${ url }}{\\faIcon{link} ${ trim(url, 47) }} \\\\
-        \\href { mailto:${ email }} }{\\faIcon{envelope} ${ email }} \\\\
+        \\href {mailto:${ email }}{\\faIcon{envelope} ${ email }} \\\\
         \\faIcon{globe-americas} ${ formatedLocation } \\\\
       \\end{supertabular}
     \\end{center}`
@@ -276,7 +276,7 @@ function buildResume () {
   }
   fs.writeFileSync(path.join(COMPILING_DIR, 'resume.tex'), latexContent);
   execSync(`xelatex --shell-escape -output-directory=${COMPILING_DIR} ${path.join(COMPILING_DIR, 'resume.tex')}`, {stdio: 'inherit'});
-  fs.copyFileSync(path.join(COMPILING_DIR, "resume.pdf"), PUBLIC_DIR);
+  fs.copyFileSync(path.join(COMPILING_DIR, "resume.pdf"), path.join(PUBLIC_DIR, "resume/resume.pdf"));
 }
 
 function buildCoverLetter () {
@@ -300,11 +300,11 @@ function buildCoverLetter () {
   }
   fs.writeFileSync(path.join(COMPILING_DIR, 'cover.tex'), latexContent);
   execSync(`xelatex --shell-escape -output-directory=${COMPILING_DIR} ${path.join(COMPILING_DIR, 'cover.tex')}`, {stdio: 'inherit'});
-  fs.copyFileSync(path.join(COMPILING_DIR, "cover.pdf"), PUBLIC_DIR);
+  fs.copyFileSync(path.join(COMPILING_DIR, "cover.pdf"), path.join(PUBLIC_DIR, "resume/cover.pdf"));
 }
 
 function main () {
-  //buildResume();
+  buildResume();
   buildCoverLetter();
 }
 
