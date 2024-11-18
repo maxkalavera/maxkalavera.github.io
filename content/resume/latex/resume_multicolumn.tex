@@ -74,21 +74,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \color{primary-950}
-\titleformat{\section}{\color{accent}\raggedright\normalsize\bfseries\uppercase}{}{0ex}{}[{\titlerule[0.8pt]}]
-%\titlespacing{\section}{0ex}{0.5ex}{0.75ex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Header
+% Side column
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{{ header }}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Profile
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{{#if basics.formatedSummary}}\section*{Profile} {
-  {{ basics.formatedSummary }}
-}{{/if}}
-
+\begin{paracol}{2}
+\begin{leftcolumn*}
+\titleformat{\section}{\color{accent}\raggedright\normalsize\bfseries\uppercase}{}{0ex}{}
+\titlespacing{\section}{0ex}{0.75ex}{0.75ex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Skills
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -96,22 +89,90 @@
   {{#each skills}}
     {{ header }}\newline
     {{#if formatedkeywords}}{{ formatedkeywords }}\newline{{/if}}
-    {{#if formatedLevelWord}}Level: {\bfseries {{ formatedLevelWord }} }{{ formatedLevelBar }} \newline{{/if}}
+    {{#if formatedLevel}}Level: {{ formatedLevelBar }}\newline{{/if}}
     \par
   {{/each}}
 }{{/if}}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Certifications
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{{#if certificates}}\section*{Certifications}{
+  {{#each certificates}}
+    {{ header }}\newline
+    {{#if formatedDate}}{{ formatedDate }}\newline{{/if}}
+    {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
+    \par
+  {{/each}}
+}{{/if}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Languages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if languages}}\section*{Languages}{
   {{#each languages}}
     {{ header }}\newline
-    {{#if formatedFluencyWord}}Fluency: {\bfseries {{ formatedFluencyWord }} }{{ formatedFluencyBar }} \newline{{/if}}
+    {{#if formatedFluency}} Fluency: {{ formatedFluencyBar }}\newline{{/if}}
+    \par
+  {{/each}}
+}{{/if}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Publications
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{{#if publications}}\section*{Publications}{
+  {{#each publications}}
+    {{ header }}\newline
+    {{#if frmatedReleaseDate}}{{ frmatedReleaseDate }}\newline{{/if}}
+    {{#if formatedSummary}}
+      {{ formatedSummary }}
+      \\
+    {{/if}}
+    {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
+    \par
+  {{/each}}
+}{{/if}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Awards
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{{#if awards}}\section*{Awards}{
+  {{#each awards}}
+    {{ header }}\newline
+    {{#if formatedDate}}{{ formatedDate }}\newline{{/if}}
+    {{#if formatedSummary}}{{ formatedSummary }}\newline{{/if}}
+    \par
+  {{/each}}
+}{{/if}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Interests
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{{#if interests}}\section*{Interests}{
+  {{#each interests}}
+    {{ header }}\newline
+    {{#if formatedkeywords}}{{ formatedkeywords }}\newline{{/if}}
     \par
   {{/each}}
 }{{/if}}
 
+\end{leftcolumn*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main column
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{rightcolumn}
+\titleformat{\section}{\color{accent}\raggedright\normalsize\bfseries\uppercase}{}{0ex}{}[{\titlerule[0.8pt]}]
+\titlespacing{\section}{0ex}{0.5ex}{0.75ex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Header
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+{{ header }}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Profile
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{{#if basics.formatedSummary}}
+\section*{Profile} {
+  {{ basics.formatedSummary }}
+}
+{{/if}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Experience
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,23 +190,24 @@
   {{/each}}
 }
 {{/if}}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Education
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{{#if education}}\section*{Education}{
+{{#if education}}
+\section*{Education} {
   {{#each education}}
     {{ header }}\par
     {{#if formatedCourses}}\bfseries Courses: \normalfont {{ formatedCourses }}\newline{{/if}}
     {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
     \par
   {{/each}}
-}{{/if}}
-
+}
+{{/if}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Projects
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{{#if projects}}\section*{Projects}{
+{{#if projects}}
+\section*{Projects} {
   {{#each projects}}
     {{ header }}\par
     {{#if formatedDescription}}
@@ -156,36 +218,8 @@
     {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
     \par
   {{/each}}
-}{{/if}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Certifications
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{{#if certificates}}\section*{Certifications}{
-  {{#each certificates}}
-    {{ header }}\newline
-    {{#if formatedDate}}{{ formatedDate }}\newline{{/if}}
-    {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
-    \par
-  {{/each}}
-}{{/if}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Publications
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{{#if publications}}\section*{Publications}{
-  {{#each publications}}
-    {{ header }}\newline
-    {{#if frmatedReleaseDate}}{{ frmatedReleaseDate }}\newline{{/if}}
-    {{#if formatedSummary}}
-      {{ formatedSummary }}
-      \\
-    {{/if}}
-    {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
-    \par
-  {{/each}}
-}{{/if}}
-
+}
+{{/if}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % References
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -195,24 +229,13 @@
     {{#if formatedReference}}{{ formatedReference }}{{/if}}
     \par
   {{/each}}
-}{{/if}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Awards
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{{#if awards}}\section*{Awards}{
-  {{#each awards}}
-    {{ header }}\newline
-    {{#if formatedDate}}{{ formatedDate }}\newline{{/if}}
-    {{#if formatedSummary}}{{ formatedSummary }}\newline{{/if}}
-    \par
-  {{/each}}
-}{{/if}}
-
+}
+{{/if}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Volunteer
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{{#if volunteer}}\section*{Volunteer} {
+{{#if volunteer}}
+\section*{Volunteer} {
   {{#each volunteer}}
     {{ header }}\par
     {{#if formatedSummary}}
@@ -222,17 +245,9 @@
     {{#if formatedHighlights}}\bfseries Highlights: \normalfont {{ formatedHighlights }}\newline{{/if}}
     \par
   {{/each}}
-}{{/if}}
+}
+{{/if}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Interests
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{{#if interests}}\section*{Interests}{
-  {{#each interests}}
-    {{ header }}\newline
-    {{#if formatedkeywords}}{{ formatedkeywords }}\newline{{/if}}
-    \par
-  {{/each}}
-}{{/if}}
-
+\end{rightcolumn}
+\end{paracol}
 \end{document}

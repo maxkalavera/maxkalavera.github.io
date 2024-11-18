@@ -115,12 +115,26 @@ function formatLink (url, { label, maxSize }={ label: undefined, maxSize: 67 }) 
   return `\\href{${url}}{\\hphantom{}{\\footnotesize\\textcolor{accent}{\\faIcon{link}}} ${formatedLabel}}`;
 }
 
+function formatRatingWord (value) {
+  if (value > 0 && value <= 5) {
+    return ({
+      0: 'Inexperienced',
+      1: 'Beginner',
+      2: 'Skilled',
+      3: 'Intermediate',
+      4: 'Advanced',
+      5: 'Expert',
+    })[value] || '';
+  }
+  return null; 
+}
+
 function formatRatingBar (value) {
   if (value > 0 && value <= 5) {
     return (
       '{\n' + 
       '\\setlength{\\tabcolsep}{1mm} \\color{accent-500}\\scriptsize\n' +
-      '\\begin{tabular}{l l l l l}\n' + 
+      '\\begin{tabular}[b]{l l l l l}\n' + 
       (
         Array(5).fill(null).map((_, index) => 
           index + 1 <= value ? `\\faIcon{circle}` :  `\\faIcon[regular]{circle}`
@@ -208,7 +222,8 @@ function prepareData (data) {
         title: item.name,
       }),
       formatedkeywords: formatEnumerate(item.keywords),
-      formatedLevel: formatRatingBar(item.level),
+      formatedLevelBar: formatRatingBar(item.level),
+      formatedLevelWord: formatRatingWord(item.level),
     })),
     certificates: (data.certificates || []).map(item => ({
       ...item,
@@ -224,7 +239,8 @@ function prepareData (data) {
       header: formatBlockHeader({
         title: item.language,
       }),
-      formatedFluency: formatRatingBar(item.fluency),
+      formatedFluencyBar: formatRatingBar(item.fluency),
+      formatedFluencyWord: formatRatingWord(item.fluency),
     })),
     publications: (data.publications || []).map(item => ({
       ...item,
