@@ -28,7 +28,10 @@ function formatHeaderSection (data) {
   const url = data.basics.url;
   const email = data.basics.email;
   const formatedLocation = [
-    location.city, location.countryCode].filter((item) => item !== null).join(', ');
+    location.city, 
+    location.region, 
+    location.countryCode
+  ].filter((item) => item !== null).join(', ');
 
   return (
     `\\begin{center}
@@ -109,20 +112,7 @@ function formatSimpleHeader (
   if (subtitle) {
     block.push(`\\headersubtitle{${subtitle}}`);
   }
-  /*
-  if (startDate || endDate) {
-    block.push(`\\headersubtitle{${startDate || ''} - ${endDate || ''}}`);
-  }
-  */
-
   return block.join('\\\\\n');
-  /*
-  return [
-    `\\headertitle{${title}}`,
-    (subtitle ? `\\headersubtitle{${subtitle}}` : ''),
-    ((startDate || endDate) ? `\\headersubtitle{${startDate || ''} - ${endDate || ''}}` : '')
-  ].join('\\\\\n');
-  */
 }
 
 function formatPeriod(
