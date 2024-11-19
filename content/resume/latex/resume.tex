@@ -118,7 +118,9 @@
 {{#if work}}
 \section*{Experience} {
   {{#each work}}
-    {{ header }}\par
+    {{ simpleHeader }}\\
+    {{#if period}}{{ period }}\\{{/if}}
+    \par
     {{#if formatedSummary}}
       {{ formatedSummary }}
       \par
@@ -135,7 +137,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if education}}\section*{Education}{
   {{#each education}}
-    {{ header }}\par
+    {{ simpleHeader }}\\
+    {{#if period}}{{ period }}\\{{/if}}
+    \par
     {{#if formatedCourses}}\bfseries Courses: \normalfont {{ formatedCourses }}\newline{{/if}}
     {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
     \par
@@ -147,7 +151,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if projects}}\section*{Projects}{
   {{#each projects}}
-    {{ header }}\par
+    {{ simpleHeader }}\par
     {{#if formatedDescription}}
       {{ formatedDescription }}
       \par
@@ -163,7 +167,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if certificates}}\section*{Certifications}{
   {{#each certificates}}
-    {{ header }}\newline
+    {{ simpleHeader }}\newline
     {{#if formatedDate}}{{ formatedDate }}\newline{{/if}}
     {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
     \par
@@ -175,7 +179,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if publications}}\section*{Publications}{
   {{#each publications}}
-    {{ header }}\newline
+    {{ simpleHeader }}\newline
     {{#if frmatedReleaseDate}}{{ frmatedReleaseDate }}\newline{{/if}}
     {{#if formatedSummary}}
       {{ formatedSummary }}
@@ -202,7 +206,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if awards}}\section*{Awards}{
   {{#each awards}}
-    {{ header }}\newline
+    {{ simpleHeader }}\newline
     {{#if formatedDate}}{{ formatedDate }}\newline{{/if}}
     {{#if formatedSummary}}{{ formatedSummary }}\newline{{/if}}
     \par
@@ -214,7 +218,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if volunteer}}\section*{Volunteer} {
   {{#each volunteer}}
-    {{ header }}\par
+    {{ simpleHeader }}\\
+    {{#if period}}{{ period }}\\{{/if}}
+    \par
     {{#if formatedSummary}}
       {{ formatedSummary }}
       \par
@@ -229,7 +235,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if interests}}\section*{Interests}{
   {{#each interests}}
-    {{ header }}\newline
+    {{ simpleHeader }}\newline
     {{#if formatedkeywords}}{{ formatedkeywords }}\newline{{/if}}
     \par
   {{/each}}
