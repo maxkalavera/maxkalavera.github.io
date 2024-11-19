@@ -58,11 +58,13 @@
   "certificates":[
      {
         "issuer":"Coursera",
+        "date": "2021-08-15",
         "url":"https://www.coursera.org/account/accomplishments/specialization/certificate/K6495WPA96GR",
         "name":"Graphic Design Specialization"
      },
      {
         "name":"Machine Learning",
+        "date": "2020-12-29",
         "url":"https://www.coursera.org/account/accomplishments/certificate/A8FCSDG5P9M9",
         "issuer":"Coursera"
      }
