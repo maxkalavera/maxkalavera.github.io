@@ -74,7 +74,8 @@
         "keywords":[
            "Fundamentals",
            "Figma",
-           "Inkscape / Vectornator",
+           "Inkscape",
+           "Vectornator",
            "Gimp"
         ],
         "name":"UX/UI Design",
@@ -82,11 +83,18 @@
      },
      {
         "keywords":[
-           "Python / Node.js",
-           "Flask / Django / Express",
-           "SQL / PostgreSQL / MySQL / SQLite",
+           "Python",
+           "Node.js",
+           "Flask",
+           "Django",
+           "Express",
+           "SQL",
+           "PostgreSQL",
+           "MySQL",
+           "SQLite",
            "Jenkins",
-           "Linux / Bash"
+           "Linux",
+           "Bash"
         ],
         "name":"Backend Development",
         "level":"4"
@@ -94,10 +102,13 @@
      {
         "keywords":[
            "HTML",
-           "CSS / LESS / SCSS/ Tailwind",
-           "JavaScript / Node.js",
+           "CSS (LESS / SCSS)",
+           "Tailwind",
+           "JavaScript",
+           "Node.js",
            "React",
-           "Redux / Jotai",
+           "Redux",
+           "Jotai",
            "Next.js",
            "Electron"
         ],

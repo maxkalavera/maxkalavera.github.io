@@ -1,7 +1,24 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This file is developed to be build to be compilied first with handlebars.js
-% second with xelated in mind.
+% The MIT License (MIT)
 %
+% Copyright (c) [2025] [Max Hernandez]
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included in all
+% copies or substantial portions of the Software.
+%
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+% SOFTWARE.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass{article}
 \usepackage{markdown}
@@ -21,6 +38,20 @@
 \usepackage{paralist}
 \usepackage{titlecaps}
 \usepackage{array}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes:
+% This file is developed to be build to be compilied first with handlebars.js
+% second with xelated in mind.
+%
+% \ignorespaces is written after every if to assure that the line is ignored
+% in the case that the if is false and the content is not added.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Global formating
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{empty}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Geometry
@@ -65,7 +96,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Sections formatting
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+% Deprecated
 \newcommand{\headertitle}[1]{\hphantom{}{\color{accent}\raggedright\normalsize\bfseries\titlecap{#1}}}
 \newcommand{\headersubtitle}[1]{\hphantom{}{\raggedright\normalsize\bfseries\titlecap{#1}}}
 
@@ -75,7 +106,6 @@
 \begin{document}
 \color{primary-950}
 \titleformat{\section}{\color{accent}\raggedright\normalsize\bfseries\uppercase}{}{0ex}{}[{\titlerule[0.8pt]}]
-%\titlespacing{\section}{0ex}{0.5ex}{0.75ex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Header
@@ -87,30 +117,37 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if basics.formatedSummary}}\section*{Profile} {
   {{ basics.formatedSummary }}
-}{{/if}}
+  \par
+}{{/if}}\ignorespaces
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Skills
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if skills}}\section*{Skills}{
   {{#each skills}}
-    {{ header }}\newline
-    {{#if formatedkeywords}}{{ formatedkeywords }}\newline{{/if}}
-    {{#if formatedLevelWord}}Level: {\bfseries {{ formatedLevelWord }} }{{ formatedLevelBar }} \newline{{/if}}
-    \par
+    \subsection*{ {{ title }} } {
+      {{#if formatedkeywords}}{{ formatedkeywords }}\newline{{/if}}\ignorespaces
+      {{#if formatedLevelWord}}
+        Level: {\bfseries {{ formatedLevelWord }} } \newline
+        {{ formatedLevelBar }} \newline
+      {{/if}}\ignorespaces
+    }
   {{/each}}
-}{{/if}}
+}{{/if}}\ignorespaces
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Languages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if languages}}\section*{Languages}{
   {{#each languages}}
-    {{ header }}\newline
-    {{#if formatedFluencyWord}}Fluency: {\bfseries {{ formatedFluencyWord }} }{{ formatedFluencyBar }} \newline{{/if}}
-    \par
+    \subsection*{ {{ title }} } {
+      {{#if formatedFluencyWord}}
+        Fluency: {\bfseries {{ formatedFluencyWord }} } \newline
+        {{ formatedFluencyBar }} \newline
+      {{/if}}\ignorespaces
+    }
   {{/each}}
-}{{/if}}
+}{{/if}}\ignorespaces
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Experience
@@ -118,47 +155,52 @@
 {{#if work}}
 \section*{Experience} {
   {{#each work}}
-    {{ simpleHeader }}\\
-    {{#if period}}{{ period }}\\{{/if}}
-    \par
-    {{#if formatedSummary}}
-      {{ formatedSummary }}
-      \par
-    {{/if}}
-    {{#if formatedHighlights}}\bfseries Highlights: \normalfont {{ formatedHighlights }}\newline{{/if}}
-    {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
-    \par
+    \subsection*{ {{ title }} } {
+      {{#if subtitle}}{{ subtitle }} \newline{{/if}}\ignorespaces
+      {{#if formatedSummary}}
+        {{ formatedSummary }} 
+        \par
+      {{/if}}\ignorespaces
+      {{#if formatedHighlights}}
+        \bfseries Highlights: \normalfont {{ formatedHighlights }}\newline
+      {{/if}}\ignorespaces
+      {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}\ignorespaces
+    }
   {{/each}}
 }
-{{/if}}
+{{/if}}\ignorespaces
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Education
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if education}}\section*{Education}{
   {{#each education}}
-    {{ simpleHeader }}\\
-    {{#if period}}{{ period }}\\{{/if}}
-    \par
-    {{#if formatedCourses}}\bfseries Courses: \normalfont {{ formatedCourses }}\newline{{/if}}
-    {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
-    \par
+    \subsection*{ {{ title }} } {
+      {{#if subtitle}}{{ subtitle }} \newline{{/if}}\ignorespaces
+      {{#if formatedCourses}}
+        \bfseries Courses: \normalfont {{ formatedCourses }}\newline
+      {{/if}}\ignorespaces
+      {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}\ignorespaces
+    }
   {{/each}}
-}{{/if}}
+}{{/if}}\ignorespaces
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Projects
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if projects}}\section*{Projects}{
   {{#each projects}}
-    {{ simpleHeader }}\par
-    {{#if formatedDescription}}
-      {{ formatedDescription }}
-      \par
-    {{/if}}
-    {{#if formatedHighlights}}\bfseries Highlights: \normalfont {{ formatedHighlights }}\newline{{/if}}
-    {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
-    \par
+    \subsection*{ {{ title }} } {
+      {{#if subtitle}}{{ subtitle }} \newline{{/if}}\ignorespaces
+      {{#if formatedDescription}}
+        {{ formatedDescription }} 
+        \par
+      {{/if}}\ignorespaces
+      {{#if formatedHighlights}}
+        \bfseries Highlights: \normalfont {{ formatedHighlights }}\newline
+      {{/if}}\ignorespaces
+      {{#if formatedLink}}{{ formatedLink }} \newline{{/if}}\ignorespaces
+    }
   {{/each}}
 }{{/if}}
 
@@ -167,28 +209,29 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if certificates}}\section*{Certifications}{
   {{#each certificates}}
-    {{ simpleHeader }}\newline
-    {{#if formatedDate}}{{ formatedDate }}\newline{{/if}}
-    {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
-    \par
+    \subsection*{ {{ title }} } {
+      {{#if subtitle}}{{ subtitle }} \newline{{/if}}\ignorespaces
+      {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}\ignorespaces
+    }
   {{/each}}
-}{{/if}}
+}{{/if}}\ignorespaces
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Publications
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if publications}}\section*{Publications}{
   {{#each publications}}
-    {{ simpleHeader }}\newline
-    {{#if frmatedReleaseDate}}{{ frmatedReleaseDate }}\newline{{/if}}
-    {{#if formatedSummary}}
-      {{ formatedSummary }}
-      \\
-    {{/if}}
-    {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}
-    \par
+    \subsection*{ {{ title }} } {
+      {{#if subtitle}}{{ subtitle }} \newline{{/if}}\ignorespaces
+      {{#if frmatedReleaseDate}}{{ frmatedReleaseDate }} \newline{{/if}}\ignorespaces
+      {{#if formatedSummary}}
+        {{ formatedSummary }} 
+        \par
+      {{/if}}\ignorespaces
+      {{#if formatedLink}}{{ formatedLink }} \newline{{/if}}\ignorespaces
+    }
   {{/each}}
-}{{/if}}
+}{{/if}}\ignorespaces
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % References
@@ -196,49 +239,51 @@
 {{#if references}}
 \section*{References} {
   {{#each references}}
-    {{#if formatedReference}}{{ formatedReference }}{{/if}}
-    \par
+    \subsection*{ {{ title }} } {
+      {{#if referenceContent}}{{ referenceContent }}{{/if}}\ignorespaces
+    }
   {{/each}}
-}{{/if}}
+}{{/if}}\ignorespaces
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Awards
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if awards}}\section*{Awards}{
   {{#each awards}}
-    {{ simpleHeader }}\newline
-    {{#if formatedDate}}{{ formatedDate }}\newline{{/if}}
-    {{#if formatedSummary}}{{ formatedSummary }}\newline{{/if}}
-    \par
+    \subsection*{ {{ title }} } {
+      {{#if subtitle}}{{ subtitle }} \newline{{/if}}\ignorespaces
+      {{#if formatedSummary}}{{ formatedSummary }}\newline{{/if}}\ignorespaces
+    }
   {{/each}}
-}{{/if}}
+}{{/if}}\ignorespaces
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Volunteer
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if volunteer}}\section*{Volunteer} {
   {{#each volunteer}}
-    {{ simpleHeader }}\\
-    {{#if period}}{{ period }}\\{{/if}}
-    \par
-    {{#if formatedSummary}}
-      {{ formatedSummary }}
-      \par
-    {{/if}}
-    {{#if formatedHighlights}}\bfseries Highlights: \normalfont {{ formatedHighlights }}\newline{{/if}}
-    \par
+    \subsection*{ {{ title }} } {
+      {{#if subtitle}}{{ subtitle }} \newline{{/if}}\ignorespaces
+      {{#if formatedSummary}}
+        {{ formatedSummary }}
+        \par
+      {{/if}}\ignorespaces
+      {{#if formatedHighlights}}
+        \bfseries Highlights: \normalfont {{ formatedHighlights }}\newline
+      {{/if}}\ignorespaces
+    }
   {{/each}}
-}{{/if}}
+}{{/if}}\ignorespaces
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Interests
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if interests}}\section*{Interests}{
   {{#each interests}}
-    {{ simpleHeader }}\newline
-    {{#if formatedkeywords}}{{ formatedkeywords }}\newline{{/if}}
-    \par
+    \subsection*{ {{ title }} } {
+      {{#if formatedkeywords}}{{ formatedkeywords }}\newline{{/if}}\ignorespaces
+    }
   {{/each}}
-}{{/if}}
+}{{/if}}\ignorespaces
 
 \end{document}

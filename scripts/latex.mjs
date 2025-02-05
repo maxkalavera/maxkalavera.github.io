@@ -7,6 +7,7 @@ import moment from 'moment';
 const COMPILING_DIR = path.resolve("./.latex/");
 const TEMPLATES_DIR = path.resolve("./content/resume/latex/");
 const JSON_RESUME_FILE = path.resolve("./content/resume/resume.json");
+//const JSON_RESUME_FILE = path.resolve("./content/resume/dummy-resume.json");
 const PUBLIC_DIR = path.resolve("./public/static/");
 
 /******************************************************************************
@@ -218,7 +219,13 @@ function prepareData (data) {
         endDate: formatDate(item.endDate, 'MMM YYYY'),
       }),
       title: item.position,
-      subtitle: item.name,
+      subtitle: [
+        item.name,
+        formatPeriod({
+          startDate: formatDate(item.startDate, 'MMM YYYY'),
+          endDate: formatDate(item.endDate, 'MMM YYYY'),
+        })
+      ].join(" --- "),
       startDate: formatDate(item.startDate, 'MMM YYYY'),
       endDate: formatDate(item.endDate, 'MMM YYYY'),
       formatedSummary: formatMarkdown(item.summary),
@@ -228,7 +235,7 @@ function prepareData (data) {
     education: (data.education || []).map(item => ({
       ...item,
       header: formatBlockHeader({
-        title: [item.studyType, item.area].join(' / '),
+        title: [item.studyType, item.area].join(' --- '),
         subtitle: item.institution,
         startDate: formatDate(item.startDate, 'MMM YYYY'),
         endDate: formatDate(item.endDate, 'MMM YYYY'),
@@ -238,13 +245,19 @@ function prepareData (data) {
         endDate: formatDate(item.endDate, 'MMM YYYY'),
       }),
       simpleHeader: formatSimpleHeader({
-        title: [item.studyType, item.area].join(' / '),
+        title: [item.studyType, item.area].join(' --- '),
         subtitle: item.institution,
         startDate: formatDate(item.startDate, 'MMM YYYY'),
         endDate: formatDate(item.endDate, 'MMM YYYY'),
       }),
-      title: [item.studyType, item.area].join(' / '),
-      subtitle: item.institution,
+      title: [item.studyType, item.area].join(', '),
+      subtitle: [
+        item.institution,
+        formatPeriod({
+          startDate: formatDate(item.startDate, 'MMM YYYY'),
+          endDate: formatDate(item.endDate, 'MMM YYYY'),
+        })
+      ].join(" --- "),
       startDate: formatDate(item.startDate, 'MMM YYYY'),
       endDate: formatDate(item.endDate, 'MMM YYYY'),
       formatedCourses: formatEnumerate(item.courses),
@@ -268,7 +281,9 @@ function prepareData (data) {
     })),
     references: (data.references || []).map(item => ({
       ...item,
-      formatedReference: formatReference(item.name, item.reference)
+      formatedReference: formatReference(item.name, item.reference),
+      title: item.name,
+      referenceContent: formatMarkdown(item.reference),
     })),
     volunteer: (data.volunteer || []).map(item => ({
       ...item,
@@ -287,7 +302,13 @@ function prepareData (data) {
         endDate: formatDate(item.endDate, 'MMM YYYY'),
       }),
       title: item.position,
-      subtitle: item.organization,
+      subtitle: [
+        item.organization,
+        formatPeriod({
+          startDate: formatDate(item.startDate, 'MMM YYYY'),
+          endDate: formatDate(item.endDate, 'MMM YYYY'),
+        })
+      ].join(" --- "),
       startDate: formatDate(item.startDate, 'MMM YYYY'),
       endDate: formatDate(item.endDate, 'MMM YYYY'),
       formatedSummary: formatMarkdown(item.summary),
@@ -319,7 +340,10 @@ function prepareData (data) {
         subtitle: item.issuer,
       }),
       title: item.name,
-      subtitle: item.issuer,
+      subtitle: [
+        item.issuer,
+        formatDate(item.date, 'MMM YYYY')
+      ].join(' --- '),
       formatedDate: formatDate(item.date, 'MMM YYYY'),
       formatedLink: formatLink(item.url, { maxSize: 27 }),
     })),
@@ -362,7 +386,10 @@ function prepareData (data) {
         subtitle: item.awarder,
       }),
       title: item.title,
-      subtitle: item.awarder,
+      subtitle: [
+        item.awarder,
+        formatDate(item.date, 'MMM YYYY')
+      ].join(" --- "),
       formatedDate: formatDate(item.date, 'MMM YYYY'),
       formatedSummary: formatMarkdown(item.summary),
     })),
@@ -374,6 +401,7 @@ function prepareData (data) {
       simpleHeader: formatSimpleHeader({
         title: item.name,
       }),
+      title: item.name,
       formatedkeywords: formatEnumerate(item.keywords),
     })),
   }
