@@ -70,6 +70,7 @@
      }
   ],
   "skills":[
+<<<<<<< HEAD
      {
         "keywords":[
            "Fundamentals",
@@ -100,6 +101,9 @@
         "level":"4"
      },
      {
+=======
+         {
+>>>>>>> f1f56789b25f87cf4cc4c7603553a4f13ad8ae8e
         "keywords":[
            "HTML",
            "CSS (LESS / SCSS)",
@@ -115,7 +119,18 @@
         "name":"Frontend Development",
         "level":"5"
      },
-     {
+         {
+        "keywords":[
+           "Python / Node.js",
+           "Flask / Django / Express",
+           "SQL / PostgreSQL / MySQL / SQLite",
+           "Jenkins",
+           "Linux / Bash"
+        ],
+        "name":"Backend Development",
+        "level":"4"
+     },
+         {
         "keywords":[
            "Algorithms",
            "Data Structures",
@@ -130,6 +145,16 @@
         ],
         "name":"Software Engineering Foundations",
         "level":"4"
+     },
+     {
+        "keywords":[
+           "Fundamentals",
+           "Figma",
+           "Inkscape / Vectornator",
+           "Gimp"
+        ],
+        "name":"UX/UI Design",
+        "level":"2"
      }
   ],
   "languages":[
