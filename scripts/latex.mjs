@@ -15,6 +15,10 @@ const PUBLIC_DIR = path.resolve("./public/static/");
  * Kind of what you would do in latex with \newcommand but from js.
  *****************************************************************************/
 
+function formatIcon (name, width='1.0em') {
+  return `\\includesvg[width=${width}]{${name}.svg}`;
+}
+
 function formatDate (date, format) {
   const source = moment(date);
   return source.isValid() ? source.format(format) : '';
@@ -46,7 +50,7 @@ function formatHeaderSection (data) {
       }\\\\ \\smallskip
 
       \\begin{supertabular}{l}
-        \\href {${ url }}{\\faIcon{link} ${ trim(url, 47) }} \\\\
+        \\href {${ url }}{${formatIcon("link-solid")} ${ trim(url, 47) }} \\\\
         \\href {mailto:${ email }}{\\faIcon{envelope} ${ email }} \\\\
         \\faIcon{globe-americas} ${ formatedLocation } \\\\
       \\end{supertabular}
@@ -450,6 +454,13 @@ function buildCoverLetter () {
   if (!fs.existsSync(COMPILING_DIR)) {
     fs.mkdirSync(COMPILING_DIR, { recursive: true });
   }
+
+  // Copy resources folder
+  copyFolderRecursiveSync(
+    path.join(COMPILING_DIR, 'resources'),
+    path.join(COMPILING_DIR, 'resources/')
+  );
+
   fs.writeFileSync(path.join(COMPILING_DIR, 'cover.tex'), latexContent);
   execSync(`xelatex --shell-escape -output-directory=${COMPILING_DIR} ${path.join(COMPILING_DIR, 'cover.tex')}`, {stdio: 'inherit'});
   fs.copyFileSync(path.join(COMPILING_DIR, "cover.pdf"), path.join(PUBLIC_DIR, "resume/cover.pdf"));
@@ -471,4 +482,29 @@ function trim (value, maxSize) {
     return `${value.slice(0, maxSize)}...`;
   }
   return value;
+}
+
+function copyFolderRecursiveSync(source, target) {
+  // Check if the source is a directory
+  if (fs.lstatSync(source).isDirectory()) {
+      // Create the target directory if it doesn't exist
+      if (!fs.existsSync(target)) {
+          fs.mkdirSync(target);
+      }
+
+      // Read the contents of the source directory
+      const files = fs.readdirSync(source);
+
+      // Iterate through each file/directory
+      files.forEach(file => {
+          const sourcePath = path.join(source, file);
+          const targetPath = path.join(target, file);
+
+          // Recursively copy the contents
+          copyFolderRecursiveSync(sourcePath, targetPath);
+      });
+  } else {
+      // If it's a file, copy it directly
+      fs.copyFileSync(source, target);
+  }
 }

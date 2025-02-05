@@ -26,6 +26,8 @@ jobs:
         with:
           path: node_modules
           key: node-modules-${{ hashFiles('package-lock.json') }}
+      - name: Install inkscape
+        run: apt install inkscape -y
       - name: Install tinytex
         run: ./scripts/install_latex.sh
       - name: Install Node.js dependencies
