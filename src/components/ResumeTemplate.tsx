@@ -37,16 +37,16 @@ const styles = {
   icon: "min-w-4 size-4 text-primary-600 dark:text-primary-500"
 }
 
-interface Props extends React.ComponentPropsWithoutRef<React.ElementType>  {
-  resume: JSONResumeType;
-  meta: JSONResumeMeta;
-}
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const ResumeTemplate = React.forwardRef<HTMLDivElement, Props>((
+const ResumeTemplate = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<React.ElementType> & {
+    resume: JSONResumeType;
+    meta?: JSONResumeMeta;
+  }
+>((
   {
     resume,
-    meta,
+    meta={},
     ...props
   }, 
   forwardedRef
@@ -223,17 +223,22 @@ function Header() {
           "flex flex-row justify-center sm:justify-start items-start gap-4 mb-1 flex-wrap",
         )}
       >
-        { profilePicture && (
-          <Image
-            src={profilePicture}
-            alt="Profile"
-            className={cn(
-              "dark:shadow-sm dark:shadow-primary-500 print:shadow-none",
-              "bg-white w-24 h-24 rounded-lg relative z-20 object-cover",
-              "select-none pointer-events-none"
-            )}
-          />
-        )}
+        <div
+          className="w-full flex flex-row justify-center items-center py-4"
+        >
+          { profilePicture && (
+            <Image
+              src={profilePicture}
+              alt="Profile"
+              width={250}
+              className={cn(
+                "dark:shadow-sm dark:shadow-primary-500 print:shadow-none",
+                "bg-white rounded-lg relative z-20 object-cover",
+                "select-none pointer-events-none"
+              )}
+            />
+          )}
+        </div>
         <div
           className="flex flex-col justify-start items-start gap-0 mb-2"
         >

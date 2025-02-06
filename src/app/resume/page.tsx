@@ -9,7 +9,6 @@ import {
 import { DownloadIcon } from "lucide-react";
 import ResumeTemplate from "@/components/ResumeTemplate";
 import resume from '@/../content/resume/resume.json';
-import profilePicture from "@/assets/images/profile.png";
 import GeneralLayout from "@/layouts/GeneralLayout";
 
 export default function ResumePage() {
@@ -32,8 +31,6 @@ export default function ResumePage() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <DownloadButton
-                //variant="default"
-                //size="lg"
                 className={cn(
                   "flex flex-row justify-center items-center gap-2 flex-nowrap",
                 )}
@@ -70,9 +67,6 @@ export default function ResumePage() {
         </div>
         <ResumeTemplate 
           resume={resume}
-          meta={{ 
-            profilePicture 
-          }}
         />
       </div>
     </GeneralLayout>
