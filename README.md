@@ -13,5 +13,8 @@ Website finally running on Github Pages.
 
 The code was developed using React tools, the structure set using CRA, Typescript was used to reduce code issues, and the visuals and animations were developed using mainly HTML5, pure CSS and vanilla JS.
 
+## Latex
+To build the resume template Tex tools are necessary. 
+
 ## License
 React component library is supported under [Apache License Version 2.0](https://github.com/maxkalavera/maxkalavera.github.io/blob/main/LICENSE).

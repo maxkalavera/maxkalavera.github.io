@@ -22,3 +22,12 @@ pgf
 gobble
 ifnextok
 svg
+iftex
+scrbase
+pdftexcmds
+shellesc
+ifplatform
+trimspaces
+graphicx
+transparent
+xr
