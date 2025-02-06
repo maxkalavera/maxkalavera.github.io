@@ -21,3 +21,4 @@ etoolbox
 pgf
 gobble
 ifnextok
+svg
