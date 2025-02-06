@@ -41,18 +41,20 @@ function formatHeaderSection (data) {
   return (
     `\\begin{center}
       \\textbf {
-        \\Huge
-        \\color{primary-950}${ firstName }
+        \\huge
+        \\color{primary-950}\\centerline{ ${ firstName } }
+        \\newline
+        \\newline
         \\color{accent}${ lastName }
-      }\\\\ \\smallskip
+      }\\\\ \\bigskip
       \\textbf {
         \\color{primary-950}\\large ${ label }
-      }\\\\ \\smallskip
+      }\\\\ \\medskip
 
       \\begin{supertabular}{l}
         \\href {${ url }}{${formatIcon("link-solid")} ${ trim(url, 47) }} \\\\
-        \\href {mailto:${ email }}{\\faIcon{envelope} ${ email }} \\\\
-        \\faIcon{globe-americas} ${ formatedLocation } \\\\
+        \\href {mailto:${ email }}{${formatIcon("envelope-solid")} ${ email }} \\\\
+        ${formatIcon("earth-americas-solid")} ${ formatedLocation } \\\\
       \\end{supertabular}
     \\end{center}`
   )
@@ -150,9 +152,9 @@ function formatEnumerate (items) {
   return null;
 }
 
-function formatLink (url, { label, maxSize }={ label: undefined, maxSize: 67 }) {
+function formatLink (url, { label, maxSize }={ label: undefined, maxSize: 120 }) {
   let formatedLabel = trim(label || url, maxSize);
-  return `\\href{${url}}{\\hphantom{}{\\footnotesize\\textcolor{accent}{\\faIcon{link}}} ${formatedLabel}}`;
+  return `\\href{${url}}{\\hphantom{}{\\textcolor{accent}{${formatIcon("link-solid-black")}} ${formatedLabel}}`;
 }
 
 function formatRatingWord (value) {
@@ -177,7 +179,7 @@ function formatRatingBar (value) {
       '\\begin{tabular}[b]{l l l l l}\n' + 
       (
         Array(5).fill(null).map((_, index) => 
-          index + 1 <= value ? `\\faIcon{circle}` :  `\\faIcon[regular]{circle}`
+          index + 1 <= value ? formatIcon("circle-solid") :  formatIcon("circle-regular")
         ).join(' & ')
       ) +
       '\\\\[2mm] \\end{tabular} \n' +
@@ -197,6 +199,9 @@ function prepareData (data) {
   const location = data.basics.location;
   return {
     ...data,
+    configs: {
+      setSVGPathMacro: "\\svgpath{{.latex/resources}}",
+    },
     // Main column
     basics: {
       ...data.basics,
@@ -430,6 +435,12 @@ function buildResume () {
   if (!fs.existsSync(COMPILING_DIR)) {
     fs.mkdirSync(COMPILING_DIR, { recursive: true });
   }
+
+  // Copy resources folder
+  copyFolderRecursiveSync(
+    path.join(TEMPLATES_DIR, 'resources/'),
+    path.join(COMPILING_DIR, 'resources/')
+  );
   fs.writeFileSync(path.join(COMPILING_DIR, 'resume.tex'), latexContent);
   execSync(`xelatex --shell-escape -output-directory=${COMPILING_DIR} ${path.join(COMPILING_DIR, 'resume.tex')}`, {stdio: 'inherit'});
   fs.copyFileSync(path.join(COMPILING_DIR, "resume.pdf"), path.join(PUBLIC_DIR, "resume/resume.pdf"));
@@ -451,16 +462,16 @@ function buildCoverLetter () {
     email: jsonResume.basics.email,
     formatedLocation: [location.city, location.countryCode].filter((item) => item !== null).join(', '),
   });
+  
   if (!fs.existsSync(COMPILING_DIR)) {
     fs.mkdirSync(COMPILING_DIR, { recursive: true });
   }
 
   // Copy resources folder
   copyFolderRecursiveSync(
-    path.join(COMPILING_DIR, 'resources'),
+    path.join(TEMPLATES_DIR, 'resources/'),
     path.join(COMPILING_DIR, 'resources/')
   );
-
   fs.writeFileSync(path.join(COMPILING_DIR, 'cover.tex'), latexContent);
   execSync(`xelatex --shell-escape -output-directory=${COMPILING_DIR} ${path.join(COMPILING_DIR, 'cover.tex')}`, {stdio: 'inherit'});
   fs.copyFileSync(path.join(COMPILING_DIR, "cover.pdf"), path.join(PUBLIC_DIR, "resume/cover.pdf"));
