@@ -1,5 +1,5 @@
+import React from "react";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,14 +31,16 @@ export default function ResumePage() {
         >
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button
-                variant="outline"
-                size="sm"
-                className="text-foreground flex flex-row justify-center items-center gap-2 dark:border-secondary-500"
+              <DownloadButton
+                //variant="default"
+                //size="lg"
+                className={cn(
+                  "flex flex-row justify-center items-center gap-2 flex-nowrap",
+                )}
               >
                 Download
-                <DownloadIcon className="w-4 h-4 text-foreground" />
-              </Button>
+                <DownloadIcon className="w-4 h-4" />
+              </DownloadButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent
               className=""
@@ -76,3 +78,47 @@ export default function ResumePage() {
     </GeneralLayout>
   );
 }
+
+
+/******************************************************************************
+ * Secondary components
+ */
+
+
+const DownloadButton = React.forwardRef<
+  HTMLButtonElement, 
+  React.ComponentPropsWithoutRef<React.ElementType>
+>((
+  {
+    children,
+    className="",
+    ...props
+  }, 
+  forwardedRef
+) => {
+  return (
+    <button
+      {...props}
+      ref={forwardedRef}
+      className={cn(
+        "p-[3px] relative",
+      )}
+    >
+      <div
+        className={cn(
+          "absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-500 rounded-lg",
+        )}
+      />
+      <div 
+        className={cn(
+          "px-8 py-2",
+          "bg-background rounded-[6px] relative group transition duration-200 text-foreground hover:text-white hover:bg-transparent",
+          className
+        )}
+      >
+        {children}
+      </div>
+  </button>
+  )
+});
+DownloadButton.displayName = 'DownloadButton';

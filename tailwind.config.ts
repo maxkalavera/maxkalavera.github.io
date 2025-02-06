@@ -76,14 +76,14 @@ const config: Config = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
 			animation: {
-        meteor: "meteor 5s linear infinite",
-				flicker: "flicker 10s infinite ease-in-out",
-				grow: "grow 15s infinite ease-in-out",
-				heartbeat: "heartbeat 2.5s infinite ease-in-out",
-				'rotate-around': "rotate-around 25s infinite ease-in-out",
+        "meteor": "meteor 5s linear infinite",
+				"flicker": "flicker 10s infinite ease-in-out",
+				"grow": "grow 15s infinite ease-in-out",
+				"heartbeat": "heartbeat 2.5s infinite ease-in-out",
+				"rotate-around": "rotate-around 25s infinite ease-in-out",
       },
       keyframes: {
-        meteor: {
+        "meteor": {
           "0%": { transform: "rotate(215deg) translateX(0)", opacity: '1' },
           "70%": { opacity: '1' },
           "100%": {
@@ -91,24 +91,24 @@ const config: Config = {
             opacity: '0',
           },
         },
-				flicker: {
+				"flicker": {
 					"0%": { opacity: '0.15' },
           "50%": { opacity: '1.0' },
           "100%": { opacity: '0.15' },
 				},
-				grow: {
+				"grow": {
 					"0%": { transform: 'scale(1.0)' },
           "50%": { transform: 'scale(1.15)' },
           "100%": { transform: 'scale(1.0)' },
 				},
-				heartbeat: {
+				"heartbeat": {
 					"0%": { transform: "scale(1)" },
 					"25%": { transform: "scale(1.1)" },
 					"50%": { transform: "scale(1)" },
 					"75%": { transform: "scale(0.9)" },
 					"100%": { transform: "scale(1)" }
 				},
-				'rotate-around': {
+				"rotate-around": {
 					"0%": { transform: 'rotate(0deg)' },
           "100%": { transform: 'rotate(360deg)' },
 				}
