@@ -31,3 +31,5 @@ trimspaces
 graphicx
 transparent
 xr
+catchfile
+holtxdoc
