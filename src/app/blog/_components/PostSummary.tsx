@@ -1,20 +1,18 @@
 import { PostData } from "@/types/blog";
 import { ArrowRight } from "lucide-react";
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
-import profilePicture from "@/assets/images/profile.png";
 import { cn } from "@/lib/utils";
 import moment from "moment";
 import Markdown from "@/components/Markdown";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface Props extends React.ComponentPropsWithoutRef<React.ElementType>  {
-  postMeta: PostData
-}
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const PostSummary = React.forwardRef<HTMLDivElement, Props>((
+const PostSummary = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithoutRef<React.ElementType> & {
+    postMeta: PostData
+  }
+>((
   {
     postMeta,
     ...props
@@ -100,12 +98,13 @@ const PostSummary = React.forwardRef<HTMLDivElement, Props>((
             data-testid="author"
             className="flex flex-row justify-start items-end  gap-2 flex-wrap"
           >
-
-            <Image
-              className="w-6 h-6 rounded-full" 
-              src={profilePicture}
-              alt="Post author's avatar"
-            />
+            {/* // TODO: Include author's image
+              <Image
+                className="w-6 h-6 rounded-full" 
+                src={profilePicture}
+                alt="Post author's avatar"
+              />
+            */}
             <span className="text-sm text-left text-wrap font-serif font-medium dark:text-white align-center">
                 Max Hernandez
             </span>
