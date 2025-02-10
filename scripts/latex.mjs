@@ -157,18 +157,18 @@ function formatLink (url, { label, maxSize }={ label: undefined, maxSize: 120 })
   return `\\href{${url}}{\\hphantom{}{\\textcolor{accent}{${formatIcon("link-solid-black")}} ${formatedLabel}}`;
 }
 
-function formatRatingWord (value) {
-  if (value > 0 && value <= 5) {
-    return ({
-      0: 'Inexperienced',
-      1: 'Beginner',
-      2: 'Skilled',
-      3: 'Intermediate',
-      4: 'Advanced',
-      5: 'Expert',
-    })[value] || '';
+function formatRatingWord (
+  value, 
+  dictionary={
+    0: 'Inexperienced',
+    1: 'Beginner',
+    2: 'Skilled',
+    3: 'Intermediate',
+    4: 'Advanced',
+    5: 'Expert',
   }
-  return null; 
+) {
+  return dictionary[value] || "";
 }
 
 function formatRatingBar (value) {
@@ -366,7 +366,14 @@ function prepareData (data) {
       }),
       title: item.language,
       formatedFluencyBar: formatRatingBar(item.fluency),
-      formatedFluencyWord: formatRatingWord(item.fluency),
+      formatedFluencyWord: formatRatingWord(item.fluency, {
+        0: 'Inexperienced',
+        1: 'Beginner',
+        2: 'Skilled',
+        3: 'Intermediate',
+        4: 'Advanced',
+        5: 'Native',
+      }),
     })),
     publications: (data.publications || []).map(item => ({
       ...item,

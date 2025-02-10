@@ -128,35 +128,6 @@
 }{{/if}}\ignorespaces
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Skills
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{{#if skills}}\section*{Skills}{
-  {{#each skills}}
-    \subsection*{ {{ title }} } {
-      {{#if formatedkeywords}}{{ formatedkeywords }}\newline{{/if}}\ignorespaces
-      {{#if formatedLevelWord}}
-        Level: {\bfseries {{ formatedLevelWord }} } \newline
-        {{ formatedLevelBar }} \newline
-      {{/if}}\ignorespaces
-    }
-  {{/each}}
-}{{/if}}\ignorespaces
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Languages
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{{#if languages}}\section*{Languages}{
-  {{#each languages}}
-    \subsection*{ {{ title }} } {
-      {{#if formatedFluencyWord}}
-        Fluency: {\bfseries {{ formatedFluencyWord }} } \newline
-        {{ formatedFluencyBar }} \newline
-      {{/if}}\ignorespaces
-    }
-  {{/each}}
-}{{/if}}\ignorespaces
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Experience
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if work}}
@@ -193,6 +164,30 @@
 }{{/if}}\ignorespaces
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Certifications
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{{#if certificates}}\section*{Certifications}{
+  {{#each certificates}}
+    \subsection*{ {{ title }} } {
+      {{#if subtitle}}{{ subtitle }} \newline{{/if}}\ignorespaces
+      {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}\ignorespaces
+    }
+  {{/each}}
+}{{/if}}\ignorespaces
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Awards
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{{#if awards}}\section*{Awards}{
+  {{#each awards}}
+    \subsection*{ {{ title }} } {
+      {{#if subtitle}}{{ subtitle }} \newline{{/if}}\ignorespaces
+      {{#if formatedSummary}}{{ formatedSummary }}\newline{{/if}}\ignorespaces
+    }
+  {{/each}}
+}{{/if}}\ignorespaces
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Projects
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {{#if projects}}\section*{Projects}{
@@ -212,13 +207,42 @@
 }{{/if}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Certifications
+% References
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{{#if certificates}}\section*{Certifications}{
-  {{#each certificates}}
+{{#if references}}
+\section*{References} {
+  {{#each references}}
     \subsection*{ {{ title }} } {
-      {{#if subtitle}}{{ subtitle }} \newline{{/if}}\ignorespaces
-      {{#if formatedLink}}{{ formatedLink }}\newline{{/if}}\ignorespaces
+      {{#if referenceContent}}{{ referenceContent }}{{/if}}\ignorespaces
+    }
+  {{/each}}
+}{{/if}}\ignorespaces
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Skills
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{{#if skills}}\section*{Skills}{
+  {{#each skills}}
+    \subsection*{ {{ title }} } {
+      {{#if formatedkeywords}}{{ formatedkeywords }}\newline{{/if}}\ignorespaces
+      {{#if formatedLevelWord}}
+        Level: {\bfseries {{ formatedLevelWord }} } \newline
+        {{ formatedLevelBar }} \newline
+      {{/if}}\ignorespaces
+    }
+  {{/each}}
+}{{/if}}\ignorespaces
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Languages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{{#if languages}}\section*{Languages}{
+  {{#each languages}}
+    \subsection*{ {{ title }} } {
+      {{#if formatedFluencyWord}}
+        Fluency: {\bfseries {{ formatedFluencyWord }} } \newline
+        {{ formatedFluencyBar }} \newline
+      {{/if}}\ignorespaces
     }
   {{/each}}
 }{{/if}}\ignorespaces
@@ -236,30 +260,6 @@
         \par
       {{/if}}\ignorespaces
       {{#if formatedLink}}{{ formatedLink }} \newline{{/if}}\ignorespaces
-    }
-  {{/each}}
-}{{/if}}\ignorespaces
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% References
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{{#if references}}
-\section*{References} {
-  {{#each references}}
-    \subsection*{ {{ title }} } {
-      {{#if referenceContent}}{{ referenceContent }}{{/if}}\ignorespaces
-    }
-  {{/each}}
-}{{/if}}\ignorespaces
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Awards
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{{#if awards}}\section*{Awards}{
-  {{#each awards}}
-    \subsection*{ {{ title }} } {
-      {{#if subtitle}}{{ subtitle }} \newline{{/if}}\ignorespaces
-      {{#if formatedSummary}}{{ formatedSummary }}\newline{{/if}}\ignorespaces
     }
   {{/each}}
 }{{/if}}\ignorespaces
