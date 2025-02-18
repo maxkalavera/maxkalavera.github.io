@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run resume:latex && next build",
+    "build": "npm run latex:build && next build",
     "start": "next start",
     "lint": "next lint",
-    "resume:schema": "json-schema-to-zod -i ./node_modules/@jsonresume/schema/schema.json -o ./src/types/jsonResume.generated.ts",
-    "resume:latex": "node ./scripts/latex.mjs"
+    "jsonresume:update": "json-schema-to-zod -i ./node_modules/@jsonresume/schema/schema.json -o ./src/types/jsonResume.generated.ts",
+    "latex:build": "node ./scripts/latex.mjs"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",
