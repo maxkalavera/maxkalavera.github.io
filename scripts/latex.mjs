@@ -3,11 +3,13 @@ import fs from "node:fs";
 import { execSync } from "child_process";
 import Handlebars from "handlebars";
 import moment from 'moment';
+import matter from 'gray-matter';
 
 const COMPILING_DIR = path.resolve("./.latex/");
 const TEMPLATES_DIR = path.resolve("./content/resume/latex/");
 const JSON_RESUME_FILE = path.resolve("./content/resume/resume.json");
 //const JSON_RESUME_FILE = path.resolve("./content/resume/dummy-resume.json");
+const COVER_MARKDOWN_FILE = path.resolve("./content/resume/cover.md");
 const PUBLIC_DIR = path.resolve("./public/static/");
 
 /******************************************************************************
@@ -136,7 +138,10 @@ function formatPeriod(
 
 function formatMarkdown(content) {
   if (content) {
-    return `\\begin{markdown}\n${content.replace(/<br *\/?>/g, '\\\n')}\n\\end{markdown}`;
+    return content
+      .split(/\n{2,}/g)
+      .map((block) => `\\begin{markdown}\n${block.split("\n").join("\n\n")}\n\\end{markdown}`)
+      .join("\n \\\\ \\\\ \n");
   }
   return null;
 }
@@ -423,6 +428,22 @@ function prepareData (data) {
   }
 }
 
+function getCoverLetterData () {
+  const fileContents = fs.readFileSync(COVER_MARKDOWN_FILE, 'utf8');
+  const matterResult = matter(fileContents);
+
+  console.log("matterResult.data.closing", matterResult.data.closing)
+
+  return {
+    ...matterResult.data,
+    firstName: matterResult.data.firstName && matterResult.data.firstName.toUpperCase(),
+    lastName: matterResult.data.lastName && matterResult.data.lastName.toUpperCase(),
+    greetings: matterResult.data.greetings && formatMarkdown(matterResult.data.greetings),
+    closing: matterResult.data.closing && formatMarkdown(matterResult.data.closing),
+    content: formatMarkdown(matterResult.content),
+  };
+}
+
 /******************************************************************************
  * Script takes the Json Resume content, the LaTeX template 
  * build the PDF document and copy it to the public folder of the website.
@@ -459,16 +480,8 @@ function buildCoverLetter () {
     latexTemplate, { noEscape: true }
   );
 
-  const jsonResume = JSON.parse(fs.readFileSync(JSON_RESUME_FILE, 'utf8'));
-  const name = jsonResume.basics.name.trim().replace(/\s+/g,' ');
-  const location = jsonResume.basics.location;
-  const latexContent = compiledTemplate({
-    firstName: name.split(' ')[0].toUpperCase(),
-    lastName: name.split(' ').slice(1).join(' ').toUpperCase(),
-    url: jsonResume.basics.url,
-    email: jsonResume.basics.email,
-    formatedLocation: [location.city, location.countryCode].filter((item) => item !== null).join(', '),
-  });
+  const contextData = getCoverLetterData();
+  const latexContent = compiledTemplate(contextData);
   
   if (!fs.existsSync(COMPILING_DIR)) {
     fs.mkdirSync(COMPILING_DIR, { recursive: true });

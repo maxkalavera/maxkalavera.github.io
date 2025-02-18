@@ -21,6 +21,7 @@
 *.pem
 NOTES.md
 .latex
+NOTES
 
 # debug
 npm-debug.log*
