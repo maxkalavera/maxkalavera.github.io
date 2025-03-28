@@ -26,6 +26,11 @@ import {
 import { LinkIcon, MailIcon, MapPinIcon, PhoneIcon, QuoteIcon } from "lucide-react";
 import moment from 'moment';
 import IconFromURL from "./IconFromURL";
+import MarkdownIt from 'markdown-it';
+
+/******************************************************************************
+ * Constants
+ */
 
 const styles = {
   section: "w-full flex flex-col justify-start items-start gap-4",
@@ -34,8 +39,15 @@ const styles = {
   block: "w-full flex flex-col justify-start items-start gap-[0.25rem]",
   blockTitle: "font-bold text-primary-600 dark:text-primary-500",
   blockSubtitle: "font-bold text-gray-800 dark:text-foreground",
-  icon: "min-w-4 size-4 text-primary-600 dark:text-primary-500"
+  icon: "min-w-4 size-4 text-primary-600 dark:text-primary-500",
+  markdown: "prose prose-custom  dark:prose-invert"
 }
+
+const markdown = new MarkdownIt();
+
+/******************************************************************************
+ * Main Component
+ */
 
 const ResumeTemplate = React.forwardRef<
   HTMLDivElement,
@@ -308,7 +320,10 @@ function Summary() {
     >
       <SectionHeading>Summary</SectionHeading>
       { basics.summary && (
-        <p>{basics.summary}</p>
+        <div 
+          className={styles.markdown}
+          dangerouslySetInnerHTML={{ __html: markdown.render(basics.summary) }} 
+        />
       )}
     </div>
   )
@@ -333,13 +348,10 @@ function Work() {
             leading={<HeadingLapse {...item} />}
           />
           {item.summary && (
-            <p
-              className={cn(
-                styles.paragraph,
-              )}
-            >
-              {item.summary}
-            </p>
+            <div 
+              className={styles.markdown}
+              dangerouslySetInnerHTML={{ __html: markdown.render(item.summary) }} 
+            />
           )}
           
           {item.highlights && (
@@ -374,9 +386,10 @@ function Volunteer() {
             leading={<HeadingLapse {...item} />}
           />
           {item.summary && (
-            <p>
-              {item.summary}
-            </p>
+            <div 
+              className={styles.markdown}
+              dangerouslySetInnerHTML={{ __html: markdown.render(item.summary) }} 
+            />
           )}
           {item.highlights && (
             <div>
@@ -455,9 +468,10 @@ function Awards() {
             />
           )}
           {item.summary && (
-            <p>
-              {item.summary}
-            </p>
+            <div 
+              className={styles.markdown}
+              dangerouslySetInnerHTML={{ __html: markdown.render(item.summary) }} 
+            />
           )}
         </div>
       ))}
@@ -516,9 +530,10 @@ function Publications() {
             <DateElement date={item.releaseDate} />
           )}
           {item.summary && (
-            <p>
-              {item.summary}
-            </p>
+            <div 
+              className={styles.markdown}
+              dangerouslySetInnerHTML={{ __html: markdown.render(item.summary) }} 
+            />
           )}
           {item.url && (
             <Link 
