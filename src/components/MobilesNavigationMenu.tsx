@@ -17,9 +17,7 @@ import ThemesButton from "./ThemesButton";
 import { EqualIcon } from "lucide-react";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface Props extends React.ComponentPropsWithoutRef<React.ElementType>  {
-
-}
+interface Props extends React.ComponentPropsWithoutRef<React.ElementType> {}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const MobilesNavigationMenu = React.forwardRef<HTMLButtonElement, Props>((
@@ -92,14 +90,22 @@ const MobilesNavigationMenu = React.forwardRef<HTMLButtonElement, Props>((
               Resume
             </Button>
           </Link>
-          <Link href="/blog" legacyBehavior passHref>
+          <Link href="/projects" legacyBehavior passHref>
+            <Button 
+              variant='ghost'
+              onClick={() => setIsOpen(false)}
+            >
+              Projects
+            </Button>
+          </Link>
+          {/* <Link href="/blog" legacyBehavior passHref>
             <Button 
               variant='ghost'
               onClick={() => setIsOpen(false)}
             >
               Blog
             </Button>
-          </Link>
+          </Link> */}
         </div>
       </SheetContent>
     </Sheet>

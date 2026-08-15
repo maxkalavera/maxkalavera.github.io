@@ -56,7 +56,7 @@ const Navbar = React.forwardRef<HTMLDivElement, Props>((
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        {/* <NavigationMenuItem>
           <Link href="/blog" legacyBehavior passHref>
             <NavigationMenuLink
               className={cn(
@@ -67,8 +67,8 @@ const Navbar = React.forwardRef<HTMLDivElement, Props>((
               Blog
             </NavigationMenuLink>
           </Link>
-        </NavigationMenuItem>
-        {/*
+        </NavigationMenuItem> */}
+        
         <NavigationMenuItem>
           <Link href="/projects" legacyBehavior passHref>
             <NavigationMenuLink
@@ -81,7 +81,7 @@ const Navbar = React.forwardRef<HTMLDivElement, Props>((
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
-        */}
+       
 
         <Separator orientation="vertical" />
 

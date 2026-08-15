@@ -83,7 +83,7 @@ export default function ResumePage() {
             "text-4xl text-foreground font-sans"
           )}
         >
-          Portfolio
+          Projects
         </h1>
 
         
