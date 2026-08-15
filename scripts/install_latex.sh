@@ -1,6 +1,8 @@
 # To run locally use
 # docker run --platform linux/x86_64 --volume $(pwd):/root/src/ -w /root/ -it ubuntu /bin/bash
 
+TINYTEX_URL=https://github.com/rstudio/tinytex-releases/releases/download/v2026.08/TinyTeX-1-linux-x86_64-v2026.08.tar.xz
+
 # Update remotes
 sudo apt update -y
 # Install Ubuntu dependencies
@@ -12,9 +14,7 @@ sudo apt install -y \
 perl -mFile::Find /dev/null
 
 # then install TinyTeX
-TINYTEX_URL=https://github.com/rstudio/tinytex-releases/releases/download/daily/TinyTeX-1
-wget --retry-connrefused --progress=dot:giga -O TinyTeX.tar.gz ${TINYTEX_URL}.tar.gz
-
+wget --retry-connrefused --progress=dot:giga -O TinyTeX.tar.gz ${TINYTEX_URL}
 tar xf TinyTeX.tar.gz -C "$HOME"
 rm TinyTeX.tar.gz
 
