@@ -13,17 +13,17 @@ def "main" [] {}
 
 # Starts Next.js in development mode with hot-code reloading, error reporting, and more
 def "main dev" [] {
-  pnpm next dev .
+  ^pnpm next dev .
 }
 
 # Creates an optimized production build of your application
 def "main build" [] {
   main prepare --production
-  pnpm next build .
+  ^pnpm next build .
 }
 
 def "main lint" [] {
-  pnpm next lint .
+  ^pnpm next lint .
 }
 
 def "main download resume-assets" [

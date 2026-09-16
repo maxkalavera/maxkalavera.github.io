@@ -22,19 +22,21 @@ jobs:
         with:
           node-version: 24
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4     # ← also third-party! see note below
+        with:
+          version: 9
+
+      - uses: hustcer/setup-nu@v3
+        with:
+          version: "0.115.0"
+
       - name: Cache dependencies
         id: cache_dependencies
         uses: actions/cache@v5
         with:
           path: node_modules
           key: node-modules-${{ hashFiles('pnpm-lock.yaml') }}
-
-      - name: Install NuShell
-        run: |
-          wget -qO- https://apt.fury.io/nushell/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/fury-nushell.gpg
-          echo "deb [signed-by=/etc/apt/keyrings/fury-nushell.gpg] https://apt.fury.io/nushell/ /" | sudo tee /etc/apt/sources.list.d/fury-nushell.list
-          sudo apt update
-          sudo apt install nushell
 
       - name: Install Node.js dependencies
         run: ./cli.nu build
