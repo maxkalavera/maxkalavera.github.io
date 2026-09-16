@@ -3,13 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@9.0.0",
-  "scripts": {
-    "dev": "next dev",
-    "build": "npm run latex:build && next build",
-    "start": "next start",
-    "lint": "next lint",
-    "jsonresume:update": "json-schema-to-zod -i ./node_modules/@jsonresume/schema/schema.json -o ./src/types/jsonResume.generated.ts",
-    "latex:build": "node ./scripts/latex.mjs"
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "^24.4.0",
+      "onFail": "download"
+    }
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",
