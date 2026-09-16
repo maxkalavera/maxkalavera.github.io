@@ -12,6 +12,7 @@
 # next.js
 /.next/
 /out/
+/public/static/resume
 
 # production
 /build
@@ -22,6 +23,7 @@
 NOTES.md
 .latex
 NOTES
+.cache
 
 # debug
 npm-debug.log*

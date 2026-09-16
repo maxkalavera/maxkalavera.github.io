@@ -8,8 +8,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { DownloadIcon } from "lucide-react";
 import ResumeTemplate from "@/components/ResumeTemplate";
-import resume from '@/../content/resume/resume.json';
 import GeneralLayout from "@/layouts/GeneralLayout";
+import resume from '@/../.cache/resume.json';
 
 export default function ResumePage() {
   return (

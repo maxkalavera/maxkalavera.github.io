@@ -5,7 +5,7 @@ import Markdown from "@/components/Markdown";
 import Image from "next/image";
 
 
-export const getContentData = (): {
+const getContentData = (): {
   projects: {
     title: {
       content: string;
