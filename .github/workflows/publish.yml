@@ -24,8 +24,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4     # ← also third-party! see note below
-        with:
-          version: 9
 
       - uses: hustcer/setup-nu@v3
         with:
