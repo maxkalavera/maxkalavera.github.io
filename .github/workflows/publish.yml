@@ -22,11 +22,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install Nushell
-        uses: hustcer/setup-nu@v3
-        with:
-          version: '0.115.0'   # or 'latest'
-
       - name: Cache dependencies
         id: cache_dependencies
         uses: actions/cache@v5
@@ -34,8 +29,14 @@ jobs:
           path: node_modules
           key: node-modules-${{ hashFiles('pnpm-lock.yaml') }}
 
+      - name: Install NuShell
+        run: |
+          wget -qO- https://apt.fury.io/nushell/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/fury-nushell.gpg
+          echo "deb [signed-by=/etc/apt/keyrings/fury-nushell.gpg] https://apt.fury.io/nushell/ /" | sudo tee /etc/apt/sources.list.d/fury-nushell.list
+          sudo apt update
+          sudo apt install nushell
+
       - name: Install Node.js dependencies
-        shell: bash
         run: ./cli.nu build
 
       - name: Upload artifact
